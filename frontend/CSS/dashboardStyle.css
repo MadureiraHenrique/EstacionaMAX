@@ -1,0 +1,248 @@
+/* ==========================
+   :root - Variáveis globais
+========================== */
+:root {
+    /* Paleta de cores */
+    --bg-2: #292E34;     /* fundo do body */
+    --muted: #EBEDF0;    /* fundo dos cards */
+    --accent: #FCBC2C;   /* botão cadastrar */
+    --link-color: #2B79C2; /* cor dos links */
+    --text-light: #FFFFFF; /* texto claro */
+    
+    /* Tipografia */
+    --font-family: 'Inter', sans-serif;
+    
+    /* Espaçamento */
+    --spacing-sm: 0.5rem;  /* gap pequeno */
+    --spacing-md: 1rem;    /* padding padrão */
+    
+    /* Borda arredondada */
+    --border-radius-sm: 8px;  /* botões */
+    --border-radius-md: 15px; /* cards */
+}
+
+/* ==========================
+   Reset global
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+body {
+    background-color: var(--bg-2);
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+/* ==========================
+   Cabeçalho
+========================== */
+#cabecalho-Inicial {
+    background-color: var(--muted);
+    padding: var(--spacing-md);
+    margin-bottom: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#icone-estacionamax {
+    height: 45px; 
+    width: auto;
+}
+
+#icone-Sair {
+    width: 32px; 
+    height: auto;
+}
+
+#icone-Sair {
+    height: 90px;
+    width: auto;
+}
+
+#icone-estacionamax {
+    height: 79px;
+    width: auto;
+}
+/* ==========================
+   Dashboard - Título
+========================== */
+#nome-Dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#nome-Dashboard h1 {
+    font-family: var(--font-family);
+    font-weight: 700;
+    color: var(--text-light);
+    font-size: 50px;
+    font-style: normal;
+}
+
+/* ==========================
+   Informações gerais (Vagas / Entradas e Saídas)
+========================== */
+#informacoes-Gerais {
+    margin-top: 60px;
+    display: flex;
+    gap: 65px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---- Vagas ---- */
+#informacao-Vagas {
+    background-color: var(--muted);
+    width: 331px;
+    height: 229px;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+}
+
+#informacao-Vagas p {
+    font-family: var(--font-family);
+    font-weight: 400; /* normal weight for paragraph text; <b> will be bold */
+    font-style: normal;
+    font-size: 25px;
+    line-height: 1.8;
+    margin: 35px 0;
+}
+
+/* Barra de progresso */
+#informacao-Vagas progress {
+    display: block;
+    margin: 0 auto;
+    margin-top: 25px;
+    width: 250px;
+    height: 20px;
+    border-radius: 50px;
+    border: none;
+    background-color: #D9D9D9;
+    accent-color: #2B79C2;
+}
+
+/* ---- Entradas / Saídas ---- */
+#informacao-EntradaSaida {
+    background-color: var(--muted);
+    width: 330px;
+    height: 181px;
+    border-radius: var(--border-radius-md);
+}
+
+#informacao-EntradaSaida p {
+    font-family: var(--font-family);
+    font-weight: 400; /* normal weight; labels inside use <b> */
+    font-style: normal;
+    font-size: 25px;
+    line-height: 1.8;
+    padding: 25px;
+    text-align: left;
+}
+
+/* ==========================
+   Navegação rápida
+========================== */
+#navegacao-rapida-Dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+#navegacao-rapida-Dashboard ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+}
+
+/* ==========================
+   Botões / Funcionalidades
+========================== */
+.funcionalidades {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-align: center;
+    color: var(--link-color);
+    background-color: var(--muted);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    height: 100%;
+    min-width: 140px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.funcionalidades img {
+    display: block;
+    width: 70px;
+    height: auto;
+}
+
+.funcionalidades:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Botão específico */
+#cadastrarCarro {
+    background-color: var(--accent);
+    color: var(--text-light);
+}
+
+/* ==========================
+   Media Queries - Responsividade
+========================== */
+
+/* Tablets grandes */
+@media screen and (max-width: 1024px) {
+    .funcionalidades img {
+        width: 56px;
+    }
+}
+
+/* Celulares */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    #navegacao-rapida-Dashboard ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+
+    .funcionalidades {
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        min-width: 100%;
+        padding: var(--spacing-md);
+        align-items: center;
+    }
+
+    .outrasFuncionalidades img {
+        width: 36px;
+        margin-right: var(--spacing-md);
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+}
