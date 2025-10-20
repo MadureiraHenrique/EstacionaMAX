@@ -33,6 +33,7 @@
 html {
     font-size: 16px;
     font-family: var(--font-family);
+    zoom: 0.8; /* temporario */
 }
 
 body {
@@ -42,12 +43,12 @@ body {
     min-height: 100vh;
 }
 
-/* ==========================
+/*=================
    Cabeçalho
 ========================== */
 #cabecalho-Inicial {
     background-color: var(--muted);
-    padding: var(--spacing-md);
+    padding: 10px;
     margin-bottom: 2px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
@@ -56,16 +57,14 @@ body {
 }
 
 #icone-estacionamax {
-    height: 45px; 
-    width: auto;
-}
-
-#icone-Sair {
-    width: 32px; 
+    width: 0%;
     height: auto;
+    margin-left: 15px;
+    margin-bottom: 9px;
 }
 
 #icone-Sair {
+    margin-top: 5px;
     height: 90px;
     width: auto;
 }
@@ -113,8 +112,7 @@ body {
 }
 
 #informacao-Vagas p {
-    font-family: var(--font-family);
-    font-weight: 400; /* normal weight for paragraph text; <b> will be bold */
+    font-weight: 400; 
     font-style: normal;
     font-size: 25px;
     line-height: 1.8;
@@ -143,8 +141,7 @@ body {
 }
 
 #informacao-EntradaSaida p {
-    font-family: var(--font-family);
-    font-weight: 400; /* normal weight; labels inside use <b> */
+    font-weight: 400; 
     font-style: normal;
     font-size: 25px;
     line-height: 1.8;
@@ -186,7 +183,7 @@ body {
     padding: var(--spacing-md);
     border-radius: var(--border-radius-sm);
     height: 100%;
-    min-width: 140px;
+    min-width: 150px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
