@@ -1,149 +1,159 @@
-/* ==========================
-   :root - Variáveis globais
-========================== */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 :root {
     /* Paleta de cores */
-    --bg-2: #292E34;     /* fundo do body */
-    --muted: #EBEDF0;    /* fundo dos cards */
-    --accent: #FCBC2C;   /* botão cadastrar */
-    --link-color: #2B79C2; /* cor dos links */
-    --text-light: #FFFFFF; /* texto claro */
-    
+    --fundo-body: #292E34;           
+    --fundo-cards: #f6f7fa;          
+    --cor-destaque: #FCBC2C;         
+    --cor-links: #2B79C2;            
+    --texto-claro: #FFFFFF;          
+    --barra-progresso-fundo: #D9D9D9;    
+    --barra-progresso-preenchimento: #2B79C2;  
+
     /* Tipografia */
-    --font-family: 'Inter', sans-serif;
-    
+    --fonte-principal: 'Nunito', sans-serif;
+    --tamanho-fonte-base: 16px;
+
     /* Espaçamento */
-    --spacing-sm: 0.5rem;  /* gap pequeno */
-    --spacing-md: 1rem;    /* padding padrão */
-    
-    /* Borda arredondada */
-    --border-radius-sm: 8px;  /* botões */
-    --border-radius-md: 15px; /* cards */
+    --espacamento-pequeno: 0.5rem;
+    --espacamento-medio: 1rem;
+
+    /* Bordas arredondadas */
+    --borda-arredondada-pequena: 8px;
+    --borda-arredondada-media: 15px;
 }
 
-/* ==========================
-   Reset global
-========================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    font-size: 16px;
-    font-family: var(--font-family);
-    zoom: 0.8; /* temporario */
-}
-
 body {
-    background-color: var(--bg-2);
+    background-color: var(--fundo-body);
+    min-height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    min-height: 100vh;
+    font-family: var(--fonte-principal);
 }
 
-/*=================
+/* ==========================
    Cabeçalho
 ========================== */
 #cabecalho-Inicial {
-    background-color: var(--muted);
-    padding: 10px;
-    margin-bottom: 2px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--fundo-cards);
+    padding: 5px;
+    margin-bottom: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 #icone-estacionamax {
-    width: 0%;
     height: auto;
     margin-left: 15px;
-    margin-bottom: 9px;
+    margin-bottom: 5px;
 }
 
 #icone-Sair {
-    margin-top: 5px;
-    height: 90px;
     width: auto;
+    height: 70px;
+    margin-top: 5px;
 }
 
-#icone-estacionamax {
-    height: 79px;
-    width: auto;
-}
 /* ==========================
-   Dashboard - Título
+   Dashboard - Icone - Título
 ========================== */
-#nome-Dashboard {
+#menu-nomePagina {
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-top: 50px;
 }
 
-#nome-Dashboard h1 {
-    font-family: var(--font-family);
-    font-weight: 700;
-    color: var(--text-light);
-    font-size: 50px;
-    font-style: normal;
+#menu {
+    margin-left: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#menu img {  
+    height: 50px;
+}
+
+#menu-nomePagina h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 55px;
+    font-weight: bold;
+    color: var(--texto-claro);
 }
 
 /* ==========================
-   Informações gerais (Vagas / Entradas e Saídas)
+   Informações gerais
 ========================== */
 #informacoes-Gerais {
-    margin-top: 60px;
     display: flex;
-    gap: 65px;
     justify-content: center;
     align-items: center;
+    gap: 65px;
+    margin-top: 60px;
 }
 
 /* ---- Vagas ---- */
 #informacao-Vagas {
-    background-color: var(--muted);
-    width: 331px;
-    height: 229px;
-    border-radius: var(--border-radius-md);
+    background-color: var(--fundo-cards);
+    width: 301px;
+    height: 190px;
+    border-radius: var(--borda-arredondada-media);
     text-align: center;
 }
 
 #informacao-Vagas p {
-    font-weight: 400; 
-    font-style: normal;
     font-size: 25px;
+    font-weight: 500;
     line-height: 1.8;
-    margin: 35px 0;
+    margin: 25px 0;
 }
 
 /* Barra de progresso */
 #informacao-Vagas progress {
     display: block;
-    margin: 0 auto;
-    margin-top: 25px;
+    margin: 0 auto 25px;
     width: 250px;
     height: 20px;
     border-radius: 50px;
     border: none;
-    background-color: #D9D9D9;
-    accent-color: #2B79C2;
+    background-color: var(--barra-progresso-fundo);
+}
+
+#informacao-Vagas progress::-webkit-progress-bar {
+    background-color: var(--barra-progresso-fundo);
+    border-radius: 50px;
+}
+#informacao-Vagas progress::-webkit-progress-value {
+    background-color: var(--barra-progresso-preenchimento);
+    border-radius: 50px;
+}
+#informacao-Vagas progress::-moz-progress-bar {
+    background-color: var(--barra-progresso-preenchimento);
+    border-radius: 50px;
 }
 
 /* ---- Entradas / Saídas ---- */
 #informacao-EntradaSaida {
-    background-color: var(--muted);
+    background-color: var(--fundo-cards);
     width: 330px;
-    height: 181px;
-    border-radius: var(--border-radius-md);
+    height: 147px;
+    border-radius: var(--borda-arredondada-media);
 }
 
 #informacao-EntradaSaida p {
-    font-weight: 400; 
-    font-style: normal;
     font-size: 25px;
+    font-weight: 400;
     line-height: 1.8;
     padding: 25px;
     text-align: left;
@@ -156,12 +166,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin: 60px 0 10px;
 }
 
 #navegacao-rapida-Dashboard ul {
-    list-style: none;
     display: flex;
+    list-style: none;
     gap: 50px;
 }
 
@@ -172,25 +182,24 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-sm);
+    justify-content: center;
     text-decoration: none;
-    font-family: var(--font-family);
     font-weight: 600;
     font-size: 1.125rem;
     text-align: center;
-    color: var(--link-color);
-    background-color: var(--muted);
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-sm);
-    height: 100%;
+    color: var(--cor-links);
+    background-color: var(--fundo-cards);
+    padding: 20px;
+    border-radius: var(--borda-arredondada-pequena);
     min-width: 150px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .funcionalidades img {
     display: block;
-    width: 70px;
+    width: 60px;
     height: auto;
+    margin-bottom: 6px;
 }
 
 .funcionalidades:hover {
@@ -200,46 +209,6 @@ body {
 
 /* Botão específico */
 #cadastrarCarro {
-    background-color: var(--accent);
-    color: var(--text-light);
-}
-
-/* ==========================
-   Media Queries - Responsividade
-========================== */
-
-/* Tablets grandes */
-@media screen and (max-width: 1024px) {
-    .funcionalidades img {
-        width: 56px;
-    }
-}
-
-/* Celulares */
-@media screen and (max-width: 480px) {
-    html {
-        font-size: 12px;
-    }
-
-    #navegacao-rapida-Dashboard ul {
-        flex-direction: column;
-        width: 100%;
-        padding: 0 var(--spacing-md);
-    }
-
-    .funcionalidades {
-        flex-direction: row;
-        justify-content: flex-start;
-        width: 100%;
-        min-width: 100%;
-        padding: var(--spacing-md);
-        align-items: center;
-    }
-
-    .outrasFuncionalidades img {
-        width: 36px;
-        margin-right: var(--spacing-md);
-        margin-bottom: 0;
-        flex-shrink: 0;
-    }
+    background-color: var(--cor-destaque);
+    color: var(--texto-claro);
 }

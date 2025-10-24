@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionários</title>
+    <link rel="stylesheet" href="../CSS/funcionarios.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+    <header id="cabecalho-Inicial">
+        <a href="dashboard.html"><img src="img/marca.png" alt="Marca da empresa EstacionaMax" id="icone-estacionamax"></a>
+        <a href="#"><img src="img/figurasDashboard/sair.png" alt="Icone sair" id="icone-Sair"></a>
+    </header>
+
+    <main>
+        <div id="menu-busca">
+            <button id="menu"><img src="img/menu.png" alt="menu"></button>
+            <div id="container-input-busca">
+        <input type="search" placeholder="Buscar por CPF ou Nome" id="input-buscar">
+        <i class="fa fa-search" id="iconeLupa"></i>
+    </div>
+        </div>
+
+        <section id="conteiner-funcionario">
+            <article id="perfil">
+                <figure>
+                    <img src="img/figurasPaginaPerfl/user.png" alt="fotoDoCliente" id="icone-user">
+                    <figcaption id="nome-id">
+                        <p id="nome-funcionario"><strong>Nome: </strong>Fulano</p>
+                        <p id="id-funcionario"><strong>ID: </strong>00000</p>
+                    </figcaption>
+                </figure>
+                
+                <address>
+                <ul id="lista-perfil">
+                    <li>
+                        <img src="img/figurasPaginaPerfl/telefone.png" alt="iconeTelefone" id="iconeTelefone">(xx) xxxxx-xxxx
+                    </li>
+                    <li id="email-funcionario">
+                        <img src="img/figurasPaginaPerfl/arroba.png" alt="iconeEmail">   ciclano@gmail.com
+                    </li>
+                    <li id="localizacao-funcionario">
+                        <img src="img/figurasPaginaPerfl/localizacao.png" alt="iconeLocalização">BA - Salvador
+                    </li>
+                </ul>
+                </address>
+            </article>
+
+            <aside id="conteiner-info-funcionario">
+                <div id="info-extra">
+                    <p><strong>Cargo:</strong> Gerente</p>
+  <p><strong>Turno:</strong> Manhã</p>
+  <p><strong>Data de emissão:</strong> 24/10/2025</p>
+  <p><strong>Status:</strong> Ativo</p>
+
+                </div>
+                <nav id="funcionalidades-info">
+                    <button>Relatório de entradas/saídas</button>
+                    <button>Histórico de movimentações</button>
+                    <button>Observações</button>
+                </nav>
+            </aside>
+        </section>
+    </main>
+</body>
+</html>
