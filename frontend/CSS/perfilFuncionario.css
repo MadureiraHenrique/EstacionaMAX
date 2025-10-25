@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+  /* Paleta de cores */
+  --cor-fundo-body: #292E34;
+  --cor-cabecalho: #f6f7fa;
+  --cor-busca-bg: #6e7174;
+  --cor-busca-placeholder: #e0dede;
+  --cor-lupa: #E9BB25;
+  --cor-perfil-bg: #FFFBFB;
+  --cor-telefone-bg: #0076C0;
+  --cor-funcionalidade-btn: #E9BB25;
+  --cor-funcionalidade-btn-hover: #f7d050;
+  --cor-info-extra-bg: rgba(128, 128, 128, 0.2);
+  --cor-icones: #292E34;
+  
+  --cabecalho-sombra: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cor-fundo-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ==========================
+   Cabeçalho
+========================== */
+#cabecalho-Inicial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cor-cabecalho);
+  padding: 5px;
+  margin-bottom: 2px;
+  box-shadow: var(--cabecalho-sombra);
+
+}
+
+#icone-estacionamax {
+  height: auto;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+#icone-Sair {
+  width: auto;
+  height: 70px;
+  margin-top: 5px;
+}
+
+/* ==========================
+   Barra de busca / Menu
+========================== */
+#menu-busca {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+#menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 25px;
+}
+
+#menu img {
+  height: 50px;
+}
+
+#container-input-busca {
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: auto;
+}
+
+#input-buscar {
+  width: 100%;
+  padding: 9px 40px 9px 10px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--cor-busca-bg);
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+#input-buscar:focus {
+  outline: none;
+}
+
+#input-buscar::placeholder {
+  color: var(--cor-busca-placeholder);
+  text-align: center;
+}
+
+#iconeLupa {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cor-lupa);
+}
+
+/* ==========================
+   Perfil / Funcionário
+========================== */
+#conteiner-funcionario {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 7%;
+  flex-wrap: wrap;
+  height: auto;
+}
+
+#perfil {
+  position: relative;
+  background-color: var(--cor-perfil-bg);
+  min-width: 260px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: -30px;
+
+}
+
+#icone-user {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid #0c0c0c;
+}
+
+#lista-perfil {
+  list-style: none;
+  padding: 0 15px;
+}
+
+#lista-perfil li {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  
+  margin-top: 15px;
+}
+
+#nome-id {
+  text-align: center;
+  line-height: 1.5;
+}
+
+#iconeTelefone {
+  background-color: var(--cor-telefone-bg);
+  border-radius: 50px;
+  padding: 5px;
+}
+
+.icones-mudarCor {
+  color: var(--cor-icones);
+}
+
+#conteiner-info-funcionario {
+  background-color: #ffffff;
+  min-width: 550px;
+  height: 55%;
+  border-radius: 15px;
+  position: relative;
+  top: -65px;
+  padding-bottom: 30px;
+}
+
+#info-extra {
+  margin: auto;
+  background-color: var(--cor-info-extra-bg);
+  margin-top: 15px;
+  border-radius: 10px;
+  padding: 50px;
+  width: 90%;
+  display: flex;
+}
+
+#funcionalidades-info {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#funcionalidades-info button {
+  font-weight: bolder;
+  font-size: 15px;
+  border: none;
+  background-color: var(--cor-funcionalidade-btn);
+  padding: 10px;
+  border-radius: 20px;
+  width: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+#funcionalidades-info button:hover {
+  background-color: var(--cor-funcionalidade-btn-hover);
+}
