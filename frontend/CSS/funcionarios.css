@@ -1,11 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root {
+    /* Paleta principal */
     --cor-fundo-body: #292E34;
     --cor-cabecalho: #f6f7fa;
+    --cor-menu-lateral: #323742;
     --cor-busca-bg: #6e7174;
     --cor-busca-placeholder: #e0dede;
     --cor-lupa: #E9BB25;
+    --cor-botao-primario: #FDCC5C;
+    --cor-hover: #349ff75d;
+    --cor-funcionario-bg: rgba(255, 255, 255, 0.884);
+    --cor-funcionario-hover: rgba(46, 96, 126, 0.432);
+    --cor-funcionario-borda: #000000;
+
+    /* Tipografia */
+    --fonte-principal: 'Nunito', sans-serif;
+    --tamanho-fonte-base: 16px;
+    --texto-claro: #FFFFFF;
+    --texto-escuro: #000000;
+
+    /* Estrutura e sombras */
+    --sombra-padrao: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --raio-borda: 8px;
+    --raio-card: 20px;
+
+    /* Cores auxiliares */
+    --barra-progresso-fundo: #D9D9D9;
+    --barra-progresso-preenchimento: #2B79C2;
+    --cor-links: #2B79C2;
+    --cor-destaque: #FCBC2C;
 }
 
 * {
@@ -16,28 +40,46 @@
 
 body {
     background-color: var(--cor-fundo-body);
-    min-height: 100vh;
-    overflow-x: hidden;
-    font-family: 'Nunito', sans-serif;
+    font-family: var(--fonte-principal);
+    line-height: 1.5;
+    height: 100vh;
+}
+
+/* ==========================
+   Conteúdo Principal (Main)
+========================== */
+#conteine-principal {
+    transition: 0.5s;
+}
+
+#conteine-principal.ativar {
+    transform: translateX(90px);
 }
 
 /* ==========================
    Cabeçalho
 ========================== */
 #cabecalho-Inicial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--cor-cabecalho);
     padding: 5px;
     margin-bottom: 2px;
-    box-shadow: var(--cabecalho-sombra);
+    box-shadow: var(--sombra-padrao);
+    z-index: 9999;
 }
 
 #icone-estacionamax {
     height: auto;
     margin-left: 15px;
     margin-bottom: 5px;
+    max-width: 100%; 
 }
 
 #icone-Sair {
@@ -47,114 +89,206 @@ body {
 }
 
 /* ==========================
-   Barra de busca / Menu
+   Menu Lateral
 ========================== */
-#menu-busca {
-    display: flex;
-    position: relative;
-    align-items: center;
-    margin-top: 50px;
-    gap: 20px;
+.menu-lateral {
+    width: 65px;
+    height: calc(100% - 80px);
+    background-color: var(--cor-menu-lateral);
+    box-shadow: 3px 0 0 rgba(0, 0, 0, 0.1);
+    padding: 40px 0 40px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 1000;
 }
 
-#menu {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 25px;
+.menu-lateral.expandir {
+    width: 300px;
 }
 
-#menu img {
-    height: 50px;
-}
-
-#container-input-busca {
-    position: absolute;
-    width: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-    height: auto;
-}
-
-#input-buscar {
+.btn-expandir {
     width: 100%;
-    padding: 9px 40px 9px 10px;
-    border: none;
-    border-radius: 25px;
-    background-color: var(--cor-busca-bg);
-    color: #ffffff;
-    font-weight: bold;
+    padding-left: 10px;
+    position: relative;
+}
+
+.btn-expandir > i {
+    color: var(--texto-claro);
+    font-size: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-expandir ul {
+    height: 100%;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.item-menu a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.item-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;       
+    height: 34px;    
+    width: 1.5px;  
+    background-color: #ebebee;
+    border-radius: 2px; 
+}
+
+.item-menu {
+    transition: .2s;
+}
+
+ul li.ativo {
+    background-color: var(--cor-hover);
+    border-radius: 5px;
+}
+
+.item-menu:hover {
+    background-color: var(--cor-hover);
+    border-radius: 5px;
+}
+
+.txt-link {
+    margin-left: 35px;
+    white-space: nowrap;
+}
+
+.icon > i {
+    margin-left: 10px;
+}
+
+#usuario-info img {
+    width: 70px;
+    border: 3px solid var(--cor-lupa);
+    border-radius: 100%;
+}
+
+#usuario-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    position: absolute;
+    top: 2px;
+    left: 110px;
+    color: var(--texto-claro);
+}
+
+/* ==========================
+   Input de busca
+========================== */
+#caixaPesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 130px;
+}
+
+#input-buscar { 
     text-align: center;
+    width: 250px;
+    background-color: var(--cor-busca-bg);
+    padding: 10px;
+    border: none;
+    border-radius: var(--raio-borda);
+    color: var(--texto-claro);
+    font-weight: bold;
+    outline: none;
 }
 
 #input-buscar:focus {
-    outline: none;
+    color: rgb(224, 223, 223);
+    font-weight: 600;
+}
+
+#iconeLupa {
+    color: var(--cor-lupa);
+    pointer-events: none;
+    transform: translateX(-30px);
 }
 
 #input-buscar::placeholder {
     color: var(--cor-busca-placeholder);
-    text-align: center;
-}
-
-#iconeLupa {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--cor-lupa);
 }
 
 /* ==========================
    Container de funcionários
 ========================== */
 #conteiner-funcionarios {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: left;
-    margin: auto;
-    background-color: rgba(178, 181, 184, 0.5);
+    margin: 50px auto 10px;
+    background-color: #B2B5B8;
     width: 65%;
     height: 357px;
-    top: 0;
-    padding-bottom: 1%;
-    border-radius: 20px;
-    margin-top: 20px;
+    border-radius: var(--raio-card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 15px;
+}
+
+/* ==========================
+   Grid interno (lista de funcionários)
+========================== */
+#bloco-navegação {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: start;
+    width: 100%;
+    height: 100%;
     overflow-y: auto;
-    scrollbar-width: 9px; 
+    overflow-x: hidden;
+    padding: 10px;
     scrollbar-color: var(--cor-lupa) transparent;
 }
 
-
-
 /* ==========================
-   Bloco funcionário
+   Bloco de funcionário
 ========================== */
 .bloco-funcionario {
-    background-color: #fdcd5ca1;
-    margin-left: 22px;
-    margin-top: 15px;
-    width: 30%; 
-    padding: 10px 15px; 
+    background-color: var(--cor-funcionario-bg);
+    width: 100%;
+    max-width: 250px;
+    padding: 10px 15px;
     border-radius: 5px;
     border: 1.5px solid transparent;
-    box-shadow: gray;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     transition: background 0.2s ease-in-out;
 }
 
 .bloco-funcionario:hover {
-    background-color: #b9b7b7;
+    background-color: var(--cor-funcionario-hover);
+    border: 1px solid var(--cor-funcionario-borda);
 }
 
 .bloco-funcionario a {
-    display: flex;              
-    align-items: center;  
-    gap: 15px;       
+    display: flex;
+    align-items: center;
+    gap: 15px;
     text-decoration: none;
     color: inherit;
 }
 
 .bloco-funcionario figure {
-    display: flex;       
+    display: flex;
     align-items: center;
     margin: 0;
     gap: 15px;
@@ -162,17 +296,20 @@ body {
 
 .bloco-funcionario figure img {
     height: 70px;
-    width: 70px;                 
-    border-radius: 50%;
-    border: 1px solid var(--cor-lupa);
+    width: 70px;
+    border-radius: 100%;
+    border: 3px solid var(--cor-lupa);
 }
 
 .info-funcionario {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     gap: 5px;
 }
 
+/* ==========================
+   Botões de navegação rápida
+========================== */
 #botoes-navegacao-rapida {
     display: flex;
     justify-content: center;
@@ -188,7 +325,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     text-decoration: none;
-    color: #fff;
+    color: var(--texto-claro);
     border-radius: 30px;
     padding: 10px;
     width: 15%;
@@ -199,13 +336,13 @@ body {
 }
 
 #botaoCliente {
-    border: 2px solid #FDCC5C;
+    border: 2px solid var(--cor-botao-primario);
     background-color: transparent;
-    color: #FDCC5C;
+    color: var(--cor-botao-primario);
 }
 
 #botaoGrafico {
-    background-color: #FDCC5C;
+    background-color: var(--cor-botao-primario);
     color: #fff;
     border: none;
 }
@@ -214,4 +351,56 @@ body {
 #botaoGrafico img {
     width: 20%;
     height: auto;
+}
+
+/* ==========================
+   Responsividade (Tablets)
+========================== */
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+    
+    #menu-busca {
+        margin-top: 30px;
+        gap: 15px;
+    }
+
+    #container-input-busca {
+        width: 200px;
+    }
+    
+    #conteiner-funcionarios {
+        width: 60%; 
+        height: 300px;
+        scrollbar-width: 7px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bloco-funcionario {
+        width: 70%;         
+        padding: 8px 12px;
+    }
+    
+    .bloco-funcionario figure img {
+        height: 60px;
+        width: 60px;
+    }
+    
+    #botoes-navegacao-rapida {
+        gap: 20px;
+        margin: 40px 0 20px;
+    }
+    
+    #botaoCliente, 
+    #botaoGrafico {
+        font-size: 18px;
+        padding: 8px;
+        width: 20%;
+        min-width: 140px;
+    }
 }

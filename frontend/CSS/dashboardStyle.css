@@ -31,16 +31,21 @@
 
 body {
     background-color: var(--fundo-body);
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
     font-family: var(--fonte-principal);
+    line-height: 1.5;
+    height: 100vh;
+    overflow-x: scroll;
 }
 
 /* ==========================
    Cabeçalho
 ========================== */
 #cabecalho-Inicial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,7 +58,8 @@ body {
 #icone-estacionamax {
     height: auto;
     margin-left: 15px;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
+    max-width: 100%; 
 }
 
 #icone-Sair {
@@ -65,31 +71,113 @@ body {
 /* ==========================
    Dashboard - Icone - Título
 ========================== */
-#menu-nomePagina {
+
+.menu-lateral {
+    width: 65px;
+    height: calc(100% - 80px);
+    background-color: #323742;
+    box-shadow: 3px 0 0 rgba(0, 0, 0, 0.1);
+    padding: 40px 0 40px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 1000;
+}
+
+.menu-lateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left: 10px;
     position: relative;
-    display: flex;
-    align-items: center;
-    margin-top: 50px;
 }
 
-#menu {
-    margin-left: 25px;
-    background: none;
-    border: none;
+.btn-expandir > i{
+    color: #FFFFFF;
+    font-size: 50px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
-#menu img {  
-    height: 50px;
+.btn-expandir ul {
+    height: 100%;
+    list-style: none;
+    margin-top: 20px;
 }
 
-#menu-nomePagina h1 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 55px;
-    font-weight: bold;
+.item-menu a {
     color: var(--texto-claro);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.item-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;       
+    height: 34px;    
+    width: 1.5px;  
+    background-color: #ebebee;
+    border-radius: 2px; 
+}
+
+.item-menu {
+    transition: .2s;
+}
+
+ul li.ativo {
+    background-color: #349ff75d;
+    border-radius: 5px;
+}
+
+.item-menu:hover {
+    background-color: #349ff75d;
+    border-radius: 5px;
+}
+
+.txt-link {
+    margin-left: 35px;
+    white-space: nowrap;
+}
+
+.icon > i {
+    margin-left: 10px;
+}
+
+#usuario-info img {
+    width: 70px;
+    border: 3px solid #eba80ec5;
+    border-radius: 100%;
+}
+
+#usuario-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    position: absolute;
+    top: 2px;
+    left: 110px;
+    color: white;
+}
+
+#titulo-sessao {
+    color: var(--fundo-cards);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    margin-top: 8%;
 }
 
 /* ==========================
@@ -100,16 +188,17 @@ body {
     justify-content: center;
     align-items: center;
     gap: 65px;
-    margin-top: 60px;
+    margin-top: 40px;
+    flex-wrap: wrap; 
 }
 
-/* ---- Vagas ---- */
 #informacao-Vagas {
     background-color: var(--fundo-cards);
     width: 301px;
     height: 190px;
     border-radius: var(--borda-arredondada-media);
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
 #informacao-Vagas p {
@@ -119,7 +208,14 @@ body {
     margin: 25px 0;
 }
 
-/* Barra de progresso */
+#conteine-principal {
+    transition: .5s 
+}
+
+#conteine-principal.ativar {
+    transform: translateX(50px);
+} 
+
 #informacao-Vagas progress {
     display: block;
     margin: 0 auto 25px;
@@ -128,6 +224,7 @@ body {
     border-radius: 50px;
     border: none;
     background-color: var(--barra-progresso-fundo);
+    transition: all 0.3s ease;
 }
 
 #informacao-Vagas progress::-webkit-progress-bar {
@@ -143,12 +240,12 @@ body {
     border-radius: 50px;
 }
 
-/* ---- Entradas / Saídas ---- */
 #informacao-EntradaSaida {
     background-color: var(--fundo-cards);
     width: 330px;
     height: 147px;
     border-radius: var(--borda-arredondada-media);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 #informacao-EntradaSaida p {
@@ -166,13 +263,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 60px 0 10px;
+    margin: 60px 0 30px;
 }
 
 #navegacao-rapida-Dashboard ul {
     display: flex;
     list-style: none;
     gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* ==========================
@@ -193,6 +292,7 @@ body {
     border-radius: var(--borda-arredondada-pequena);
     min-width: 150px;
     transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
 
 .funcionalidades img {
@@ -207,8 +307,90 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Botão específico */
 #cadastrarCarro {
     background-color: var(--cor-destaque);
     color: var(--texto-claro);
+}
+
+/* Para tablets*/
+@media screen and (max-width: 768px) {
+
+    body {
+        overflow: auto;
+    }
+
+    #icone-estacionamax {
+        margin-left: 10px;
+    }
+
+    #icone-Sair {
+        height: 80px;
+        margin-right: 30px;
+        margin-top: 5px;
+    }
+
+    #titulo-sessao {
+        font-size: 40px;
+        margin-top: 120px;
+        transform: translateX(70px);
+    }
+
+    #informacoes-Gerais {
+        gap: 30px;
+        margin-top: 40px;
+        padding: 0 15px;
+        transform: translateX(55px);
+    }
+
+    #informacao-Vagas {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        padding: 15px 0;
+    }
+
+    #informacao-Vagas p {
+        font-size: 22px;
+        margin: 15px 0;
+    }
+
+
+    #informacao-Vagas progress {
+        width: 80%; 
+        height: 18px;
+        margin-bottom: 15px;
+    }
+
+    #informacao-EntradaSaida {
+
+        width: 35%; 
+        max-width: 350px;
+        height: auto;
+    }
+
+    #informacao-EntradaSaida p {
+        font-size: 22px;
+        padding: 15px;
+    }
+
+    #navegacao-rapida-Dashboard {
+                transform: translateX(50px);
+                flex-wrap: wrap;
+
+    }
+
+    #navegacao-rapida-Dashboard ul {
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .funcionalidades {
+        padding: 15px;
+        min-width: 130px;
+        font-size: 1rem;
+    }
+
+    .funcionalidades img {
+        width: 50px;
+    }
 }

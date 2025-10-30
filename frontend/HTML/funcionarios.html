@@ -1,229 +1,419 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/frontend/CSS/funcionarios.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-</head>
-<body>
+    <link rel="stylesheet" href="/frontend/CSS/funcionarios.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
     <header id="cabecalho-Inicial">
-        <a href="dashboard.html"><img src="img/marca.png" alt="Marca da empresa EstacionaMax" id="icone-estacionamax"></a>
-        <a href="#"><img src="img/figurasDashboard/sair.png" alt="Icone sair" id="icone-Sair"></a>
+      <a href="dashboard.html"
+        ><img
+          src="img/marca.png"
+          alt="Marca da empresa EstacionaMax"
+          id="icone-estacionamax"
+      /></a>
+      <a href="#"
+        ><img
+          src="img/figurasDashboard/sair.png"
+          alt="Icone sair"
+          id="icone-Sair"
+      /></a>
     </header>
 
-    <main>
-        <div id="menu-busca">
-            <button id="menu"><img src="img/menu.png" alt="menu"></button>
-            <div id="container-input-busca">
-        <input type="search" placeholder="Buscar por CPF ou Nome" id="input-buscar">
-        <i class="fa fa-search" id="iconeLupa"></i>
-    </div>
+    <nav class="menu-lateral">
+      <div class="btn-expandir">
+        <i class="bi bi-list" id="btn-exp"></i>
+
+        <div id="usuario-info">
+          <img
+            src="img/figurasPaginaPerfl/user.png"
+            alt="Foto do usuário"
+            id="foto-Usuario"
+          />
+          <div id="dados-usuario">
+            <p id="nome-User"><strong>Fulano</strong></p>
+            <p id="cargo-User">[Cargo]</p>
+          </div>
         </div>
 
-        <section id="conteiner-funcionarios">
-            <!--Esses tantos de article é so uma ilustração (temporário)-->
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-    <article class="bloco-funcionario">
-        <a href="#">
-            <figure>
-                <img src="img/figurasPaginaPerfl/user.png" alt="Foto do funcionário">
-                <figcaption class="info-funcionario">
-                    <p><strong>Nome Sobrenome</strong></p>
-                    <p><strong>ID:</strong> xxxx</p>
-                    <p><strong>Cargo:</strong> [cargo]</p>
-                </figcaption>
-            </figure>
-        </a>
-    </article>
-</section>
-
-    <nav id="botoes-navegacao-rapida">
-        <a href="#" id="botaoCliente">Clientes <img src="img/figurasDashboard/cliente2.png" alt="Icone de cliente"></a>
-        <a href="#" id="botaoGrafico">Gráficos <img src="img/figurasDashboard/grafico2.png" alt="Icone de gráfico"></a>
+        <ul>
+          <li class="item-menu">
+            <a href="dashboard.html"
+              ><span class="icon"><i class="bi bi-columns-gap"></i></span
+              ><span class="txt-link">Dashboard</span></a
+            >
+          </li>
+          <li class="item-menu">
+            <a href="#"
+              ><span class="icon"><i class="bi bi-clipboard"></i></span
+              ><span class="txt-link">Gerenciamento</span></a
+            >
+          </li>
+          <li class="item-menu">
+            <a href="#"
+              ><span class="icon"><i class="bi bi-bar-chart"></i></span
+              ><span class="txt-link">Gráfico</span></a
+            >
+          </li>
+          <li class="item-menu">
+            <a href="#"
+              ><span class="icon"><i class="bi bi-eye"></i></span
+              ><span class="txt-link">Vizualizar Setor</span></a
+            >
+          </li>
+          <li class="item-menu">
+            <a href="#"
+              ><span class="icon"><i class="bi bi-person-plus-fill"></i></span
+              ><span class="txt-link">Cadastrar</span></a
+            >
+          </li>
+        </ul>
+      </div>
     </nav>
 
-        </main>
-</body>
+    <main id="conteine-principal">
+      <div id="caixaPesquisa">
+        <input
+          type="search"
+          placeholder="Buscar por CPF ou Nome"
+          id="input-buscar"
+        />
+        <i class="fa fa-search" id="iconeLupa"></i>
+      </div>
+
+      <section id="conteiner-funcionarios">
+        <nav id="bloco-navegação">
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+          <article class="bloco-funcionario">
+            <a href="#">
+              <figure>
+                <img
+                  src="img/figurasPaginaPerfl/user.png"
+                  alt="Foto do funcionário"
+                />
+
+                <figcaption class="info-funcionario">
+                  <p><strong>Nome Sobrenome</strong></p>
+
+                  <p><strong>ID:</strong> xxxx</p>
+
+                  <p><strong>Cargo:</strong> [cargo]</p>
+                </figcaption>
+              </figure>
+            </a>
+          </article>
+        </nav>
+      </section>
+
+      <nav id="botoes-navegacao-rapida">
+        <a href="#" id="botaoCliente"
+          >Clientes
+          <img src="img/figurasDashboard/cliente2.png" alt="Icone de cliente"
+        /></a>
+        <a href="#" id="botaoGrafico"
+          >Gráficos
+          <img src="img/figurasDashboard/grafico2.png" alt="Icone de gráfico"
+        /></a>
+      </nav>
+    </main>
+    <script src="/frontend/JavaScript/funcionalidadeMenu.js"></script>
+  </body>
 </html>
