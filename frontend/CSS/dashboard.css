@@ -34,7 +34,6 @@ body {
     font-family: var(--fonte-principal);
     line-height: 1.5;
     height: 100vh;
-    overflow-x: scroll;
 }
 
 /* ==========================
@@ -310,87 +309,4 @@ ul li.ativo {
 #cadastrarCarro {
     background-color: var(--cor-destaque);
     color: var(--texto-claro);
-}
-
-/* Para tablets*/
-@media screen and (max-width: 768px) {
-
-    body {
-        overflow: auto;
-    }
-
-    #icone-estacionamax {
-        margin-left: 10px;
-    }
-
-    #icone-Sair {
-        height: 80px;
-        margin-right: 30px;
-        margin-top: 5px;
-    }
-
-    #titulo-sessao {
-        font-size: 40px;
-        margin-top: 120px;
-        transform: translateX(70px);
-    }
-
-    #informacoes-Gerais {
-        gap: 30px;
-        margin-top: 40px;
-        padding: 0 15px;
-        transform: translateX(55px);
-    }
-
-    #informacao-Vagas {
-        width: 100%;
-        max-width: 350px;
-        height: auto;
-        padding: 15px 0;
-    }
-
-    #informacao-Vagas p {
-        font-size: 22px;
-        margin: 15px 0;
-    }
-
-
-    #informacao-Vagas progress {
-        width: 80%; 
-        height: 18px;
-        margin-bottom: 15px;
-    }
-
-    #informacao-EntradaSaida {
-
-        width: 35%; 
-        max-width: 350px;
-        height: auto;
-    }
-
-    #informacao-EntradaSaida p {
-        font-size: 22px;
-        padding: 15px;
-    }
-
-    #navegacao-rapida-Dashboard {
-                transform: translateX(50px);
-                flex-wrap: wrap;
-
-    }
-
-    #navegacao-rapida-Dashboard ul {
-        gap: 30px;
-        padding: 0 15px;
-    }
-    
-    .funcionalidades {
-        padding: 15px;
-        min-width: 130px;
-        font-size: 1rem;
-    }
-
-    .funcionalidades img {
-        width: 50px;
-    }
 }

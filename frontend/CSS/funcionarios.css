@@ -24,12 +24,6 @@
     --sombra-padrao: 0 2px 4px rgba(0, 0, 0, 0.1);
     --raio-borda: 8px;
     --raio-card: 20px;
-
-    /* Cores auxiliares */
-    --barra-progresso-fundo: #D9D9D9;
-    --barra-progresso-preenchimento: #2B79C2;
-    --cor-links: #2B79C2;
-    --cor-destaque: #FCBC2C;
 }
 
 * {
@@ -353,9 +347,7 @@ ul li.ativo {
     height: auto;
 }
 
-/* ==========================
-   Responsividade (Tablets)
-========================== */
+
 @media screen and (max-width: 768px) {
     body {
         overflow-y: auto;

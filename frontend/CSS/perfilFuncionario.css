@@ -350,24 +350,7 @@ ul li.ativo {
   background-color: var(--cor-funcionalidade-btn-hover);
 }
 
-/* Para tablets*/
 @media screen and (max-width: 768px) {
-  #menu-busca {
-    margin-top: 30px;
-    gap: 15px;
-  }
-
-  #menu {
-    margin-left: 15px;
-  }
-
-  #menu img {
-    height: 40px;
-  }
-
-  #container-input-busca {
-    width: 200px;
-  }
 
   #conteiner-funcionario {
     gap: 40px;
@@ -390,6 +373,7 @@ ul li.ativo {
   #conteiner-info-funcionario {
     min-width: 400px;
     top: -50px;
+    margin-left: 50px;
   }
 
   #info-extra {

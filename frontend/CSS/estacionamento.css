@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* ==========================
+   Variáveis
+========================== */
+:root {
+    /* Paleta principal */
+    --fundo-body: #292E34;           
+    --fundo-cards: #f6f7fa;          
+    --cor-busca-bg: #6e7174;
+    --cor-busca-placeholder: #e0dede;
+    --cor-destaque: #FCBC2C;         
+    --cor-links: #2B79C2;            
+    --cor-lupa: #E9BB25;
+
+    /* Tipografia */
+    --fonte-principal: 'Nunito', sans-serif;
+    --texto-claro: #FFFFFF;          
+
+    /* Estrutura e sombras */
+    --raio-borda: 8px;
+}
+
+/* ==========================
+   Reset e corpo
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3E4349;
+    font-family: var(--fonte-principal);
+    line-height: 1.5;
+}
+
+/* ==========================
+   Conteúdo Principal (Main)
+========================== */
+#conteine-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 80px);
+    transition: 0.5s;
+}
+
+#conteine-principal.ativar {
+    transform: translateX(168px);
+}
+
+/* ==========================
+   Cabeçalho
+========================== */
+#cabecalho-Inicial {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--fundo-cards);
+    padding: 5px;
+    margin-bottom: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    gap: 50px;
+    z-index: 9999;
+}
+
+#icone-estacionamax {
+    height: auto;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    max-width: 300px; 
+}
+
+#icone-Sair {
+    width: auto;
+    height: 70px;
+    margin-top: 3px;
+}
+
+/* ==========================
+   Menu Lateral
+========================== */
+.menu-lateral {
+    width: 65px;
+    height: calc(100% - 80px);
+    background-color: #323742;
+    box-shadow: 3px 0 0 rgba(0, 0, 0, 0.1);
+    padding: 40px 0;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 1000;
+}
+
+.menu-lateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left: 10px;
+    position: relative;
+}
+
+.btn-expandir > i {
+    color: #FFFFFF;
+    font-size: 50px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-expandir ul {
+    height: 100%;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.item-menu {
+    transition: .2s;
+}
+
+.item-menu a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.item-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;       
+    height: 34px;    
+    width: 1.5px;  
+    background-color: #ebebee;
+    border-radius: 2px; 
+}
+
+ul li.ativo {
+    background-color: #349ff75d;
+    border-radius: 5px;
+}
+
+.item-menu:hover {
+    background-color: #349ff75d;
+    border-radius: 5px;
+}
+
+.txt-link {
+    margin-left: 35px;
+    white-space: nowrap;
+}
+
+.icon > i {
+    margin-left: 10px;
+}
+
+/* ==========================
+   Usuário (Topo)
+========================== */
+#usuario-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    position: absolute;
+    top: 2px;
+    left: 110px;
+    color: white;
+}
+
+#usuario-info img {
+    width: 70px;
+    border: 3px solid #eba80ec5;
+    border-radius: 100%;
+}
+
+/* ==========================
+   Input de Busca e Info
+========================== */
+#caixaPesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 130px;
+    margin-bottom: 20px;
+    transform: translateX(-25px);
+}
+
+#caixaPesquisa p {
+    margin-left: 50px;
+    color: #eead22;
+    font-weight: 800;
+}
+
+#caixaPesquisa p span {
+    color: var(--texto-claro);
+}
+
+/* ----- Input principal ----- */
+#input-buscar { 
+    text-align: center;
+    width: 250px;
+    background-color: var(--cor-busca-bg);
+    padding: 10px;
+    border: none;
+    border-radius: var(--raio-borda);
+    color: var(--texto-claro);
+    font-weight: bold;
+    outline: none;
+}
+
+#input-buscar:focus {
+    color: rgb(224, 223, 223);
+    font-weight: 600;
+}
+
+#input-buscar::placeholder {
+    color: var(--cor-busca-placeholder);
+}
+
+#iconeLupa {
+    color: var(--cor-lupa);
+    pointer-events: none;
+    transform: translateX(-30px);
+}
+
+/* ----- Select ----- */
+#setor {
+    background-color: #484c52;
+    border: none;
+    border-radius: 8px;
+    width: 130px;
+    padding: 8px 30px;
+    color: var(--texto-claro);
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#setor:hover {
+    background-color: rgba(82, 85, 90, 0.938);
+}
+
+/* ----- Botão ----- */
+#cadastrarCarro {
+    background-color: #e9bb25e0;
+    min-width: 170px;
+    height: auto;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#cadastrarCarro:hover {
+    background-color: #fdcc2adc;
+}
+
+/* ==========================
+   Container de Informações
+========================== */
+#conteiner-informacoes {
+    background-color: rgba(32, 32, 32, 0.747);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 66px;
+    margin-top: 100px;
+    height: 100vh;
+    width: 600px;
+}
+
+#conteiner-clientes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 440px;
+    margin-top: 10px;
+    overflow-x: auto;
+    scrollbar-color: var(--cor-lupa) transparent;
+}
+
+#conteiner-registros {
+    display: flex;
+    justify-content: center;
+}
+
+/* ----- Cards ----- */
+.cliente {
+    background-color: #f8f8faef;
+    width: 400px;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.modelo-carro {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.alinhamento-Info-Valor {
+    display: flex;
+    justify-content: space-between;
+}
+
+.valorPorHora {
+    background-color: #77C495;
+    width: 100px;
+    border-radius: 4px;
+    text-align: center;
+    color: var(--texto-claro);
+    font-weight: bold;
+}
+
+/* ==========================
+   Estacionamento
+========================== */
+#estacionamento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(32, 32, 32, 0.747);
+    margin-top: 100px;
+    margin-left: 50px;
+    height: 100vh;
+    width: 650px;
+    color: var(--texto-claro);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#escopoEstacionamento {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-rows: 80px;
+    gap: 1px;
+    width: 90%;
+    max-height: 70%;
+    margin-left: 30px;
+    transform: translateY(40px);
+    overflow-x: auto;
+    padding-right: 15px;
+    scrollbar-color: rgb(77, 75, 75) transparent;
+}
+
+.vaga {
+    border: 3px solid rgba(10, 11, 14, 0.87);
+    padding: 20px;
+    text-align: center;
+    transition: .2s;
+}
+
+.vaga:hover {
+    background-color: #3E4349;
+}
+
+.vaga.ocupado {
+    background-color: rgb(202, 61, 61);
+}
