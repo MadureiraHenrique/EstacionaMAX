@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Car {
+public class Car implements BaseEntity {
 
     private Long id;
     private String color;
     private String model;
     private String plate;
-
-    private List<Order> orders = new ArrayList<>();
 
     public Car(){};
 
@@ -45,11 +43,6 @@ public class Car {
     public void setModel(String model) {
         this.model = model;
     }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
 
     public String getPlate() {
         return plate;

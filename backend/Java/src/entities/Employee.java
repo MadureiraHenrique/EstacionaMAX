@@ -4,7 +4,7 @@ import enums.Shift;
 
 import java.time.LocalDateTime;
 
-public class Employee extends User{
+public class Employee extends User {
 
     private Manager manager;
 

@@ -3,7 +3,7 @@ package entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public abstract class User {
+public abstract class User implements BaseEntity {
 
     private Long id;
     private String name;

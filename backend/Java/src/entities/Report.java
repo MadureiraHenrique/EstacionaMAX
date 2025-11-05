@@ -3,7 +3,7 @@ package entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Report {
+public class Report implements BaseEntity {
 
     private Long id;
     private String title;

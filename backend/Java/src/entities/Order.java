@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Order {
+public class Order implements BaseEntity {
 
     private Long id;
     private Car car;
