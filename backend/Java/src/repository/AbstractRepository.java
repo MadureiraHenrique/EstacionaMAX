@@ -15,8 +15,6 @@ public abstract class AbstractRepository<T extends BaseEntity> {
     protected AtomicLong nextId = new AtomicLong(1);
 
     public AbstractRepository() {
-
-        loadFromFile();
     }
 
     protected abstract void loadFromFile();
@@ -39,7 +37,7 @@ public abstract class AbstractRepository<T extends BaseEntity> {
         return entity;
     }
 
-    public synchronized T deleteById(Long id) {
+    public synchronized void deleteById(Long id) {
         database.remove(id);
         persistMapToFile();
     }
