@@ -1,5 +1,5 @@
 const menuItem = document.querySelectorAll('.item-menu');
-const conteinePrincipal = document.getElementById('conteine-principal');
+const conteinerPrincipal = document.getElementById('conteiner-principal');
 
 function selectLink() {
     menuItem.forEach((item) => {
@@ -18,7 +18,7 @@ const menuSide = document.querySelector('.menu-lateral');
 
 btnExp.addEventListener('click', function() {
     menuSide.classList.toggle('expandir');
-    conteinePrincipal.classList.toggle('ativar');
+    conteinerPrincipal.classList.toggle('ativar');
 });
 
 
@@ -48,6 +48,6 @@ btnExp.addEventListener('click', function() {
    - Ao clicar no botão, alterna a classe 'expandir' no menu
    - Se a classe existir, remove; se não existir, adiciona
    - Permite expandir ou contrair o menu lateral dinamicamente
-   - Ativa a conteinePrincipal.ativar;
+   - Ativa a conteiner-principal.ativar;
 
 */

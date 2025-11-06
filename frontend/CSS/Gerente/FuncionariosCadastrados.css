@@ -17,19 +17,19 @@
     /* Tipografia */
     --fonte-principal: 'Nunito', sans-serif;
     --tamanho-fonte-base: 16px;
-    --texto-claro: #FFFFFF;
     --texto-escuro: #000000;
+    --texto-claro: #FFFFFF;
 
     /* Estrutura e sombras */
     --sombra-padrao: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --raio-borda: 8px;
-    --raio-card: 20px;
+    --raio-borda-padrao: 8px;
+    --raio-card-padrao: 20px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
@@ -40,63 +40,63 @@ body {
 }
 
 /* ==========================
-   Conteúdo Principal (Main)
+   Conteúdo Principal
 ========================== */
-#conteine-principal {
+#conteiner-principal {
     transition: 0.5s;
 }
 
-#conteine-principal.ativar {
+#conteiner-principal.ativar {
     transform: translateX(90px);
 }
 
 /* ==========================
    Cabeçalho
 ========================== */
-#cabecalho-Inicial {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
+#cabecalho-inicial {
+    background-color: var(--cor-cabecalho);
+    box-shadow: var(--sombra-padrao);
     justify-content: space-between;
     align-items: center;
-    background-color: var(--cor-cabecalho);
-    padding: 5px;
     margin-bottom: 2px;
-    box-shadow: var(--sombra-padrao);
+    position: fixed;
+    display: flex;
     z-index: 9999;
+    padding: 5px;
+    height: 80px;
+    right: 0;
+    left: 0;
+    top: 0;
 }
 
 #icone-estacionamax {
-    height: auto;
-    margin-left: 15px;
     margin-bottom: 5px;
+    margin-left: 15px;
     max-width: 100%; 
+    height: auto;
 }
 
-#icone-Sair {
-    width: auto;
-    height: 70px;
+#icone-sair {
     margin-top: 5px;
+    height: 70px;
+    width: auto;
 }
 
 /* ==========================
    Menu Lateral
 ========================== */
 .menu-lateral {
-    width: 65px;
-    height: calc(100% - 80px);
     background-color: var(--cor-menu-lateral);
     box-shadow: 3px 0 0 rgba(0, 0, 0, 0.1);
+    height: calc(100% - 80px);
     padding: 40px 0 40px 0;
-    position: fixed;
-    top: 80px;
-    left: 0;
     overflow: hidden;
     transition: .5s;
+    position: fixed;
     z-index: 1000;
+    width: 65px;
+    top: 80px;
+    left: 0;
 }
 
 .menu-lateral.expandir {
@@ -104,48 +104,48 @@ body {
 }
 
 .btn-expandir {
-    width: 100%;
     padding-left: 10px;
     position: relative;
+    width: 100%;
 }
 
 .btn-expandir > i {
     color: var(--texto-claro);
+    margin-right: 10px;
     font-size: 50px;
     cursor: pointer;
-    margin-right: 10px;
 }
 
 .btn-expandir ul {
-    height: 100%;
     list-style: none;
     margin-top: 20px;
+    height: 100%;
 }
 
 .item-menu a {
     color: var(--texto-claro);
     text-decoration: none;
-    font-size: 20px;
-    font-weight: 400;
-    padding: 20px 4%;
-    display: flex;
     margin-bottom: 10px;
     position: relative;
+    font-weight: 400;
+    padding: 20px 4%;
+    font-size: 20px;
+    display: flex;
 }
 
 .item-menu a::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 25%;       
-    height: 34px;    
-    width: 1.5px;  
     background-color: #ebebee;
     border-radius: 2px; 
+    position: absolute;
+    height: 34px;    
+    width: 1.5px;  
+    content: '';
+    top: 25%;   
+    left: 0;
 }
 
 .item-menu {
-    transition: .2s;
+    transition: 0.2s;
 }
 
 ul li.ativo {
@@ -159,51 +159,51 @@ ul li.ativo {
 }
 
 .txt-link {
-    margin-left: 35px;
     white-space: nowrap;
+    margin-left: 35px;
 }
 
 .icon > i {
     margin-left: 10px;
 }
 
-#usuario-info img {
-    width: 70px;
+#informacao-do-usuario img {
     border: 3px solid var(--cor-lupa);
     border-radius: 100%;
+    width: 70px;
 }
 
-#usuario-info {
-    display: flex;
+#informacao-do-usuario {
+    color: var(--texto-claro);
     justify-content: center;
     align-items: center;
-    gap: 25px;
     position: absolute;
-    top: 2px;
+    display: flex;
     left: 110px;
-    color: var(--texto-claro);
+    gap: 25px;
+    top: 2px;
 }
 
 /* ==========================
    Input de busca
 ========================== */
-#caixaPesquisa {
-    display: flex;
+#caixa-de-pesquisa {
     justify-content: center;
     align-items: center; 
     margin-top: 130px;
+    display: flex;
 }
 
 #input-buscar { 
-    text-align: center;
-    width: 250px;
     background-color: var(--cor-busca-bg);
-    padding: 10px;
-    border: none;
-    border-radius: var(--raio-borda);
+    border-radius: var(--raio-borda-padrao);
     color: var(--texto-claro);
+    text-align: center;
     font-weight: bold;
     outline: none;
+    padding: 10px;
+    border: none;
+    width: 250px;
 }
 
 #input-buscar:focus {
@@ -211,10 +211,10 @@ ul li.ativo {
     font-weight: 600;
 }
 
-#iconeLupa {
+#icone-lupa {
+    transform: translateX(-30px);
     color: var(--cor-lupa);
     pointer-events: none;
-    transform: translateX(-30px);
 }
 
 #input-buscar::placeholder {
@@ -222,129 +222,129 @@ ul li.ativo {
 }
 
 /* ==========================
-   Container de funcionários
+   Conteiner de funcionários
 ========================== */
-#conteiner-funcionarios {
-    margin: 50px auto 10px;
+#conteiner-de-funcionarios {
+    border-radius: var(--raio-card-padrao);
     background-color: #B2B5B8;
-    width: 65%;
-    height: 357px;
-    border-radius: var(--raio-card);
-    display: flex;
     justify-content: center;
+    margin: 50px auto 10px;
     align-items: center;
     overflow: hidden;
+    display: flex;
     padding: 15px;
+    height: 357px;
+    width: 65%;
 }
 
 /* ==========================
    Grid interno (lista de funcionários)
 ========================== */
-#bloco-navegação {
-    display: grid;
+#bloco-de-navegacao {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    scrollbar-color: var(--cor-lupa) transparent;
     justify-items: center;
     align-items: start;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
     overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
     padding: 10px;
-    scrollbar-color: var(--cor-lupa) transparent;
+    height: 100%;
+    width: 100%;
+    gap: 20px;
 }
 
 /* ==========================
    Bloco de funcionário
 ========================== */
-.bloco-funcionario {
+.bloco-do-funcionario {
     background-color: var(--cor-funcionario-bg);
-    width: 100%;
-    max-width: 250px;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 1.5px solid transparent;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     transition: background 0.2s ease-in-out;
+    border: 1.5px solid transparent;
+    padding: 10px 15px;
+    border-radius: 5px;
+    max-width: 250px;
+    width: 100%;
 }
 
-.bloco-funcionario:hover {
+.bloco-do-funcionario:hover {
     background-color: var(--cor-funcionario-hover);
     border: 1px solid var(--cor-funcionario-borda);
 }
 
-.bloco-funcionario a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.bloco-do-funcionario a {
     text-decoration: none;
+    align-items: center;
     color: inherit;
+    display: flex;
+    gap: 15px;
 }
 
-.bloco-funcionario figure {
-    display: flex;
+.bloco-do-funcionario figure {
     align-items: center;
+    display: flex;
     margin: 0;
     gap: 15px;
 }
 
-.bloco-funcionario figure img {
+.bloco-do-funcionario figure img {
+    border: 3px solid var(--cor-lupa);
+    border-radius: 100%;
     height: 70px;
     width: 70px;
-    border-radius: 100%;
-    border: 3px solid var(--cor-lupa);
 }
 
-.info-funcionario {
-    display: flex;
+.informacao-do-funcionario {
     flex-direction: column;
+    display: flex;
     gap: 5px;
 }
 
 /* ==========================
    Botões de navegação rápida
 ========================== */
-#botoes-navegacao-rapida {
-    display: flex;
+.botoes-de-navegacao-rapida {
     justify-content: center;
     margin: 40px 0 30px;
+    display: flex;
     gap: 30px;
 }
 
-#botaoCliente, 
-#botaoGrafico {
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
+#botao-do-cliente, 
+#botao-do-grafico {
     color: var(--texto-claro);
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
     border-radius: 30px;
+    text-align: center;
+    font-weight: bold;
+    min-width: 150px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex; 
     padding: 10px;
     width: 15%;
-    min-width: 150px;
-    text-align: center;
-    cursor: pointer;
     gap: 10px;
 }
 
-#botaoCliente {
+#botao-do-cliente {
     border: 2px solid var(--cor-botao-primario);
-    background-color: transparent;
     color: var(--cor-botao-primario);
+    background-color: transparent;
 }
 
-#botaoGrafico {
+#botao-do-grafico {
     background-color: var(--cor-botao-primario);
     color: #fff;
     border: none;
 }
 
-#botaoCliente img,
-#botaoGrafico img {
-    width: 20%;
+#botao-do-cliente img,
+#botao-do-grafico img {
     height: auto;
+    width: 20%;
 }
 
 
@@ -359,40 +359,48 @@ ul li.ativo {
         gap: 15px;
     }
 
-    #container-input-busca {
+    #conteiner-do-input-de-busca {
         width: 200px;
     }
     
-    #conteiner-funcionarios {
-        width: 60%; 
-        height: 300px;
-        scrollbar-width: 7px;
-        display: flex;
-        flex-direction: column;
+    #conteiner-de-funcionarios {
         justify-content: center;
+        flex-direction: column;
+        scrollbar-width: 7px;
         align-items: center;
+        display: flex;
+        height: 300px;
+        width: 60%; 
     }
 
-    .bloco-funcionario {
-        width: 70%;         
+    .bloco-do-funcionario {
         padding: 8px 12px;
+        width: 70%;         
     }
     
-    .bloco-funcionario figure img {
+    .bloco-do-funcionario figure img {
         height: 60px;
         width: 60px;
     }
     
-    #botoes-navegacao-rapida {
-        gap: 20px;
+    #botoes-de-navegacao-rapida {
         margin: 40px 0 20px;
+        gap: 20px;
     }
     
     #botaoCliente, 
-    #botaoGrafico {
+    #botao-do-grafico {
+        min-width: 140px;
         font-size: 18px;
         padding: 8px;
         width: 20%;
-        min-width: 140px;
     }
 }
+
+/*
+==========================
+        Media Query
+==========================
+@media (min-width: 1550px)  {
+}
+*/
