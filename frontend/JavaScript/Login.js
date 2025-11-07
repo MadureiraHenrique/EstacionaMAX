@@ -16,5 +16,5 @@ iconeMostrarSenha.addEventListener('click', () => {
 iconeEsconderSenha.addEventListener('click', () => {
     inputSenha.type = 'password';
         iconeEsconderSenha.style.display = 'none';
-        iconeMostrarSenha.style.display = 'inline';
+        iconeMostrarSenha.style.display = 'inline';
 });

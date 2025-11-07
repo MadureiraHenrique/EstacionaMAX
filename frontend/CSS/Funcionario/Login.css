@@ -11,7 +11,6 @@
 }
 
 body {
-    animation: fadeIn 0.8s ease forwards;
     font-family: var(--fonte-principal);
     line-height: 1.5;
     background-position: center;
@@ -19,12 +18,6 @@ body {
     background-size: cover;
     height: 100vh;
     width: 100vw;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
 }
 
 main {
@@ -36,6 +29,7 @@ main {
 }
 
 #conteiner-login {
+  animation: fadeIn 0.8s ease forwards;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,6 +40,17 @@ main {
   gap: 30px;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgb(20, 20, 20);
+}
+
+@keyframes fadeIn {
+     from {
+        opacity: 0;
+        transform: translateY(10px); /* leve subida pra dar suavidade */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 #logoLogin {
@@ -104,21 +109,22 @@ main {
   cursor: pointer;
 }
 
-#link-cadastrar-senha {
-  display: flex;
-  justify-content: space-between;
-}
 
-#link-cadastrar-senha a {
+#link-senha a {
+  margin-left: 10px;
   text-decoration: none;
   color: rgb(223, 223, 223);
   font-weight: 600;
   transition: 0.2s ease-in-out;
 }
 
-#link-cadastrar-senha a:hover {
+#link-senha a:hover {
   text-decoration: underline;
   color: rgb(177, 176, 176);
+}
+
+#link-senha a:visited {
+  color: rgb(223, 223, 223);
 }
 
 #botaoEnviar {

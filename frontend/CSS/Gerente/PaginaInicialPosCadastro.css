@@ -311,6 +311,7 @@ ul li.ativo {
 #cadastrar-carro {
     background-color: var(--cor-destaque);
     color: var(--texto-claro);
+    cursor: pointer;
 }
 
 /*

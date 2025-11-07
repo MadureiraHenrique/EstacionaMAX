@@ -52,20 +52,38 @@ body {
     right: 0;
     left: 0;
     top: 0;
+    z-index: 1001;
 }
 
 #icone-estacionamax {
-    margin-bottom: 12px;
-    margin-left: 15px;
-    max-width: 100vw; 
-    height: auto;
+     margin-bottom: 5px;
+  margin-left: 15px;
+  max-width: 100%;
+  height: auto;
 }
 
 #icone-sair {
     margin-top: 5px;
     height: 70px;
     width: auto;
-    cursor: pointer;
+}
+
+#selecionar-Grafico {
+  background-color: #484c52;
+  color: var(--texto-claro);
+  text-align: center;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 500;
+  transition: 0.2s;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  width: 130px;
+}
+
+#selecionar-Grafico:hover {
+  background-color: rgba(82, 85, 90, 0.938);
 }
 
 /* ==========================
@@ -171,154 +189,62 @@ ul li.ativo {
     top: 2px;
 }
 
-#titulo-sessao {
-    color: var(--fundo-cards);
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    margin-top: 8%;
-    display: flex;
-}
-
-/* ==========================
-   Informações gerais
-========================== */
-#informacoes-gerais {
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    flex-wrap: wrap; 
-    display: flex;
-    gap: 65px;
-}
-
-#informacao-vagas {
-    border-radius: var(--borda-arredondada-media);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-    background-color: var(--fundo-cards);
-    text-align: center;
-    height: 190px;
-    width: 301px;
-}
-
-#informacao-vagas p {
-    font-weight: 500;
-    line-height: 1.8;
-    font-size: 25px;
-    margin: 25px 0;
-}
-
 #conteiner-principal {
-    transition: .5s 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    width: calc(100% - 65px);
+    margin-left: 65px;
+    margin-top: 80px;
+    transition: 0.5s;
+
 }
 
 #conteiner-principal.ativar {
-    transform: translateX(50px);
-} 
+  transform: translateX(50px);
+}
 
-#informacao-vagas progress {
-    background-color: var(--barra-progresso-fundo);
-    transition: all 0.3s ease;
-    border-radius: 50px;
-    margin: 0 auto 25px;
+#graficos {
+    margin-top: 50px;
+}
+
+#conteiner-pizza {
+     height: 540px;
+     width: 600px;
+}
+
+ #conteiner-barra {
+     height: 700px;
+     width: 800px;
+}
+
+#pizza {
+    animation: animacaoSelecao 0.8s ease-out forwards;
+}
+
+#barra {
+    margin-top: 250px;
+    animation: animacaoSelecao 0.8s ease-out forwards;
+}
+
+
+.esconder {
+    display: none;
+}
+
+.mostrar {
     display: block;
-    height: 20px;
-    border: none;
-    width: 250px;
 }
 
-#informacao-vagas progress::-webkit-progress-bar {
-    background-color: var(--barra-progresso-fundo);
-    border-radius: 50px;
+@keyframes animacaoSelecao {
+    from {
+    opacity: 0;
+    transform: translatey(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-#informacao-vagas progress::-webkit-progress-value {
-    background-color: var(--barra-progresso-preenchimento);
-    border-radius: 50px;
-}
-
-#informacao-vagas progress::-moz-progress-bar {
-    background-color: var(--barra-progresso-preenchimento);
-    border-radius: 50px;
-}
-
-#informacao-de-entrada-e-saida {
-    border-radius: var(--borda-arredondada-media);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    background-color: var(--fundo-cards);
-    height: 147px;
-    width: 330px;
-}
-
-#informacao-de-entrada-e-saida p {
-    line-height: 1.8;
-    font-weight: 400;
-    text-align: left;
-    font-size: 25px;
-    padding: 25px;
-}
-
-/* ==========================
-   Navegação rápida
-========================== */
-#navegacao-rapida-dashboard {
-    justify-content: center;
-    align-items: center;
-    margin: 60px 0 30px;
-    display: flex;
-}
-
-#navegacao-rapida-dashboard ul {
-    justify-content: center;
-    list-style: none;
-    flex-wrap: wrap;
-    display: flex;
-    gap: 50px;
-}
-
-/* ==========================
-   Botões / Funcionalidades
-========================== */
-.funcionalidades {
-    border-radius: var(--borda-arredondada-pequena);
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-    background-color: var(--fundo-cards);
-    color: var(--cor-links);
-    justify-content: center;
-    flex-direction: column;
-    text-decoration: none;
-    align-items: center;
-    font-size: 1.125rem;
-    text-align: center;
-    font-weight: 600;
-    min-width: 150px;
-    display: flex;
-    padding: 20px;
-}
-
-.funcionalidades img {
-    margin-bottom: 6px;
-    display: block;
-    height: auto;
-    width: 60px;
-}
-
-.funcionalidades:hover {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transform: translateY(-8px);
-}
-
-#cadastrar-carro {
-    background-color: var(--cor-destaque);
-    color: var(--texto-claro);
-    width: 40vw;
-}
-
-/*
-==========================
-        Media Query
-==========================
-@media (min-width: 1550px)  {
-}
-*/
