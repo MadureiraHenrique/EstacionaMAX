@@ -1,23 +1,27 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-public class Car implements BaseEntity {
+public class Vehicle implements BaseEntity {
 
     private Long id;
     private String color;
     private String model;
     private String plate;
+    private Client client;
 
-    public Car(){};
+    public Vehicle(){};
 
-    public Car(String model, String color, Long id, String plate) {
+    public Vehicle(String model, String color, Long id, String plate, Client client) {
         this.model = model;
         this.color = color;
         this.id = id;
         this.plate = plate;
+        this.client = client;
+    }
+
+    public Client getClient() {
+        return client;
     }
 
     public Long getId() {
@@ -55,8 +59,8 @@ public class Car implements BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(plate, car.plate);
+        Vehicle vehicle = (Vehicle) o;
+        return Objects.equals(plate, vehicle.plate);
     }
 
     @Override

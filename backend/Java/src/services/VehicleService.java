@@ -3,11 +3,11 @@ package services;
 import repository.ClientRepository;
 import repository.VehicleRepository;
 
-public class ClientService {
-    private ClientService instance;
+public class VehicleService {
+    private VehicleService instance;
 
     private ClientRepository clientRepository;
     private VehicleRepository vehicleRepository;
 
-
+    private
 }

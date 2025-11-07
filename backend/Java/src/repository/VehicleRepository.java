@@ -4,26 +4,23 @@ import Adapter.LocalDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import entities.Client;
+import entities.Vehicle;
 
 import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class ClientRepository extends AbstractRepository<Client> {
-
-    private static ClientRepository instance;
+public class VehicleRepository extends AbstractRepository<Vehicle> {
+    private static VehicleRepository instance;
 
     private final Gson gson;
-    private static final String FILE_PATH = "client.json";
+    private final static String FILE_PATH = "car.json";
     private final Type typeToken;
     LocalDateTimeAdapter adapter;
 
-    public ClientRepository() {
+    public VehicleRepository() {
         super();
 
         this.adapter = new LocalDateTimeAdapter();
@@ -31,16 +28,16 @@ public class ClientRepository extends AbstractRepository<Client> {
                 .registerTypeAdapter(LocalDateTime.class, adapter)
                 .setPrettyPrinting()
                 .create();
-        this.typeToken = new TypeToken<Map<Long, Client>>() {}.getType();
+        this.typeToken = new TypeToken<Map<Long, Vehicle>>() {}.getType();
 
         loadFromFile();
     }
 
-    public static ClientRepository getInstance() {
+    public static VehicleRepository getInstance() {
         if (instance == null) {
-            synchronized (ClientRepository.class) {
+            synchronized (VehicleRepository.class) {
                 if (instance == null) {
-                    instance = new ClientRepository();
+                    instance = new VehicleRepository();
                 }
             }
         }
@@ -49,12 +46,12 @@ public class ClientRepository extends AbstractRepository<Client> {
 
     @Override
     protected void loadFromFile() {
-        try (Reader reader = new FileReader(String.valueOf(FILE_PATH))) {
-            Map<Long, Client> loadedMap = gson.fromJson(reader, typeToken);
+        try (Reader reader = new FileReader(FILE_PATH)) {
+            Map<Long, Vehicle> loadedMap = gson.fromJson(reader, typeToken);
 
             if (loadedMap != null) {
                 database.putAll(loadedMap);
-                long maxId = loadedMap.keySet().stream().max(Long::compare).orElse(0L);
+                Long maxId = loadedMap.keySet().stream().max(Long::compare).orElse(0L);
                 nextId.set(maxId + 1);
             }
         } catch (IOException e) {
@@ -64,24 +61,17 @@ public class ClientRepository extends AbstractRepository<Client> {
 
     @Override
     protected void persistMapToFile() {
-        try (Writer writer = new FileWriter(String.valueOf(FILE_PATH))) {
+        try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(database, typeToken, writer);
         } catch (IOException e) {
-            System.out.println("Nenhum arquivo " + FILE_PATH + " encontrado");
+            System.out.println("Não foi possivel inicializar/Encontrar o arquivo " + FILE_PATH);
         }
     }
 
-    public Optional<Client> findByCpf(String cpf) {
+    public Optional<Vehicle> findByPlaca(String placa) {
         return database.values()
                 .stream()
-                .filter(cliente -> cliente.getCpf().equals(cpf))
+                .filter(vehicle -> vehicle.getPlate().equals(placa))
                 .findFirst();
-    }
-
-    public List<Client> findByNomeContaining(String s) {
-        return database.values()
-                .stream()
-                .filter(client -> client.getName().contains(s))
-                .collect(Collectors.toList());
     }
 }

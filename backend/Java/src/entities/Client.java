@@ -9,7 +9,7 @@ public class Client implements BaseEntity {
     private String email;
     private String cpf;
 
-    private Set<Car> cars = new HashSet<Car>();
+    private Set<Vehicle> vehicles = new HashSet<Vehicle>();
     private List<Order> orders = new ArrayList<>();
 
     public Client() {}
@@ -53,8 +53,8 @@ public class Client implements BaseEntity {
         this.cpf = cpf;
     }
 
-    public Set<Car> getCars() {
-        return cars;
+    public Set<Vehicle> getCars() {
+        return vehicles;
     }
 
     public List<Order> getOrders() {
