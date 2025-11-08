@@ -1,0 +1,14 @@
+{
+  "1": {
+    "id": 1,
+    "color": "white",
+    "model": "peugeot",
+    "plate": "123456789"
+  },
+  "2": {
+    "id": 2,
+    "color": "black",
+    "model": "Ferrari",
+    "plate": "1MTH3B3ST"
+  }
+}

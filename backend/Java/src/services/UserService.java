@@ -57,7 +57,7 @@ public class UserService {
         funcionario.setPassword(senha);
         funcionario.setShift(turno);
         funcionario.setManager((Manager) userRepository.findById(gerenteId).orElseThrow(() -> new BusinessException("Não existe gerente de id: " + gerenteId)));
-        DefinirHorario(funcionario);
+        definirHorario(funcionario);
 
         return userRepository.save(funcionario);
     }
@@ -78,6 +78,7 @@ public class UserService {
         gerente.setTelephone(telefone);
         gerente.setPassword(senha);
         gerente.setShift(turno);
+        definirHorario(gerente);
 
         return userRepository.save(gerente);
     }
@@ -96,7 +97,7 @@ public class UserService {
         userRepository.deleteById(usuario.getId());
     }
 
-    public void DefinirHorario (User user) {
+    public void definirHorario(User user) {
         LocalDateTime horarioManha = LocalDateTime.now()
                 .withHour(6)
                 .withMinute(0)
