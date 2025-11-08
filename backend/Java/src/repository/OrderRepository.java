@@ -69,13 +69,6 @@ public class OrderRepository extends AbstractRepository<Order> {
         }
     }
 
-    public List<Order> findAllByVehicleId(Long id) {
-        return database.values()
-                .stream()
-                .filter(order -> order.getCar().getId().equals(id))
-                .toList();
-    }
-
     public List<Order> findAllByFuncionarioId(Long id) {
         return database.values()
                 .stream()
@@ -83,10 +76,17 @@ public class OrderRepository extends AbstractRepository<Order> {
                 .toList();
     }
 
+    public List<Order> findAllByClienteId(Long id) {
+        return database.values()
+                .stream()
+                .filter(order -> order.getClient().getId().equals(id))
+                .toList();
+    }
+
     public List<Order> findAllOpenPedidos() {
         return database.values()
                 .stream()
-                .filter(order -> order.getDepartureTime() != null)
+                .filter(order -> order.getDepartureTime() == null)
                 .toList();
     }
 }

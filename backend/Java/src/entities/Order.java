@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Order implements BaseEntity {
 
     private Long id;
+    private Client client;
     private Vehicle vehicle;
     private LocalDateTime entryTime;
     private LocalDateTime departureTime;
@@ -17,14 +18,29 @@ public class Order implements BaseEntity {
 
     public Order() {}
 
-    public Order(Long id, Employee employee, BigDecimal value, Integer parkingSpace, LocalDateTime departureTime, Vehicle vehicle, LocalDateTime entryTime) {
+    public Order(Long id, Employee employee, BigDecimal value, Integer parkingSpace, Vehicle vehicle, LocalDateTime entryTime) {
         this.id = id;
         this.employee = employee;
         this.value = value;
         this.parkingSpace = parkingSpace;
-        this.departureTime = departureTime;
-        this.vehicle = vehicle;
         this.entryTime = entryTime;
+        this.vehicle = vehicle;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Long getId() {
@@ -33,14 +49,6 @@ public class Order implements BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Vehicle getCar() {
-        return vehicle;
-    }
-
-    public void setCar(Vehicle vehicle) {
-        this.vehicle = vehicle;
     }
 
     public LocalDateTime getEntryTime() {

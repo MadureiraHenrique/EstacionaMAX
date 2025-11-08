@@ -10,7 +10,6 @@ public class Client implements BaseEntity {
     private String cpf;
 
     private Set<Vehicle> vehicles = new HashSet<Vehicle>();
-    private List<Order> orders = new ArrayList<>();
 
     public Client() {}
 
@@ -55,10 +54,6 @@ public class Client implements BaseEntity {
 
     public Set<Vehicle> getCars() {
         return vehicles;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
     }
 
     @Override

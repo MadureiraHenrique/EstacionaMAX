@@ -11,6 +11,8 @@ import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class VehicleRepository extends AbstractRepository<Vehicle> {
     private static VehicleRepository instance;
@@ -73,5 +75,12 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
                 .stream()
                 .filter(vehicle -> vehicle.getPlate().equals(placa))
                 .findFirst();
+    }
+
+    public Set<Vehicle> findAllByClientId(Long id) {
+        return database.values()
+                .stream()
+                .filter(c -> c.getClient().getId().equals(id))
+                .collect(Collectors.toSet());
     }
 }

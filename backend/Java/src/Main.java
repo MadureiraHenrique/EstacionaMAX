@@ -1,77 +1,41 @@
 import entities.*;
 import enums.Shift;
-import repository.ClientRepository;
-import repository.OrderRepository;
 import repository.UserRepository;
-import repository.VehicleRepository;
 import services.ClientService;
 import services.OrderService;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import Exception.BusinessException;
+import services.UserService;
 
 public class Main {
     public static void main(String[] args) {
-        Client client = new Client();
-        Manager manager = new Manager();
-        Order order = new Order();
-        Vehicle vehicle = new Vehicle();
-        Employee employee = new Employee();
+        ClientService clientService = ClientService.getInstance();
+        OrderService orderService = OrderService.getInstance();
+        UserService userService = UserService.getInstance();
 
-        client.setName("test");
-        client.setCpf("123.123.123-56");
-        client.setEmail("test@gmail.com");
+        try {
+            clientService.criarCliente("test", "123.456.789.10", "test@gmail.com", "123456789", "peugeot", "white");
+            clientService.adicionarVeiculoCliente(1L, "Ferrari", "black", "1MTH3B3ST");
+            clientService.criarClienteComCarroCadastrado("test", "123.456.100.10", "test@gmail.com", "123456789");
 
-        vehicle.setModel("car");
-        vehicle.setColor("black");
-        vehicle.setPlate("12345");
+            userService.criarGerente("Gerente", "123.456.789-10", "gerente@gmail.com", "123456789", "gerente1234", Shift.MORNING);
 
-        Long id = 1L;
-        String name = "Ana Silva";
-        String email = "ana.silva@empresa.com";
-        String cpf = "123.456.789-00";
-        String telephone = "71999998888";
-        String password = "senhaSuperSegura123";
-        Shift shift = Shift.MORNING;
-        LocalDateTime entryTime = LocalDateTime.of(2025, 11, 6, 8, 0, 0); // 6/Nov/2025 08:00
-        LocalDateTime departureTime = LocalDateTime.of(2025, 11, 6, 17, 0, 0); // 6/Nov/2025 17:00
+            Employee funcionario = new Employee();
+            funcionario.setShift(Shift.MORNING);
+            funcionario.setCpf("123.456.789-00");
+            funcionario.setDepartureTime(LocalDateTime.now().plusHours(8));
+            funcionario.setEmail("teste@exemplo.com");
+            funcionario.setEntryTime(LocalDateTime.now());
+            funcionario.setName("Nome de Teste");
+            funcionario.setPassword("senha123");
+            funcionario.setTelephone("99999-8888");
 
-        employee.setId(id);
-        employee.setName(name);
-        employee.setEmail(email);
-        employee.setCpf(cpf);
-        employee.setTelephone(telephone);
-        employee.setPassword(password);
-        employee.setShift(shift);
-        employee.setEntryTime(entryTime);
-        employee.setDepartureTime(departureTime);
-
-        manager.setId(id);
-        manager.setName(name);
-        manager.setEmail(email);
-        manager.setCpf(cpf);
-        manager.setTelephone(telephone);
-        manager.setPassword(password);
-        manager.setShift(shift);
-        manager.setEntryTime(entryTime);
-        manager.setDepartureTime(departureTime);
-
-        order.setEmployee(employee);
-        order.setCar(vehicle);
-        order.setValue(BigDecimal.valueOf(10));
-        order.setParkingSpace(1);
-        order.setEntryTime(entryTime);
-        order.setDepartureTime(departureTime);
-
-        ClientRepository clientRepository = ClientRepository.getInstance();
-        UserRepository userRepository = UserRepository.getInstance();
-        OrderRepository orderRepository = OrderRepository.getInstance();
-        VehicleRepository vehicleRepository = VehicleRepository.getInstance();
-
-        clientRepository.save(client);
-        userRepository.save(employee);
-        userRepository.save(manager);
-        orderRepository.save(order);
-        vehicleRepository.save(vehicle);
+            orderService.registrarEntrada(1L, 1L, "123456789");
+            orderService.registrarSaida(1L, 1L, "123456789", 1L);
+        } catch (BusinessException e) {
+            System.out.println("error " + e.getMessage());
+        }
     }
 }

@@ -154,6 +154,18 @@ public class UserRepository extends AbstractRepository<User> {
         return employee.map(f -> f);
     }
 
+    public Optional<User> findByCpf(String cpf) {
+        Optional<Manager> manager = managersDB.values().stream()
+                .filter(g -> g.getCpf().equalsIgnoreCase(cpf))
+                .findFirst();
+        if (manager.isPresent()) return manager.map(g -> g);
+
+        Optional<Employee> employee = employeesDB.values().stream()
+                .filter(f -> f.getCpf().equalsIgnoreCase(cpf))
+                .findFirst();
+        return employee.map(f -> f);
+    }
+
     public List<Employee> findAllEmployees() {
         return new ArrayList<>(employeesDB.values());
     }
