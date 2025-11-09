@@ -130,17 +130,25 @@ public class FuncionarioServlet extends HttpServlet {
             throws IOException, BusinessException {
 
         Long id = Long.parseLong(request.getParameter("id"));
-        User funcionarioAntigo = userService.buscarUsuarioById(id).orElseThrow(() -> new BusinessException("Não existe funcionario de id: " + id));
 
         String nome = request.getParameter("nome");
+        String cpf = request.getParameter("cpf");
         String email = request.getParameter("email");
+        String telefone = request.getParameter("telefone");
+        Shift turno = Shift.valueOf(request.getParameter("turno"));
 
-        funcionarioAntigo.setName(nome);
-        funcionarioAntigo.setEmail(email);
+        Employee funcionario = userService.buscarFuncionarioById(id)
+                .orElseThrow(() -> new BusinessException("Não foi possivel encontrar o funcionario de id: " + id));
 
-        User funcAtualizado = userService.atualizarUsuario(funcionarioAntigo);
+        funcionario.setName(nome);
+        funcionario.setCpf(cpf);
+        funcionario.setEmail(email);
+        funcionario.setTelephone(telefone);
+        funcionario.setShift(turno);
 
-        sendJsonResponse(response, HttpServletResponse.SC_OK, funcAtualizado);
+        userService.atualizarUsuario(funcionario);
+
+        sendJsonResponse(response, HttpServletResponse.SC_OK, funcionario);
     }
 
     private void deletarFuncionario(HttpServletRequest request, HttpServletResponse response)

@@ -13,7 +13,7 @@
     }
   },
   "employees": {
-    "2": {
+    "3": {
       "manager": {
         "id": 1,
         "name": "Gerente",
@@ -26,14 +26,14 @@
         "shift": "MORNING"
       },
       "id": 2,
-      "name": "funcionario",
-      "cpf": "123.456.789-113",
-      "telephone": "12341234567",
-      "email": "funcionario1@gmail.com",
-      "password": "senha",
-      "entryTime": "2025-11-09T06:00:00",
-      "departureTime": "2025-11-09T14:00:00",
-      "shift": "MORNING"
+      "name": "funcionarioTesteAtualizar",
+      "cpf": "123.456.789-11345",
+      "telephone": "123412345678910",
+      "email": "funcionarioteste@gmail.com",
+      "password": "senhaaaaaA",
+      "entryTime": "2025-11-09T14:00:00",
+      "departureTime": "2025-11-09T22:00:00",
+      "shift": "AFTERNOON"
     }
   }
 }

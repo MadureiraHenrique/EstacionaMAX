@@ -104,6 +104,10 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public Optional<Employee> buscarFuncionarioById(Long id) {
+        return userRepository.findFuncionarioById(id);
+    }
+
     public List<User> buscarTodosOsFuncionarios() {
         return userRepository.findAllEmployees();
     }

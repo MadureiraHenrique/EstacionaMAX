@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public class OrderService {
     private static OrderService instance;
@@ -69,9 +70,8 @@ public class OrderService {
         return orderRepository.save(order);
     }
 
-    public Order registrarSaida(Long clientId, Long funcionarioId, String placa, Long pedidoId) throws BusinessException {
+    public Order registrarSaida(Long pedidoId) throws BusinessException {
         Order pedido = orderRepository.findById(pedidoId).orElseThrow(() -> new BusinessException("não existe o pedido de id: " + pedidoId));
-        Client cliente = clientRepository.findById(clientId).orElseThrow(() -> new BusinessException("não existe o cliente de id: " + clientId));
 
         if (pedido.getDepartureTime() != null) {
             throw new BusinessException("O pedido de id: " + pedidoId + " já está fechado");
@@ -106,6 +106,10 @@ public class OrderService {
 
     public List<Order> findAllPedidosEmAberto() {
         return orderRepository.findAllOpenPedidos();
+    }
+
+    public Optional<Order> buscarPedidoById(Long id) {
+        return orderRepository.findById(id);
     }
 
 }
