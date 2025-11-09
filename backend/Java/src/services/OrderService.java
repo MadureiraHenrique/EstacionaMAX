@@ -1,6 +1,7 @@
 package services;
 
 import entities.*;
+import jakarta.servlet.ServletContext;
 import repository.ClientRepository;
 import repository.OrderRepository;
 import repository.UserRepository;
@@ -22,19 +23,19 @@ public class OrderService {
     private final VehicleRepository vehicleRepository;
 
 
-    public OrderService() {
-        this.clientRepository = ClientRepository.getInstance();
-        this.userRepository = UserRepository.getInstance();
+    public OrderService(ServletContext servletContext) {
+        this.clientRepository = ClientRepository.getInstance(servletContext);
+        this.userRepository = UserRepository.getInstance(servletContext);
         this.parking = Parking.getInstance();
-        this.orderRepository = OrderRepository.getInstance();
-        this.vehicleRepository = VehicleRepository.getInstance();
+        this.orderRepository = OrderRepository.getInstance(servletContext);
+        this.vehicleRepository = VehicleRepository.getInstance(servletContext);
     }
 
-    public static OrderService getInstance() {
+    public static OrderService getInstance(ServletContext servletContext) {
         if (instance == null) {
             synchronized (ClientService.class) {
                 if (instance == null) {
-                    instance = new OrderService();
+                    instance = new OrderService(servletContext);
                 }
             }
         }

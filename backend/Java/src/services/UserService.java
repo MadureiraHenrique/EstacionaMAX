@@ -4,26 +4,29 @@ import entities.Employee;
 import entities.Manager;
 import entities.User;
 import enums.Shift;
+import jakarta.servlet.ServletContext;
 import repository.UserRepository;
 import Exception.AuthException;
 import Exception.BusinessException;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 public class UserService {
     public static UserService instance;
 
     private final UserRepository userRepository;
 
-    private UserService() {
-        this.userRepository = UserRepository.getInstance();
+    private UserService(ServletContext servletContext) {
+        this.userRepository = UserRepository.getInstance(servletContext);
     }
 
-    public static UserService getInstance() {
+    public static UserService getInstance(ServletContext servletContext) {
         if (instance == null) {
             synchronized (UserService.class) {
                 if (instance == null) {
-                    instance = new UserService();
+                    instance = new UserService(servletContext);
                 }
             }
         }
@@ -87,7 +90,7 @@ public class UserService {
         if (user.getId() == null) {
             throw new BusinessException("O funcionario não existe");
         }
-
+        definirHorario(user);
         return userRepository.update(user);
     }
 
@@ -95,6 +98,14 @@ public class UserService {
         User usuario = userRepository.findById(id).orElseThrow(() -> new BusinessException("O usuario de id: " + id + " não existe"));
 
         userRepository.deleteById(usuario.getId());
+    }
+
+    public Optional<User> buscarUsuarioById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    public List<User> buscarTodosOsFuncionarios() {
+        return userRepository.findAllEmployees();
     }
 
     public void definirHorario(User user) {

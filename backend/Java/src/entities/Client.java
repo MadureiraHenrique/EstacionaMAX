@@ -9,8 +9,6 @@ public class Client implements BaseEntity {
     private String email;
     private String cpf;
 
-    private Set<Vehicle> vehicles = new HashSet<Vehicle>();
-
     public Client() {}
 
     public Client(Long id, String name, String cpf, String email) {
@@ -50,10 +48,6 @@ public class Client implements BaseEntity {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public Set<Vehicle> getCars() {
-        return vehicles;
     }
 
     @Override

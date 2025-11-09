@@ -1,0 +1,16 @@
+{
+  "managers": {
+    "1": {
+      "id": 1,
+      "name": "Gerente",
+      "cpf": "123.456.789-11",
+      "telephone": "123456789",
+      "email": "gerente@gmail.com",
+      "password": "gerente1234",
+      "entryTime": "2025-11-08T06:00:00",
+      "departureTime": "2025-11-08T14:00:00",
+      "shift": "MORNING"
+    }
+  },
+  "employees": {}
+}

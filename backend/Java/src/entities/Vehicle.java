@@ -1,6 +1,8 @@
 package entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class Vehicle implements BaseEntity {
 
@@ -8,7 +10,7 @@ public class Vehicle implements BaseEntity {
     private String color;
     private String model;
     private String plate;
-    private Client client;
+    private Set<Long> clienteIds = new HashSet<>();
 
     public Vehicle(){};
 
@@ -17,11 +19,14 @@ public class Vehicle implements BaseEntity {
         this.color = color;
         this.id = id;
         this.plate = plate;
-        this.client = client;
     }
 
-    public Client getClient() {
-        return client;
+    public Set<Long> getClienteIds() {
+        return clienteIds;
+    }
+
+    public void setClienteIds(Set<Long> clienteIds) {
+        this.clienteIds = clienteIds;
     }
 
     public Long getId() {

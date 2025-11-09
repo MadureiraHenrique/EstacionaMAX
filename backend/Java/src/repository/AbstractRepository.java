@@ -10,11 +10,16 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 public abstract class AbstractRepository<T extends BaseEntity> {
-    protected final Map<Long, T> database = new ConcurrentHashMap<>();
+    protected final Map<Long, T> database;
 
-    protected AtomicLong nextId = new AtomicLong(1);
+    protected AtomicLong nextId;
 
-    public AbstractRepository() {
+    protected String fullPath;
+
+    public AbstractRepository(String fullPath) {
+        this.database  = new ConcurrentHashMap<>();
+        this.nextId = new AtomicLong(1);
+        this.fullPath = fullPath;
     }
 
     protected abstract void loadFromFile();

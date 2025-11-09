@@ -4,8 +4,8 @@ import Adapter.LocalDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import entities.Client;
 import entities.Order;
+import jakarta.servlet.ServletContext;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -17,12 +17,11 @@ public class OrderRepository extends AbstractRepository<Order> {
     private static OrderRepository instance;
 
     private final Gson gson;
-    private static final String FILE_PATH = "order.json";
     private final Type typeToken;
     LocalDateTimeAdapter adapter;
 
-    public OrderRepository() {
-        super();
+    public OrderRepository(ServletContext context) {
+        super(context.getRealPath("/WEB-INF/pedidos.json"));
 
         this.adapter = new LocalDateTimeAdapter();
         this.gson = new GsonBuilder()
@@ -34,11 +33,11 @@ public class OrderRepository extends AbstractRepository<Order> {
         loadFromFile();
     }
 
-    public static OrderRepository getInstance() {
+    public static OrderRepository getInstance(ServletContext servletContext) {
         if (instance == null) {
             synchronized (UserRepository.class) {
                 if (instance == null) {
-                    instance = new OrderRepository();
+                    instance = new OrderRepository(servletContext);
                 }
             }
         }
@@ -47,7 +46,7 @@ public class OrderRepository extends AbstractRepository<Order> {
 
     @Override
     protected void loadFromFile() {
-        try (Reader reader = new FileReader(String.valueOf(FILE_PATH))) {
+        try (Reader reader = new FileReader(String.valueOf(fullPath))) {
             Map<Long, Order> loadedMap = gson.fromJson(reader, typeToken);
 
             if (loadedMap != null) {
@@ -56,16 +55,16 @@ public class OrderRepository extends AbstractRepository<Order> {
                 nextId.set(maxId + 1);
             }
         } catch (IOException e) {
-            System.out.println("Não foi possivel inicializar/Encontrar o arquivo " + FILE_PATH);
+            System.out.println("Arquivo não encontrado em: " + fullPath);
         }
     }
 
     @Override
     protected void persistMapToFile() {
-        try (Writer writer = new FileWriter(String.valueOf(FILE_PATH))) {
+        try (Writer writer = new FileWriter(String.valueOf(fullPath))) {
             gson.toJson(database, typeToken, writer);
         } catch (IOException e) {
-            System.out.println("Nenhum arquivo " + FILE_PATH + " encontrado");
+            System.out.println("Arquivo não encontrado em: " + fullPath);
         }
     }
 

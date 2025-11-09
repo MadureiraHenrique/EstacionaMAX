@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import entities.Vehicle;
+import jakarta.servlet.ServletContext;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -18,12 +19,11 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
     private static VehicleRepository instance;
 
     private final Gson gson;
-    private final static String FILE_PATH = "car.json";
     private final Type typeToken;
     LocalDateTimeAdapter adapter;
 
-    public VehicleRepository() {
-        super();
+    public VehicleRepository(ServletContext servletContext) {
+        super(servletContext.getRealPath("/WEB-INF/veiculos.json"));
 
         this.adapter = new LocalDateTimeAdapter();
         this.gson = new GsonBuilder()
@@ -35,11 +35,11 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
         loadFromFile();
     }
 
-    public static VehicleRepository getInstance() {
+    public static VehicleRepository getInstance(ServletContext servletContext) {
         if (instance == null) {
             synchronized (VehicleRepository.class) {
                 if (instance == null) {
-                    instance = new VehicleRepository();
+                    instance = new VehicleRepository(servletContext);
                 }
             }
         }
@@ -48,7 +48,7 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
 
     @Override
     protected void loadFromFile() {
-        try (Reader reader = new FileReader(FILE_PATH)) {
+        try (Reader reader = new FileReader(fullPath)) {
             Map<Long, Vehicle> loadedMap = gson.fromJson(reader, typeToken);
 
             if (loadedMap != null) {
@@ -57,16 +57,16 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
                 nextId.set(maxId + 1);
             }
         } catch (IOException e) {
-            System.out.println("Não foi possivel inicializar/Encontrar o arquivo " + FILE_PATH);
+            System.out.println("Arquivo não encontrado em: " + fullPath);
         }
     }
 
     @Override
     protected void persistMapToFile() {
-        try (Writer writer = new FileWriter(FILE_PATH)) {
+        try (Writer writer = new FileWriter(fullPath)) {
             gson.toJson(database, typeToken, writer);
         } catch (IOException e) {
-            System.out.println("Não foi possivel inicializar/Encontrar o arquivo " + FILE_PATH);
+            System.out.println("Arquivo não encontrado em: " + fullPath);
         }
     }
 
@@ -75,12 +75,5 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
                 .stream()
                 .filter(vehicle -> vehicle.getPlate().equals(placa))
                 .findFirst();
-    }
-
-    public Set<Vehicle> findAllByClientId(Long id) {
-        return database.values()
-                .stream()
-                .filter(c -> c.getClient().getId().equals(id))
-                .collect(Collectors.toSet());
     }
 }

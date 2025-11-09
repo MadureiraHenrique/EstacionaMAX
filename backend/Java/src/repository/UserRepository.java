@@ -3,14 +3,12 @@ package repository;
 import Adapter.LocalDateTimeAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import entities.Employee;
 import entities.Manager;
 import entities.User;
-import entities.Vehicle;
 
+import jakarta.servlet.ServletContext;
 import java.io.*;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +26,9 @@ public class UserRepository extends AbstractRepository<User> {
     private final Map<Long, Employee> employeesDB;
 
     private final Gson gson;
-    private static final String FILE_PATH = "user.json";
 
-    private UserRepository() {
+    private UserRepository(ServletContext context) {
+        super(context.getRealPath("/WEB-INF/usuarios.json"));
 
         this.managersDB = new ConcurrentHashMap<>();
         this.employeesDB = new ConcurrentHashMap<>();
@@ -45,11 +43,11 @@ public class UserRepository extends AbstractRepository<User> {
         loadFromFile();
     }
 
-    public static UserRepository getInstance() {
+    public static UserRepository getInstance(ServletContext servletContext) {
         if (instance == null) {
             synchronized (UserRepository.class) {
                 if (instance == null) {
-                    instance = new UserRepository();
+                    instance = new UserRepository(servletContext);
                 }
             }
         }
@@ -58,7 +56,7 @@ public class UserRepository extends AbstractRepository<User> {
 
     @Override
     protected void loadFromFile() {
-        try (Reader reader = new FileReader(FILE_PATH)) {
+        try (Reader reader = new FileReader(fullPath)) {
             UsuarioDatabaseWrapper wrapper = gson.fromJson(reader, UsuarioDatabaseWrapper.class);
 
             if (wrapper != null) {
@@ -74,7 +72,7 @@ public class UserRepository extends AbstractRepository<User> {
                 nextId.set(Math.max(maxManagerId, maxFuncId) + 1);
             }
         } catch (IOException e) {
-            System.out.println("Nenhum arquivo 'usuarios.json' encontrado.");
+            System.out.println("Arquivo não encontrado em: " + fullPath);
         }
     }
 
@@ -84,10 +82,10 @@ public class UserRepository extends AbstractRepository<User> {
         wrapper.managers = this.managersDB;
         wrapper.employees = this.employeesDB;
 
-        try (Writer writer = new FileWriter(FILE_PATH)) {
+        try (Writer writer = new FileWriter(fullPath)) {
             gson.toJson(wrapper, writer);
         } catch (IOException e) {
-            System.err.println("ERRO CRÍTICO ao salvar dados em 'usuarios.json'!");
+            System.out.println("Arquivo não encontrado em: " + fullPath);
         }
     }
 
@@ -166,11 +164,11 @@ public class UserRepository extends AbstractRepository<User> {
         return employee.map(f -> f);
     }
 
-    public List<Employee> findAllEmployees() {
+    public List<User> findAllEmployees() {
         return new ArrayList<>(employeesDB.values());
     }
 
-    public List<Manager> findAllManagers() {
+    public List<User> findAllManagers() {
         return new ArrayList<>(managersDB.values());
     }
 }
