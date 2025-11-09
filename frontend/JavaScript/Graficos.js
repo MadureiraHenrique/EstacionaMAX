@@ -48,7 +48,7 @@ function gerarGraficoPizza() {
                     labels: { 
                         padding: 30,
                         color: 'white',
-                        font: { size: 16, weight: '500', family: 'Arial' }
+                        font: { size: 16, weight: '600', family: 'Arial' }
                     }
                 },
                 title: {
@@ -95,7 +95,7 @@ function gerarGraficoBarra() {
                     display: true,
                     position: 'top',
                     labels: {
-                        padding: 30,
+                        padding: 40,
                         color: 'rgba(255, 255, 255, 0.86)',
                         font: { size: 14, weight: 'bold', family: 'Arial' }
                     }
@@ -112,15 +112,15 @@ function gerarGraficoBarra() {
                 x: {
                     ticks: {
                         color: 'white',
-                        font: { size: 16, weight: '500', family: 'Arial' }
+                        font: { size: 16, weight: '600', family: 'Arial' }
                     },
                     grid: {
-                        color: 'rgba(255,255,255,0.2)',
-                        borderColor: 'rgba(255,255,255,0.5)'
+                        color: 'rgba(255, 255, 255, 0.64)',
+                        borderColor: 'rgba(255, 255, 255, 0.77)'
                     }
                 },
                 y: {
-                    grid: { color: 'rgba(255,255,255,0.2)' }
+                    grid: { color: 'rgba(255, 255, 255, 0.6)' }
                 }
             }
         }

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    /* Paleta principal */
+    --cor-fundo-body: #292E34;
+    --cor-cabecalho: #f6f7fa;
+    --cor-menu-lateral: #323742;
+    --cor-busca-bg: #6e7174;
+    --cor-busca-placeholder: #e0dede;
+    --cor-lupa: #E9BB25;
+    --cor-botao-primario: #FDCC5C;
+    --cor-hover: #349ff75d;
+    --cor-funcionario-bg: rgba(255, 255, 255, 0.884);
+    --cor-funcionario-hover: rgba(46, 96, 126, 0.432);
+    --cor-funcionario-borda: #000000;
+
+    /* Tipografia */
+    --fonte-principal: 'Nunito', sans-serif;
+    --tamanho-fonte-base: 16px;
+    --texto-escuro: #000000;
+    --texto-claro: #FFFFFF;
+
+    /* Estrutura e sombras */
+    --sombra-padrao: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --raio-borda-padrao: 8px;
+    --raio-card-padrao: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--cor-fundo-body);
+    font-family: var(--fonte-principal);
+    line-height: 1.5;
+    height: 100vh;
+    
+}
+
+/* ==========================
+   Cabeçalho
+========================== */
+#cabecalho-inicial {
+    background-color: var(--cor-cabecalho);
+    box-shadow: var(--sombra-padrao);
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 2px;
+    position: fixed;
+    display: flex;
+    z-index: 1000;
+    padding: 5px;
+    height: 80px;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+#icone-estacionamax {
+    margin-bottom: 5px;
+    margin-left: 15px;
+    max-width: 100%; 
+    height: auto;
+}
+
+#conteiner-principal {
+    /* position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    margin-top: 80px; 
+    */
+     
+}
+
+
+#BlocoInicial  {
+    
+    
+}
