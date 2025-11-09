@@ -129,7 +129,7 @@ public class FuncionarioServlet extends HttpServlet {
     private void atualizarFuncionario(HttpServletRequest request, HttpServletResponse response)
             throws IOException, BusinessException {
 
-        Long id = Long.parseLong(request.getParameter("id"));
+        Long id = Long.parseLong(request.getParameter("funcionarioId"));
 
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");

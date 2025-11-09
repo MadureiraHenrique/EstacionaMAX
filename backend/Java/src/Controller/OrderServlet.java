@@ -94,7 +94,7 @@ public class OrderServlet extends HttpServlet {
     private void registrarEntrada(HttpServletRequest request, HttpServletResponse response)
             throws IOException, BusinessException, NumberFormatException {
 
-        Long clienteId = Long.parseLong(request.getParameter("id"));
+        Long clienteId = Long.parseLong(request.getParameter("clienteId"));
         String placa = request.getParameter("placa");
         Employee funcionarioLogado = (Employee) request.getAttribute("usuarioLogado");
 

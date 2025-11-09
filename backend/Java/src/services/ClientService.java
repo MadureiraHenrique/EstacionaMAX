@@ -44,6 +44,13 @@ public class ClientService {
             throw new BusinessException("O cpf " + cpf + " já esta cadastrado");
         }
 
+        Client client = new Client();
+        client.setName(nome);
+        client.setEmail(email);
+        client.setCpf(cpf);
+
+        Client clienteCriado = clientRepository.save(client);
+
         Vehicle vehicle;
 
         if (vehicleRepository.findByPlaca(placa).isEmpty()) {
@@ -56,12 +63,9 @@ public class ClientService {
             vehicle = vehicleRepository.findByPlaca(placa).orElseThrow(() -> new BusinessException("O Carro de placa: " + placa + " não existe"));
         }
 
-        Client client = new Client();
-        client.setName(nome);
-        client.setEmail(email);
-        client.setCpf(cpf);
-
-        return clientRepository.save(client);
+        vehicle.getClienteIds().add(clienteCriado.getId());
+        vehicleRepository.update(vehicle);
+        return clienteCriado;
     }
 
     public Vehicle adicionarVeiculoCliente(Long clienteId, String model, String color, String plate)

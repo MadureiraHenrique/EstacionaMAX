@@ -44,7 +44,7 @@ public class OrderService {
     }
 
     public Order registrarEntrada(Long clienteId, Long funcionarioId, String placa) throws BusinessException {
-        Vehicle veiculo = vehicleRepository.findByPlaca(placa).orElseThrow(() -> new BusinessException("O veiculo de id: " + clienteId + " não existe"));
+        Vehicle veiculo = vehicleRepository.findByPlaca(placa).orElseThrow(() -> new BusinessException("O veiculo de placa: " + placa + " não existe"));
 
         Employee funcionario = (Employee) userRepository.findById(funcionarioId).filter(user -> user instanceof Employee)
                 .orElseThrow(() -> new BusinessException("Não foi possivel encontrar o funcionario de id: " + funcionarioId));

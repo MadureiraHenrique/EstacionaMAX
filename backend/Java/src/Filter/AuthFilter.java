@@ -67,8 +67,8 @@ public class AuthFilter implements Filter {
                 return;
             }
 
-            if (role.equals(Role.EMPLOYEE)) {
-                if (path.startsWith("/app/funcionario.html") || path.startsWith("/app/api/pedidos")) {
+            if (role == Role.EMPLOYEE) {
+                if (path.startsWith("/app/funcionario") || path.startsWith("/app/pedidos")) {
                     filterChain.doFilter(request, response);
                     return;
                 } else {
@@ -79,9 +79,12 @@ public class AuthFilter implements Filter {
 
             sendJsonError(response, HttpServletResponse.SC_FORBIDDEN, "Papel (Role) desconhecido.");
             return;
-        } catch (JwtException | IllegalArgumentException e) {
+        } catch (JwtException e) {
             sendJsonError(response, HttpServletResponse.SC_UNAUTHORIZED, "Token inválido ou expirado. Faça login novamente.");
             return;
+        } catch (IllegalArgumentException e) {
+            sendJsonError(response, HttpServletResponse.SC_UNAUTHORIZED, "Houve um erro de illegalArgument : " + e.getMessage() + "\n" + e.getStackTrace());
+
         }
     }
 
