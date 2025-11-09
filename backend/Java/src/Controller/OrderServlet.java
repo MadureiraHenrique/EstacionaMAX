@@ -23,7 +23,7 @@ import services.OrderService;
 import Exception.BusinessException;
 
 @WebServlet("/app/pedidos")
-public class PedidoServlet extends HttpServlet {
+public class OrderServlet extends HttpServlet {
 
     private OrderService pedidoService;
     private Gson gson;
