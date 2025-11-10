@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil</title>
-    <link rel="stylesheet" href="../../CSS/Gerente/Perfil.css" />
+    <link rel="stylesheet" href="../../CSS/Funcionario/Perfil.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -17,35 +17,25 @@
 
   <body>
     <header id="cabecalho-inicial">
-      <a href="PaginaInicialPosCadastro.html"
+      <a href=".PaginaInicialPosCadastro.html"
         ><img
           src="../Image/Logo/Marca.png"
           alt="Marca da empresa EstacionaMax"
           id="icone-estacionamax"
       /></a>
-      <a href="PaginaInicialPosCadastro.html"
-        ><img
-          src="../Image/Cabecalho/Sair.png"
-          alt="Icone sair"
-          id="icone-sair"
-      /></a>
+      <img
+        src="../Image/Cabecalho/Sair.png"
+        alt="Ícone para sair"
+        id="icone-sair"
+      />
     </header>
 
-    <nav class="menu-lateral-funcionario"></nav>
+    <nav class="menu-lateral" id="menu-lateral-funcionario"></nav>
 
     <main id="conteiner-principal">
-      <div id="caixa-de-pesquisa">
-        <input
-          type="search"
-          placeholder="Buscar por CPF ou Nome"
-          id="input-buscar"
-        />
-        <i class="fa fa-search" id="icone-lupa"></i>
-      </div>
-
       <section id="conteiner-do-funcionario">
         <article id="dados-do-perfil">
-          <figure>
+          <figure id="dados-basicos-do-perfil">
             <img
               src="../Image/Perfil/Usuario.png"
               alt="fotoDoCliente"
@@ -72,5 +62,6 @@
 
     <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
     <script src="../../JavaScript/Perfil.js"></script>
+    <script src="../../JavaScript/Menu.js"></script>
   </body>
 </html>

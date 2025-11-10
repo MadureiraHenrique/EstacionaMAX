@@ -348,6 +348,14 @@ ul li.ativo {
   background-color: var(--cor-funcionalidade-btn-hover);
 }
 
+#excluir-funcionario i {
+  justify-content: end;
+  margin-right: 40px;
+  cursor: pointer;
+  display: flex;
+  padding: 20px;
+}
+
 @media screen and (max-width: 768px) {
   #conteiner-do-funcionario {
     margin-top: 5%;
@@ -382,10 +390,104 @@ ul li.ativo {
   }
 }
 
-/*
-==========================
-        Media Query
-==========================
-@media (min-width: 1550px)  {
+/* ==========================
+   Ícone de Editar Perfil
+========================== */
+#dados-do-perfil #link-editar-perfil {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: var(--cor-icones);
+  cursor: pointer;
+  transition: transform 0.2s;
 }
-*/
+
+#dados-do-perfil #link-editar-perfil:hover {
+  transform: scale(1.1);
+  color: var(--cor-links);
+}
+
+/* ==========================
+   Pop-up Excluir
+========================== */
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10001; /* Acima de tudo */
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container.mostrar {
+  display: flex;
+}
+
+.popup-card {
+  background-color: var(--cor-fundo-body);
+  color: var(--texto-claro);
+  padding: 30px 40px 40px 40px;
+  border-radius: var(--raio-card);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 450px;
+}
+
+.popup-card h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.popup-card #popup-fechar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #d9534f;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.popup-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.popup-botoes button {
+  border: none;
+  border-radius: var(--raio-borda);
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  min-width: 130px;
+}
+
+.popup-botoes button:hover {
+  transform: scale(1.05);
+}
+
+#btn-cancelar-excluir {
+  background-color: #d9534f;
+  color: white;
+}
+
+#btn-confirmar-excluir {
+  background-color: #5cb85c;
+  color: white;
+}
+
+#excluir-funcionario i {
+  font-size: 28px;
+  color: #d9534f;
+}

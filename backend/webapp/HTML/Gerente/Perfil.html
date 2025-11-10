@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil</title>
-    <link rel="stylesheet" href="../../CSS/Funcionario/Perfil.css" />
+    <link rel="stylesheet" href="../../CSS/Gerente/Perfil.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -17,31 +17,45 @@
 
   <body>
     <header id="cabecalho-inicial">
-      <a href=".PaginaInicialPosCadastro.html"
+      <a href="PaginaInicialPosCadastro.html"
         ><img
           src="../Image/Logo/Marca.png"
           alt="Marca da empresa EstacionaMax"
           id="icone-estacionamax"
       /></a>
-      <img
-        src="../Image/Cabecalho/Sair.png"
-        alt="Ícone para sair"
-        id="icone-sair"
-      />
+      <a href="PaginaInicialPosCadastro.html"
+        ><img
+          src="../Image/Cabecalho/Sair.png"
+          alt="Icone sair"
+          id="icone-sair"
+      /></a>
     </header>
 
-    <nav class="menu-lateral-funcionario"></nav>
+    <nav class="menu-lateral"></nav>
 
     <main id="conteiner-principal">
+      <div id="caixa-de-pesquisa">
+        <input
+          type="search"
+          placeholder="Buscar por CPF ou Nome"
+          id="input-buscar"
+        />
+        <i class="fa fa-search" id="icone-lupa"></i>
+      </div>
+
       <section id="conteiner-do-funcionario">
         <article id="dados-do-perfil">
-          <figure id="dados-basicos-do-perfil">
+          <figure>
             <img
               src="../Image/Perfil/Usuario.png"
               alt="fotoDoCliente"
               id="usuario-icone"
             />
             <figcaption id="nome-id"></figcaption>
+
+            <a href="EditarPerfil.html" id="link-editar-perfil">
+              <i class="bi bi-pencil-fill"></i>
+            </a>
           </figure>
 
           <address>
@@ -56,12 +70,27 @@
             <button>Histórico de movimentações</button>
             <button>Observações</button>
           </nav>
+
+          <div id="excluir-funcionario">
+            <i class="bi bi-x-circle"></i>
+          </div>
+          <div id="excluir-funcionario-container" class="popup-container">
+            <div class="popup-card">
+              <i class="bi bi-x" id="popup-fechar"></i>
+              <h2>Deseja excluir este funcionário?</h2>
+              <div class="popup-botoes">
+                <button id="btn-cancelar-excluir">Cancelar</button>
+                <button id="btn-confirmar-excluir">Confirmar</button>
+              </div>
+            </div>
+          </div>
         </aside>
+
+        <div id="excluir-funcionario-container"></div>
       </section>
     </main>
 
     <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
     <script src="../../JavaScript/Perfil.js"></script>
-    <script src="../../JavaScript/Menu.js"></script>
   </body>
 </html>

@@ -35,13 +35,6 @@
 
       <button id="cadastrar-veiculo">Cadastrar Veiculo</button>
 
-      <div id="popup-veiculo" class="popup">
-        <div class="popup-conteudo">
-          <span class="fechar">&times;</span> 
-          <p>Cadastrar aqui né pae</p>
-        </div>
-      </div>
-
       <a href="#">
         <img
           src="../Image/Cabecalho/Sair.png"
@@ -51,134 +44,120 @@
       </a>
     </header>
 
-    <nav class="menu-lateral">
-      <div class="btn-expandir">
-        <i class="bi bi-list" id="btn-exp"></i>
-
-        <div id="informacao-do-usuario">
-          <img
-            src="../Image/Perfil/Usuario.png"
-            alt="Foto do usuário"
-            id="foto-do-usuario"
-          />
-          <div id="dados-usuario">
-            <p id="nome-User"><strong>Josevaldo Morais</strong></p>
-            <p id="cargo-User">Funcionario</p>
-          </div>
-        </div>
-
-        <ul>
-          <li class="item-menu">
-            <a href="../Funcionario/PaginaInicialPosCadastro.html"
-              ><span class="icon"><i class="bi bi-columns-gap"></i></span
-              ><span class="txt-link">Incio</span></a
-            >
-          </li>
-
-          <li class="item-menu">
-            <a href="../Funcionario/PerfilFuncionario.html"
-              ><span class="icon"><i class="bi bi-clipboard"></i></span
-              ><span class="txt-link">Gerenciamento</span></a
-            >
-          </li>
-
-          <li class="item-menu">
-            <a href="../Funcionario/CadastroDeVeiculos.html"
-              ><span class="icon"><i class="bi bi-eye"></i></span
-              ><span class="txt-link">Estacionamento</span></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <nav class="menu-lateral" id="menu-lateral-gerente"></nav>
 
     <main id="conteiner-principal">
-      <section id="conteiner-de-registros">
-        <section id="conteiner-de-informacoes">
-          <form id="caixa-de-pesquisa">
-            <input
-              type="search"
-              placeholder="Buscar por Placa ou CPF"
-              id="input-buscar"
-            />
-            <i class="fa fa-search" id="icone-lupa"></i>
-            <p>Total: <span id="total">00</span></p>
-          </form>
+      <!-- ===== Pop-up Cadastro ===== -->
+      <div id="overlay">
+        <section id="container-cadastrar">
+          <form id="form-cadastro">
+            <i class="bi bi-x" id="iconeFechar"></i>
+            <div id="conteiner-input">
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="nomeCliente">Cliente:</label>
+                <input
+                  class="input-cadastro"
+                  type="text"
+                  name="nomeCliente"
+                  id="nomeCliente"
+                  required
+                />
+              </div>
 
-          <section id="conteiner-de-clientes">
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="inclementar-valor">00,00</span>
-                </div>
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="cpf">CPF:</label>
+                <input
+                  class="input-cadastro"
+                  type="text"
+                  name="cpf"
+                  id="cpf"
+                  maxlength="11"
+                  required
+                />
               </div>
-            </article>
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="inclementar-valor">00,00</span>
-                </div>
+
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="telefone">Telefone:</label>
+                <input
+                  class="input-cadastro"
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  required
+                />
               </div>
-            </article>
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="inclementar-valor">00,00</span>
-                </div>
+
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="placa">Placa:</label>
+                <input
+                  class="input-cadastro"
+                  type="text"
+                  name="placa"
+                  id="placa"
+                  required
+                />
               </div>
-            </article>
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="inclementar-valor">00,00</span>
-                </div>
+
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="modelo">Modelo:</label>
+                <input
+                  class="input-cadastro"
+                  type="text"
+                  name="modelo"
+                  id="modelo"
+                  required
+                />
               </div>
-            </article>
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="inclementar-valor">00,00</span>
-                </div>
+
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="funcionario"
+                  >Funcionário:</label
+                >
+                <input
+                  class="input-cadastro"
+                  type="text"
+                  name="funcionario"
+                  id="funcionario"
+                  required
+                />
               </div>
-            </article>
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="inclementar-valor">00,00</span>
-                </div>
+
+              <div class="campo-cadastro">
+                <label class="label-cadastro" for="vagaEscolhida">Vaga:</label>
+                <select
+                  class="input-cadastro"
+                  name="vagaEscolhida"
+                  id="vagaEscolhida"
+                  required
+                >
+                  <option value="">xx</option>
+                  <option value="">xx</option>
+                </select>
               </div>
-            </article>
-            <article class="cliente">
-              <p class="modelo-do-veiculo">Modelo veiculo</p>
-              <div class="alinhamento-informacao-valor">
-                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
-                <div class="valor-por-hora">
-                  R$: <span class="incrementar-valor">00,00</span>
-                </div>
-              </div>
-            </article>
-            <!-- mais clientes -->
-          </section>
+            </div>
+            <button type="submit" id="btn-enviar">Enviar</button>
+          </form>
         </section>
+      </div>
+
+      <section id="conteiner-de-informacoes">
+        <div id="caixa-de-pesquisa">
+          <input
+            type="search"
+            placeholder="Buscar por Placa, CPF ou Nome"
+            id="input-buscar"
+          />
+          <i class="fa fa-search" id="icone-lupa"></i>
+          <p>Total: <span id="total">00</span></p>
+        </div>
+
+        <div id="conteiner-de-clientes"></div>
       </section>
 
       <aside id="estacionamento">
-        <!--A quantidade de div's é para teste-->
         <div id="escopo-do-estacionamento">
           <div class="vaga-vazia">P001</div>
-          <div class="vaga-ocupada">P002</div>
+          <div class="vaga-vazia">P002</div>
           <div class="vaga-vazia">P003</div>
           <div class="vaga-vazia">P004</div>
           <div class="vaga-vazia">P005</div>
@@ -186,37 +165,52 @@
           <div class="vaga-vazia">P007</div>
           <div class="vaga-vazia">P008</div>
           <div class="vaga-vazia">P009</div>
+          <div class="vaga-vazia">P010</div>
           <div class="vaga-vazia">P011</div>
           <div class="vaga-vazia">P012</div>
           <div class="vaga-vazia">P013</div>
           <div class="vaga-vazia">P014</div>
           <div class="vaga-vazia">P015</div>
-          <div class="vaga-vazia">P016</div>
-          <div class="vaga-vazia">P017</div>
-          <div class="vaga-vazia">P018</div>
-          <div class="vaga-vazia">P019</div>
-          <div class="vaga-vazia">P020</div>
-          <div class="vaga-vazia">P021</div>
-          <div class="vaga-vazia">P022</div>
-          <div class="vaga-vazia">P023</div>
-          <div class="vaga-vazia">P024</div>
-          <div class="vaga-vazia">P025</div>
-          <div class="vaga-vazia">P026</div>
-          <div class="vaga-vazia">P027</div>
-          <div class="vaga-vazia">P028</div>
-          <div class="vaga-vazia">P029</div>
-          <div class="vaga-vazia">P030</div>
-          <div class="vaga-vazia">P031</div>
-          <div class="vaga-vazia">P032</div>
-          <div class="vaga-vazia">P033</div>
-          <div class="vaga-vazia">P034</div>
-          <div class="vaga-vazia">P035</div>
-          <div class="vaga-vazia">P036</div>
         </div>
       </aside>
     </main>
 
+    <section id="conteiner-de-informacoes">
+      <div id="caixa-de-pesquisa">
+        <input
+          type="search"
+          placeholder="Buscar por Placa, CPF ou Nome"
+          id="input-buscar"
+        />
+        <i class="fa fa-search" id="icone-lupa"></i>
+        <p>Total: <span id="total">00</span></p>
+      </div>
+
+      <div id="conteiner-de-clientes"></div>
+    </section>
+
+    <aside id="estacionamento">
+      <div id="escopo-do-estacionamento">
+        <div class="vaga-vazia">P001</div>
+        <div class="vaga-vazia">P002</div>
+        <div class="vaga-vazia">P003</div>
+        <div class="vaga-vazia">P004</div>
+        <div class="vaga-vazia">P005</div>
+        <div class="vaga-vazia">P006</div>
+        <div class="vaga-vazia">P007</div>
+        <div class="vaga-vazia">P008</div>
+        <div class="vaga-vazia">P009</div>
+        <div class="vaga-vazia">P010</div>
+        <div class="vaga-vazia">P011</div>
+        <div class="vaga-vazia">P012</div>
+        <div class="vaga-vazia">P013</div>
+        <div class="vaga-vazia">P014</div>
+        <div class="vaga-vazia">P015</div>
+      </div>
+    </aside>
+
+    <script src="../../JavaScript/FuncionalidadeEstacionamento.js"></script>
+    <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
     <script src="../../JavaScript/CadastrarVeiculo.js"></script>
-    <script src="../../JavaScript/Menu.js"></script>
   </body>
 </html>
