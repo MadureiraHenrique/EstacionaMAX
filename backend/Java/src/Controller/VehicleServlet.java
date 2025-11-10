@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,7 +52,9 @@ public class VehicleServlet extends HttpServlet {
 
         try {
             List<Vehicle> veiculos = vehicleService.listarTodosVeiculos();
-            sendJsonResponse(response, HttpServletResponse.SC_OK, veiculos);
+            Map<String, Object> resposta = new HashMap<>();
+            resposta.put("veiculos", veiculos);
+            sendJsonResponse(response, HttpServletResponse.SC_OK, resposta);
         } catch (Exception e) {
             sendJsonError(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar veículos: " + e.getMessage());
         }

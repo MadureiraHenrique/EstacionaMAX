@@ -16,7 +16,9 @@ import services.ClientService;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import Exception.BusinessException;
 
@@ -46,9 +48,10 @@ public class ClientServlet extends HttpServlet {
         }
 
         try {
+            Map<String, Object> wrapper = new HashMap<>();
             List<Client> clientes = clientService.listarTodosOsClientes();
-
-            sendJsonResponse(resp, HttpServletResponse.SC_OK, clientes);
+            wrapper.put("clientes", clientes);
+            sendJsonResponse(resp, HttpServletResponse.SC_OK, wrapper);
         } catch (IOException e) {
             sendJsonError(resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Não foi possivel listar os clientes: " + e.getMessage());
         }

@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,8 +51,10 @@ public class OrderServlet extends HttpServlet {
         }
 
         try {
+            Map<String, Object> wrapper = new HashMap<>();
             List<Order> pedidos = pedidoService.findAllPedidosEmAberto();
-            sendJsonResponse(response, HttpServletResponse.SC_OK, pedidos);
+            wrapper.put("pedidos", pedidos);
+            sendJsonResponse(response, HttpServletResponse.SC_OK, wrapper);
         } catch (Exception e) {
             sendJsonError(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar pedidos: " + e.getMessage());
         }

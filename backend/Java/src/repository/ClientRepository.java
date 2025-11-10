@@ -11,10 +11,7 @@ import jakarta.servlet.ServletContext;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ClientRepository extends AbstractRepository<Client> {
@@ -52,12 +49,27 @@ public class ClientRepository extends AbstractRepository<Client> {
     @Override
     protected void loadFromFile() {
         try (Reader reader = new FileReader(String.valueOf(fullPath))) {
-            Map<Long, Client> loadedMap = gson.fromJson(reader, typeToken);
+            Type type = new TypeToken<Map<String, List<Client>>>() {}.getType();
 
-            if (loadedMap != null) {
-                database.putAll(loadedMap);
-                long maxId = loadedMap.keySet().stream().max(Long::compare).orElse(0L);
-                nextId.set(maxId + 1);
+            Map<String, List<Client>> wrapper = gson.fromJson(reader, type);
+
+            if (wrapper != null) {
+                List<Client> loadedList = wrapper.get("clientes");
+
+                if (loadedList != null) {
+                    database.clear();
+
+                    long maxId = 0;
+
+                    for (Client c : loadedList) {
+                        database.put(c.getId(), c);
+                        if (c.getId() > maxId) {
+                            maxId = c.getId();
+                        }
+                    }
+
+                    nextId.set(maxId + 1);
+                }
             }
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado em: " + fullPath);
@@ -67,7 +79,10 @@ public class ClientRepository extends AbstractRepository<Client> {
     @Override
     protected void persistMapToFile() {
         try (Writer writer = new FileWriter(String.valueOf(fullPath))) {
-            gson.toJson(database, typeToken, writer);
+            Map<String, Object> wrapper = new HashMap<>();
+            List<Client> clientes = new ArrayList<>(database.values());
+            wrapper.put("clientes", clientes);
+            gson.toJson(wrapper, writer);
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado em: " + fullPath);
         }

@@ -10,6 +10,8 @@ import jakarta.servlet.ServletContext;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,12 +49,27 @@ public class OrderRepository extends AbstractRepository<Order> {
     @Override
     protected void loadFromFile() {
         try (Reader reader = new FileReader(String.valueOf(fullPath))) {
-            Map<Long, Order> loadedMap = gson.fromJson(reader, typeToken);
+            Type type = new TypeToken<Map<String, List<Order>>>() {}.getType();
 
-            if (loadedMap != null) {
-                database.putAll(loadedMap);
-                long maxId = loadedMap.keySet().stream().max(Long::compare).orElse(0L);
-                nextId.set(maxId + 1);
+            Map<String, List<Order>> wrapper = gson.fromJson(reader, type);
+
+            if (wrapper != null) {
+                List<Order> loadedList = wrapper.get("pedidos");
+
+                if (loadedList != null) {
+                    database.clear();
+
+                    long maxId = 0;
+
+                    for (Order p : loadedList) {
+                        database.put(p.getId(), p);
+                        if (p.getId() > maxId) {
+                            maxId = p.getId();
+                        }
+                    }
+
+                    nextId.set(maxId + 1);
+                }
             }
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado em: " + fullPath);
@@ -62,7 +79,10 @@ public class OrderRepository extends AbstractRepository<Order> {
     @Override
     protected void persistMapToFile() {
         try (Writer writer = new FileWriter(String.valueOf(fullPath))) {
-            gson.toJson(database, typeToken, writer);
+            Map<String, Object> wrapper = new HashMap<>();
+            List<Order> pedidos = new ArrayList<>(database.values());
+            wrapper.put("pedidos", pedidos);
+            gson.toJson(wrapper, writer);
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado em: " + fullPath);
         }

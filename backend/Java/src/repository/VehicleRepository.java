@@ -10,9 +10,7 @@ import jakarta.servlet.ServletContext;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class VehicleRepository extends AbstractRepository<Vehicle> {
@@ -49,12 +47,28 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
     @Override
     protected void loadFromFile() {
         try (Reader reader = new FileReader(fullPath)) {
-            Map<Long, Vehicle> loadedMap = gson.fromJson(reader, typeToken);
+            Type type = new TypeToken<Map<String, List<Vehicle>>>() {}.getType();
 
-            if (loadedMap != null) {
-                database.putAll(loadedMap);
-                Long maxId = loadedMap.keySet().stream().max(Long::compare).orElse(0L);
-                nextId.set(maxId + 1);
+            Map<String, List<Vehicle>> wrapper = gson.fromJson(reader, type);
+
+            if (wrapper != null) {
+                List<Vehicle> loadedList = wrapper.get("veiculos");
+
+                if (loadedList != null) {
+                    database.clear();
+
+                    long maxId = 0;
+
+                    for (Vehicle v : loadedList) {
+                        database.put(v.getId(), v);
+                        if (v.getId() > maxId) {
+                            maxId = v.getId();
+                        }
+
+                    }
+
+                    nextId.set(maxId + 1);
+                }
             }
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado em: " + fullPath);
@@ -64,7 +78,10 @@ public class VehicleRepository extends AbstractRepository<Vehicle> {
     @Override
     protected void persistMapToFile() {
         try (Writer writer = new FileWriter(fullPath)) {
-            gson.toJson(database, typeToken, writer);
+            Map<String, Object> wrapper = new HashMap<>();
+            List<Vehicle> veiculos = new ArrayList<>(database.values());
+            wrapper.put("veiculos", veiculos);
+            gson.toJson(wrapper, writer);
         } catch (IOException e) {
             System.out.println("Arquivo não encontrado em: " + fullPath);
         }
