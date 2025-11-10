@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="../../CSS/Funcionario/CadastroDeVeiculos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <title>Gerenciar Estacionamento</title>
+  </head>
+  <body>
+    <header id="cabecalho-inicial">
+      <a href="PaginaInicialPosCadastro.html">
+        <img
+          src="../Image/Logo/Marca.png"
+          alt="Marca da empresa EstacionaMax"
+          id="icone-estacionamax"
+        />
+      </a>
+
+      <select id="setor" name="setores">
+        <option value="setorX">Setor X</option>
+        <option value="setorY">Setor Y</option>
+        <option value="setorZ">Setor Z</option>
+      </select>
+
+      <button id="cadastrar-veiculo">Cadastrar Veiculo</button>
+
+      <div id="popup-veiculo" class="popup">
+        <div class="popup-conteudo">
+          <span class="fechar">&times;</span> 
+          <p>Cadastrar aqui né pae</p>
+        </div>
+      </div>
+
+      <a href="#">
+        <img
+          src="../Image/Cabecalho/Sair.png"
+          alt="Icone sair"
+          id="icone-sair"
+        />
+      </a>
+    </header>
+
+    <nav class="menu-lateral">
+      <div class="btn-expandir">
+        <i class="bi bi-list" id="btn-exp"></i>
+
+        <div id="informacao-do-usuario">
+          <img
+            src="../Image/Perfil/Usuario.png"
+            alt="Foto do usuário"
+            id="foto-do-usuario"
+          />
+          <div id="dados-usuario">
+            <p id="nome-User"><strong>Josevaldo Morais</strong></p>
+            <p id="cargo-User">Funcionario</p>
+          </div>
+        </div>
+
+        <ul>
+          <li class="item-menu">
+            <a href="../Funcionario/PaginaInicialPosCadastro.html"
+              ><span class="icon"><i class="bi bi-columns-gap"></i></span
+              ><span class="txt-link">Incio</span></a
+            >
+          </li>
+
+          <li class="item-menu">
+            <a href="../Funcionario/PerfilFuncionario.html"
+              ><span class="icon"><i class="bi bi-clipboard"></i></span
+              ><span class="txt-link">Gerenciamento</span></a
+            >
+          </li>
+
+          <li class="item-menu">
+            <a href="../Funcionario/CadastroDeVeiculos.html"
+              ><span class="icon"><i class="bi bi-eye"></i></span
+              ><span class="txt-link">Estacionamento</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="conteiner-principal">
+      <section id="conteiner-de-registros">
+        <section id="conteiner-de-informacoes">
+          <form id="caixa-de-pesquisa">
+            <input
+              type="search"
+              placeholder="Buscar por Placa ou CPF"
+              id="input-buscar"
+            />
+            <i class="fa fa-search" id="icone-lupa"></i>
+            <p>Total: <span id="total">00</span></p>
+          </form>
+
+          <section id="conteiner-de-clientes">
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="inclementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="inclementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="inclementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="inclementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="inclementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="inclementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <article class="cliente">
+              <p class="modelo-do-veiculo">Modelo veiculo</p>
+              <div class="alinhamento-informacao-valor">
+                <p class="informacao-do-veiculo">Vaga = Vazia | Td | Horário</p>
+                <div class="valor-por-hora">
+                  R$: <span class="incrementar-valor">00,00</span>
+                </div>
+              </div>
+            </article>
+            <!-- mais clientes -->
+          </section>
+        </section>
+      </section>
+
+      <aside id="estacionamento">
+        <!--A quantidade de div's é para teste-->
+        <div id="escopo-do-estacionamento">
+          <div class="vaga-vazia">P001</div>
+          <div class="vaga-ocupada">P002</div>
+          <div class="vaga-vazia">P003</div>
+          <div class="vaga-vazia">P004</div>
+          <div class="vaga-vazia">P005</div>
+          <div class="vaga-vazia">P006</div>
+          <div class="vaga-vazia">P007</div>
+          <div class="vaga-vazia">P008</div>
+          <div class="vaga-vazia">P009</div>
+          <div class="vaga-vazia">P011</div>
+          <div class="vaga-vazia">P012</div>
+          <div class="vaga-vazia">P013</div>
+          <div class="vaga-vazia">P014</div>
+          <div class="vaga-vazia">P015</div>
+          <div class="vaga-vazia">P016</div>
+          <div class="vaga-vazia">P017</div>
+          <div class="vaga-vazia">P018</div>
+          <div class="vaga-vazia">P019</div>
+          <div class="vaga-vazia">P020</div>
+          <div class="vaga-vazia">P021</div>
+          <div class="vaga-vazia">P022</div>
+          <div class="vaga-vazia">P023</div>
+          <div class="vaga-vazia">P024</div>
+          <div class="vaga-vazia">P025</div>
+          <div class="vaga-vazia">P026</div>
+          <div class="vaga-vazia">P027</div>
+          <div class="vaga-vazia">P028</div>
+          <div class="vaga-vazia">P029</div>
+          <div class="vaga-vazia">P030</div>
+          <div class="vaga-vazia">P031</div>
+          <div class="vaga-vazia">P032</div>
+          <div class="vaga-vazia">P033</div>
+          <div class="vaga-vazia">P034</div>
+          <div class="vaga-vazia">P035</div>
+          <div class="vaga-vazia">P036</div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="../../JavaScript/CadastrarVeiculo.js"></script>
+    <script src="../../JavaScript/Menu.js"></script>
+  </body>
+</html>
