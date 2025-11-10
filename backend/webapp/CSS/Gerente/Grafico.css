@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+    /* Paleta de cores */
+    --fundo-body: #292E34;
+    --fundo-cards: #f6f7fa;
+    --cor-destaque: #FCBC2C;
+    --cor-links: #2B79C2;
+    --texto-claro: #FFFFFF;
+    --barra-progresso-fundo: #D9D9D9;
+    --barra-progresso-preenchimento: #2B79C2;
+
+    /* Tipografia */
+    --fonte-principal: 'Nunito', sans-serif;
+    --tamanho-fonte-base: 16px;
+
+    /* Espaçamento */
+    --espacamento-pequeno: 0.5rem;
+    --espacamento-medio: 1rem;
+
+    /* Bordas arredondadas */
+    --borda-arredondada-pequena: 8px;
+    --borda-arredondada-media: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--fundo-body);
+    font-family: var(--fonte-principal);
+    line-height: 1.5;
+    height: 100vh;
+}
+
+/* ==========================
+   Cabeçalho
+========================== */
+#cabecalho-inicial {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--fundo-cards);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+    position: fixed;
+    display: flex;
+    padding: 5px;
+    height: 80px;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+}
+
+#icone-estacionamax {
+     margin-bottom: 5px;
+  margin-left: 15px;
+  max-width: 100%;
+  height: auto;
+}
+
+#icone-sair {
+    margin-top: 5px;
+    height: 70px;
+    width: auto;
+}
+
+#selecionar-Grafico {
+  background-color: #484c52;
+  color: var(--texto-claro);
+  text-align: center;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 500;
+  transition: 0.2s;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  width: 130px;
+}
+
+#selecionar-Grafico:hover {
+  background-color: rgba(82, 85, 90, 0.938);
+}
+
+/* ==========================
+   dashboard - Icone - Título
+========================== */
+
+.menu-lateral {
+    box-shadow: 3px 0 0 rgba(0, 0, 0, 0.1);
+    background-color: #323742;
+    height: calc(100% - 80px);
+    padding: 40px 0 40px 0;
+    transition: 0.5s;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1000;
+    width: 65px;
+    top: 80px;
+    left: 0;
+}
+
+.menu-lateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
+    position: relative;
+    padding-left: 10px;
+    width: 100%;
+}
+
+.btn-expandir > i{
+    margin-right: 10px;
+    color: #FFFFFF;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.btn-expandir ul {
+    list-style: none;
+    margin-top: 20px;
+    height: 100%;
+}
+
+.item-menu a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    margin-bottom: 10px;
+    position: relative;
+    font-weight: 400;
+    padding: 20px 4%;
+    font-size: 20px;
+    display: flex;
+}
+
+.item-menu a::before {
+    background-color: #ebebee;
+    border-radius: 2px; 
+    position: absolute;
+    height: 34px;
+    width: 1.5px;
+    content: '';
+    top: 25%;
+    left: 0;
+}
+
+.item-menu {
+    transition: .2s;
+}
+
+ul li.ativo {
+    background-color: #349ff75d;
+    border-radius: 5px;
+}
+
+.item-menu:hover {
+    background-color: #349ff75d;
+    border-radius: 5px;
+}
+
+.txt-link {
+    white-space: nowrap;
+    margin-left: 35px;
+}
+
+.icon > i {
+    margin-left: 10px;
+}
+
+#informacao-do-usuario img {
+    border: 3px solid #eba80ec5;
+    border-radius: 100%;
+    width: 70px;
+}
+
+#informacao-do-usuario {
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    color: white;
+    display: flex;
+    left: 110px;
+    gap: 25px;
+    top: 2px;
+}
+
+#conteiner-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    width: calc(100% - 65px);
+    margin-left: 65px;
+    margin-top: 80px;
+    transition: 0.5s;
+
+}
+
+#conteiner-principal.ativar {
+  transform: translateX(50px);
+}
+
+#graficos {
+    margin-top: 50px;
+}
+
+#conteiner-pizza {
+     height: 540px;
+     width: 600px;
+}
+
+ #conteiner-barra {
+     height: 700px;
+     width: 800px;
+}
+
+#pizza {
+    animation: animacaoSelecao 0.8s ease-out forwards;
+}
+
+#barra {
+    margin-top: 250px;
+    animation: animacaoSelecao 0.8s ease-out forwards;
+}
+
+
+.esconder {
+    display: none;
+}
+
+.mostrar {
+    display: block;
+}
+
+@keyframes animacaoSelecao {
+    from {
+    opacity: 0;
+    transform: translatey(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

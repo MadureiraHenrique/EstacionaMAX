@@ -1,9 +1,11 @@
 package entities;
 
+import enums.Shift;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public abstract class User {
+public abstract class User implements BaseEntity {
 
     private Long id;
     private String name;
@@ -13,6 +15,7 @@ public abstract class User {
     private String password;
     private LocalDateTime entryTime;
     private LocalDateTime departureTime;
+    private Shift shift;
 
     public User() {}
 
@@ -25,6 +28,14 @@ public abstract class User {
         this.password = password;
         this.entryTime = entryTime;
         this.departureTime = departureTime;
+    }
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
     }
 
     public Long getId() {
