@@ -64,8 +64,10 @@ public class ClientService {
         }
 
         vehicle.getClienteIds().add(clienteCriado.getId());
-        clie
         vehicleRepository.update(vehicle);
+
+        clienteCriado.getCarrosId().add(vehicle.getId());
+        clientRepository.update(clienteCriado);
         return clienteCriado;
     }
 

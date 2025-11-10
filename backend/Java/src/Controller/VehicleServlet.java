@@ -51,6 +51,13 @@ public class VehicleServlet extends HttpServlet {
         }
 
         try {
+            Long veiculoId = Long.parseLong(request.getParameter("veiculoId"));
+            if (veiculoId != null) {
+                Vehicle veiculo = vehicleService.buscarVeiculoById(veiculoId)
+                        .orElseThrow(() -> new BusinessException("Não é possivel encontrar o carro de id: " + veiculoId));
+                sendJsonResponse(response, HttpServletResponse.SC_OK, veiculo);
+                return;
+            }
             List<Vehicle> veiculos = vehicleService.listarTodosVeiculos();
             Map<String, Object> resposta = new HashMap<>();
             resposta.put("veiculos", veiculos);

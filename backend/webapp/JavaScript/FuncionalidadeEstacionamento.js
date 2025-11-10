@@ -59,33 +59,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     
-    function adicionarCardClienteNaTela(cliente) {
+    async function adicionarCardClienteNaTela(cliente) {
         
         const card = document.createElement('article');
         card.className = 'cliente-card';
         card.dataset.clienteId = cliente.id;
         
-        const carroPrincipal = (cliente.carros && cliente.carros.length > 0) 
-                               ? cliente.carros[0] 
-                               : { placa: 'N/A', modelo: 'N/A' };
-        
-        card.innerHTML = `
-            <div class="card-header">
-                <span class="nome">${cliente.name}</span>
-                <span class="status ocupado">Estacionado</span> 
-            </div>
-            <div class="card-body">
-                <p><strong>CPF:</strong> ${cliente.cpf}</p>
-                <p><strong>Placa:</strong> ${carroPrincipal.placa}</p>
-                <p><strong>Modelo:</strong> ${carroPrincipal.modelo}</p>
-            </div>
-        `;
-        
-        containerDeClientes.prepend(card);
+        const carroId = cliente.carrosId[0];
 
-        card.addEventListener('click', () => {
-            mostrarPopupInfoCliente(cliente);
-        });
+        const token = localStorage.getItem("token");
+        if (!token) {
+            window.location.href = '../Funcionario/Login.html';
+            return;
+        }
+        
+        try {
+            const response = await fetch(`http://localhost:8080/EstacionaMAX_war_exploded/app/veiculos?veiculoId=${carroId}`, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+            
+            if (response.ok) {
+                const carroById = await response.json();
+                card.innerHTML = `
+                <div class="card-header">
+                    <span class="nome">${cliente.name}</span>
+                    <span class="status ocupado">Estacionado</span> 
+                </div>
+                <div class="card-body">
+                    <p><strong>CPF:</strong> ${cliente.cpf}</p>
+                    <p><strong>Placa:</strong> ${carroById.plate}</p>
+                    <p><strong>Modelo:</strong> ${carroById.model}</p>
+                </div>
+                `;
+            } else {
+                const erro = await response.json();
+                alert(erro);
+            }
+            
+            containerDeClientes.prepend(card);
+
+            card.addEventListener('click', () => {
+                mostrarPopupInfoCliente(cliente);
+            });
+        } catch (error) {
+            console.error("erro de rede: " + error);
+        }
     }
 
     function mostrarPopupInfoCliente(cliente) {

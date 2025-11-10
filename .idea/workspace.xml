@@ -11,8 +11,20 @@
   <component name="ChangeListManager">
     <list default="true" id="4a2191a5-585f-4278-bd06-951a17f2a248" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webapp/HTML/Gerente/CadastroDeVeiculos.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/HTML/Gerente/CadastroDeVeiculos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Java/src/Controller/VehicleServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Java/src/Controller/VehicleServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Java/src/entities/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Java/src/entities/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Java/src/services/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Java/src/services/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/webapp/JavaScript/FuncionalidadeEstacionamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/JavaScript/FuncionalidadeEstacionamento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/entities/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/entities/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/services/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/services/ClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/entities/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/entities/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/services/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/WEB-INF/classes/services/ClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/entities/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/entities/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/services/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/WEB-INF/classes/services/ClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/entities/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/entities/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/services/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/WEB-INF/classes/services/ClientService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/entities/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/entities/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/EstacionaMAX/services/ClientService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/EstacionaMAX/services/ClientService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +285,7 @@
       <workItem from="1762629634501" duration="2000" />
       <workItem from="1762629877874" duration="35955000" />
       <workItem from="1762671075079" duration="293000" />
-      <workItem from="1762711368910" duration="43213000" />
+      <workItem from="1762711368910" duration="50068000" />
     </task>
     <servers />
   </component>
