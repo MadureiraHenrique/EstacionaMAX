@@ -203,49 +203,12 @@ ul li.ativo {
 }
 
 /* ==========================
-   Input de busca
-========================== */
-#caixa-de-pesquisa {
-  justify-content: center;
-  align-items: center;
-  margin-top: 130px;
-  display: flex;
-}
-
-#input-buscar {
-  background-color: var(--cor-busca-bg);
-  border-radius: var(--raio-borda);
-  color: var(--texto-claro);
-  text-align: center;
-  font-weight: bold;
-  padding: 10px;
-  outline: none;
-  width: 250px;
-  border: none;
-}
-
-#input-buscar:focus {
-  color: rgb(224, 223, 223);
-  font-weight: 600;
-}
-
-#icone-lupa {
-  transform: translateX(-30px);
-  color: var(--cor-lupa);
-  pointer-events: none;
-}
-
-#input-buscar::placeholder {
-  color: var(--cor-busca-placeholder);
-}
-
-/* ==========================
    Perfil / Funcionário
 ========================== */
 #conteiner-do-funcionario {
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 7%;
+  transform: translateY(240px);
   display: flex;
   height: auto;
   gap: 80px;

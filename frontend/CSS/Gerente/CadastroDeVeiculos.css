@@ -393,7 +393,6 @@ ul li.ativo {
          PopUP
 ========================== */
 
-/* Section */
 #overlay {
   position: fixed;
   background-color: #000000a1;
@@ -423,8 +422,6 @@ ul li.ativo {
   }
 }
 
-
-/* Form */
 #form-cadastro {
  margin-left: 20px;
  margin-top: -5px;
@@ -438,13 +435,11 @@ ul li.ativo {
   
 }
 
-/* Labels */
 .label-cadastro {
   font-size: 20px;
   font-weight: 650;
 }
 
-/* Inputs e select */
 .input-cadastro {
   width: 190px;
   padding: 5px;
@@ -462,7 +457,6 @@ ul li.ativo {
   border: 2px solid #bb8c1fee;
 }
 
-/* Botão */
 #btn-enviar {
   background-color: #ebb330ee;
   width: 150px;

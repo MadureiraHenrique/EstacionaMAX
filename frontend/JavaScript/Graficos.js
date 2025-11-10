@@ -64,18 +64,21 @@ function gerarGraficoPizza() {
 }
 
 function gerarGraficoBarra() {
-    const titulo = 'Gráfico de Barras';
+    const titulo = 'Pedidos da Semana';
     const corTitulo = 'rgba(247, 246, 246, 1)';
 
-    const categorias = ['Categoria A', 'Categoria B', 'Categoria C', 'Categoria D'];
-    const valores = [10, 12, 20, 15];
-    const descricaoDataset = 'Valores de Exemplo';
+    const categorias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'];
+    const valores = [10, 12, 20, 15, 12, 11, 8]; // aq vai receber os valores
+    const descricaoDataset = 'Quantidade de Pedidos';
     const cores = [
-        'rgba(243, 48, 90, 1)',
-        'rgba(24, 144, 224, 1)',
-        'rgb(255, 205, 86, 1)',
-        'rgba(11, 201, 201, 1)'
-    ];
+  'rgba(243, 48, 90, 1)',
+  'rgba(24, 144, 224, 1)',
+  'rgb(255, 205, 86, 1)',
+  'rgba(11, 201, 201, 1)',
+  'rgba(102, 187, 106, 1)',
+  'rgba(156, 39, 176, 1)',
+  'rgba(255, 152, 0, 1)'
+];
 
     new Chart(ctxBarra, {
         type: 'bar',
