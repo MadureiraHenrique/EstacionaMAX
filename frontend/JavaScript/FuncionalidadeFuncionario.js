@@ -4,16 +4,18 @@ const overlay = document.getElementById('overlay');
 const iconeFecharCadastro = document.getElementById('iconeFechar');
 const botaoEnviarForm = document.getElementById('btn-enviar');
 const nav = document.getElementById('bloco-de-navegacao');
-const iconeExcluirFuncionario = document.getElementById('excluirFuncionario');
 
 mudarDisplay('none');
 
 function excluirFuncionario() {
   document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('excluir-funcionario')) {
-      if (!confirm('Deseja excluir esse funcionário?')) return;
-      e.target.closest('.bloco-do-funcionario').remove();
-    }
+    const alvoExclusao = e.target.closest('.excluirFuncionario, .excluir-funcionario');
+    if (!alvoExclusao) return;
+
+    if (!confirm('Deseja excluir esse funcionário?')) return;
+
+    const bloco = alvoExclusao.closest('.bloco-do-funcionario');
+    if (bloco) bloco.remove();
   });
 }
 
@@ -48,7 +50,7 @@ function criarConteinerFuncionario(nomeFuncionario, sobrenome, id) {
   artigo.classList.add('bloco-do-funcionario');
 
   artigo.innerHTML = `
-    <i class="bi bi-trash3" id="excluirFuncionario"></i>
+    <i class="bi bi-trash3 excluirFuncionario"></i>
     <a href="PerfilFuncionario.html">
       <figure>
         <img src="../Image/Perfil/Usuario.png" alt="Foto do funcionário" />
