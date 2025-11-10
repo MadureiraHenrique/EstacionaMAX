@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../../CSS/Funcionario/Perfil.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <header id="cabecalho-inicial">
+      <a href=".PaginaInicialPosCadastro.html"
+        ><img
+          src="../Image/Logo/Marca.png"
+          alt="Marca da empresa EstacionaMax"
+          id="icone-estacionamax"
+      /></a>
+      <img
+        src="../Image/Cabecalho/Sair.png"
+        alt="Ícone para sair"
+        id="icone-sair"
+      />
+    </header>
+
+    <nav class="menu-lateral-funcionario"></nav>
+
+    <main id="conteiner-principal">
+      <section id="conteiner-do-funcionario">
+        <article id="dados-do-perfil">
+          <figure id="dados-basicos-do-perfil">
+            <img
+              src="../Image/Perfil/Usuario.png"
+              alt="fotoDoCliente"
+              id="usuario-icone"
+            />
+            <figcaption id="nome-id"></figcaption>
+          </figure>
+
+          <address>
+            <ul id="informacao-perfil-endereco"></ul>
+          </address>
+        </article>
+
+        <aside id="conteiner-informacao-do-funcionario">
+          <div id="informacao-extra"></div>
+          <nav id="informacao-funcionalidades">
+            <button>Relatório de entradas/saídas</button>
+            <button>Histórico de movimentações</button>
+            <button>Observações</button>
+          </nav>
+        </aside>
+      </section>
+    </main>
+
+    <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
+    <script src="../../JavaScript/Perfil.js"></script>
+    <script src="../../JavaScript/Menu.js"></script>
+  </body>
+</html>

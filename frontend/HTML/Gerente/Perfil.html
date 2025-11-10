@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../../CSS/Gerente/Perfil.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <header id="cabecalho-inicial">
+      <a href="PaginaInicialPosCadastro.html"
+        ><img
+          src="../Image/Logo/Marca.png"
+          alt="Marca da empresa EstacionaMax"
+          id="icone-estacionamax"
+      /></a>
+      <a href="PaginaInicialPosCadastro.html"
+        ><img
+          src="../Image/Cabecalho/Sair.png"
+          alt="Icone sair"
+          id="icone-sair"
+      /></a>
+    </header>
+
+    <nav class="menu-lateral-funcionario"></nav>
+
+    <main id="conteiner-principal">
+      <div id="caixa-de-pesquisa">
+        <input
+          type="search"
+          placeholder="Buscar por CPF ou Nome"
+          id="input-buscar"
+        />
+        <i class="fa fa-search" id="icone-lupa"></i>
+      </div>
+
+      <section id="conteiner-do-funcionario">
+        <article id="dados-do-perfil">
+          <figure>
+            <img
+              src="../Image/Perfil/Usuario.png"
+              alt="fotoDoCliente"
+              id="usuario-icone"
+            />
+            <figcaption id="nome-id"></figcaption>
+          </figure>
+
+          <address>
+            <ul id="informacao-perfil-endereco"></ul>
+          </address>
+        </article>
+
+        <aside id="conteiner-informacao-do-funcionario">
+          <div id="informacao-extra"></div>
+          <nav id="informacao-funcionalidades">
+            <button>Relatório de entradas/saídas</button>
+            <button>Histórico de movimentações</button>
+            <button>Observações</button>
+          </nav>
+        </aside>
+      </section>
+    </main>
+
+    <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
+    <script src="../../JavaScript/Perfil.js"></script>
+  </body>
+</html>
