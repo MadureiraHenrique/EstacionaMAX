@@ -4,10 +4,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Order {
+public class Order implements BaseEntity {
 
     private Long id;
-    private Car car;
+    private Client client;
+    private Vehicle vehicle;
     private LocalDateTime entryTime;
     private LocalDateTime departureTime;
     private Integer parkingSpace;
@@ -17,14 +18,29 @@ public class Order {
 
     public Order() {}
 
-    public Order(Long id, Employee employee, BigDecimal value, Integer parkingSpace, LocalDateTime departureTime, Car car, LocalDateTime entryTime) {
+    public Order(Long id, Employee employee, BigDecimal value, Integer parkingSpace, Vehicle vehicle, LocalDateTime entryTime) {
         this.id = id;
         this.employee = employee;
         this.value = value;
         this.parkingSpace = parkingSpace;
-        this.departureTime = departureTime;
-        this.car = car;
         this.entryTime = entryTime;
+        this.vehicle = vehicle;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public Long getId() {
@@ -33,14 +49,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
     }
 
     public LocalDateTime getEntryTime() {

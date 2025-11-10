@@ -1,17 +1,13 @@
 package entities;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-public class Client {
+public class Client implements BaseEntity {
 
     private Long id;
     private String name;
     private String email;
     private String cpf;
-
-    private Set<Car> cars = new HashSet<Car>();
 
     public Client() {}
 
@@ -52,10 +48,6 @@ public class Client {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public Set<Car> getCars() {
-        return cars;
     }
 
     @Override
