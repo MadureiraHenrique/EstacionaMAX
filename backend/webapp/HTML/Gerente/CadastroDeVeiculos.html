@@ -98,7 +98,7 @@
         <section id="container-cadastrar">
           <form
             id="form-cadastro-cliente"
-            action="/EstacionaMAX_war_exploded/app/clientes"
+            action="http://localhost:8080/EstacionaMAX_war_exploded/app/cliente"
             method="POST"
           >
             <i class="bi bi-x" id="iconeFechar"></i>
@@ -130,12 +130,12 @@
                 />
               </div>
               <div class="campo-cadastro">
-                <label class="label-cadastro" for="telefone">Telefone:</label>
+                <label class="label-cadastro" for="email">Email:</label>
                 <input
                   class="input-cadastro"
-                  type="tel"
-                  id="telefone"
-                  name="telefone"
+                  type="email"
+                  id="email"
+                  name="email"
                   required
                 />
               </div>

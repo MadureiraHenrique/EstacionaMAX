@@ -1,252 +1,131 @@
-const cadastrar_veiculo = document.getElementById('cadastrar-veiculo');
-const overlay = document.getElementById('overlay');
-const container_cadastrar = document.getElementById('container-cadastrar');
-const inconeFechar = document.getElementById('iconeFechar');
-const form_cadastro = document.getElementById('form-cadastro');
-const estacionamento = document.querySelectorAll('#escopo-do-estacionamento > div');
-const selection = document.getElementById('vagaEscolhida');
-const conteiner_Clientes = document.getElementById('conteiner-de-clientes');
-const totalClientes = document.getElementById('total');
-let cont = 0;
+document.addEventListener("DOMContentLoaded", () => {
 
-function salvarClientesStorage(clientes) {
-    localStorage.setItem('clientes', JSON.stringify(clientes));
-}
+    const botaoCadastrar = document.getElementById("cadastrar-veiculo");
+    const overlay = document.getElementById("overlay");
+    const iconeFechar = document.getElementById("iconeFechar");
+    const formCadastro = document.getElementById("form-cadastro-cliente");
+    const containerDeClientes = document.getElementById("conteiner-de-clientes");
+    const mensagemErro = document.getElementById("erro-cadastro");
 
-function carregarClientesStorage() {
-    return JSON.parse(localStorage.getItem('clientes')) || [];
-}
+    botaoCadastrar.addEventListener("click", () => {
+        overlay.style.display = "flex";
+    });
 
-function salvarVagasStorage(vagas) {
-    localStorage.setItem('vagas', JSON.stringify(vagas));
-}
-
-function carregarVagasStorage() {
-    return JSON.parse(localStorage.getItem('vagas')) || [];
-}
-
-function inserirVagasDisponiveisSelection() {
-    const selectVagas = selection;
-    selectVagas.innerHTML = '';
-
-    estacionamento.forEach(vaga => {
-        if (vaga.classList.contains('vaga-vazia')) {
-            const option = document.createElement('option');
-            option.value = vaga.textContent.trim();
-            option.textContent = vaga.textContent.trim();
-            selectVagas.appendChild(option);
+    iconeFechar.addEventListener("click", () => {
+        overlay.style.display = "none";
+    });
+    
+    formCadastro.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert('Sessão expirada. Faça login novamente.');
+            window.location.href = '../Funcionario/Login.html';
+            return;
         }
-    });
+        
+        const formData = new FormData(formCadastro);
+        const body = new URLSearchParams(formData);
+        
+        try {
+            const response = await fetch(formCadastro.getAttribute("action"), {
+                method: formCadastro.method,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: body
+            });
 
-    if (selectVagas.options.length === 0) {
-        const option = document.createElement('option');
-        option.textContent = 'Nenhuma vaga disponível';
-        option.disabled = true;
-        selectVagas.appendChild(option);
-    }
-}
+            if (response.ok) {
+                const novoCliente = await response.json();
+                
+                alert('Cliente cadastrado com sucesso!');
+                
+                adicionarCardClienteNaTela(novoCliente);
+                
+                overlay.style.display = "none";
+                formCadastro.reset();
 
-function ocuparVagaDisponivel(vagaEscolhida) {
-    estacionamento.forEach(vaga => {
-        if (vaga.textContent.trim() === vagaEscolhida) {
-            vaga.classList.remove('vaga-vazia');
-            vaga.classList.add('vaga-ocupada');
-        }
-    });
-    atualizarVagasStorage();
-    inserirVagasDisponiveisSelection();
-}
-
-function liberarVaga(vagaLiberada) {
-    estacionamento.forEach(vaga => {
-        if (vaga.textContent.trim() === vagaLiberada) {
-            vaga.classList.remove('vaga-ocupada');
-            vaga.classList.add('vaga-vazia');
-        }
-    });
-    atualizarVagasStorage();
-    inserirVagasDisponiveisSelection();
-}
-
-function atualizarVagasStorage() {
-    const vagas = [];
-    estacionamento.forEach(vaga => {
-        vagas.push({
-            nome: vaga.textContent.trim(),
-            status: vaga.classList.contains('vaga-ocupada') ? 'ocupada' : 'vazia'
-        });
-    });
-    salvarVagasStorage(vagas);
-}
-
-function restaurarVagasStorage() {
-    const vagasSalvas = carregarVagasStorage();
-    if (vagasSalvas.length === 0) return;
-
-    vagasSalvas.forEach(vagaInfo => {
-        estacionamento.forEach(vaga => {
-            if (vaga.textContent.trim() === vagaInfo.nome) {
-                vaga.classList.remove('vaga-vazia', 'vaga-ocupada');
-                vaga.classList.add(vagaInfo.status === 'ocupada' ? 'vaga-ocupada' : 'vaga-vazia');
+            } else {
+                const erro = await response.json();
+                mensagemErro.textContent = erro.erro;
             }
-        });
-    });
-}
 
-function criarCliente(nome, placa, modelo, vaga) {
-    const container_Cliente = document.createElement('article');
-    container_Cliente.classList.add('cliente');
-
-    const iconeFinalizar = document.createElement('i');
-    iconeFinalizar.classList.add('bi', 'bi-check-circle');
-    iconeFinalizar.id = 'iconeFinalizar';
-
-    const modeloVeiculo = document.createElement('p');
-    modeloVeiculo.classList.add('modelo-do-veiculo-placa');
-    modeloVeiculo.innerHTML = `
-      <strong>Modelo:</strong> <span class="entrada modelo">${modelo}</span> |
-      <strong>Placa:</strong> <span class="entrada placa">${placa}</span>
-    `;
-
-    const nomeCliente = document.createElement('p');
-    nomeCliente.classList.add('nome');
-    nomeCliente.innerHTML = `
-      <strong>Nome:</strong> <span class="entrada nomeCliente">${nome}</span>
-    `;
-
-    const divConteiner_Alinhamento = document.createElement('div');
-    divConteiner_Alinhamento.classList.add('alinhamento-info-valor');
-
-    const informacaoVeiculo = document.createElement('p');
-    informacaoVeiculo.classList.add('informacao-do-veiculo');
-    const horaEntrada = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-    informacaoVeiculo.innerHTML = `
-      <strong>Vaga:</strong> <span class="entrada">${vaga}</span> |
-      <strong>Entrada:</strong> <span class="entrada">${horaEntrada}</span>
-    `;
-
-    const valorGerado = document.createElement('div');
-    valorGerado.classList.add('valor-por-hora');
-    valorGerado.innerHTML = `<strong>R$:</strong> <span>00,00</span>`;
-
-    divConteiner_Alinhamento.appendChild(informacaoVeiculo);
-    divConteiner_Alinhamento.appendChild(valorGerado);
-
-    container_Cliente.appendChild(iconeFinalizar);
-    container_Cliente.appendChild(modeloVeiculo);
-    container_Cliente.appendChild(nomeCliente);
-    container_Cliente.appendChild(divConteiner_Alinhamento);
-
-    conteiner_Clientes.appendChild(container_Cliente);
-}
-
-function atualizarClientesStorage() {
-    const clientes = [];
-    const listaClientes = conteiner_Clientes.querySelectorAll('.cliente');
-
-    listaClientes.forEach(cliente => {
-        clientes.push({
-            nome: cliente.querySelector('.nomeCliente').textContent.trim(),
-            placa: cliente.querySelector('.placa').textContent.trim(),
-            modelo: cliente.querySelector('.modelo').textContent.trim(),
-            vaga: cliente.querySelector('.informacao-do-veiculo .entrada').textContent.trim()
-        });
-    });
-
-    salvarClientesStorage(clientes);
-}
-
-function restaurarClientesStorage() {
-    const clientesSalvos = carregarClientesStorage();
-    clientesSalvos.forEach(cli => criarCliente(cli.nome, cli.placa, cli.modelo, cli.vaga));
-    cont = clientesSalvos.length;
-    totalClientes.innerText = cont;
-}
-
-function limparCadastro() {
-    form_cadastro.reset();
-}
-
-function pegarDadosForm() {
-    form_cadastro.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const dados = new FormData(form_cadastro);
-
-        const nome = dados.get('nomeCliente');
-        const placa = dados.get('placa');
-        const modelo = dados.get('modelo');
-        const vaga = dados.get('vagaEscolhida');
-
-        criarCliente(nome, placa, modelo, vaga);
-        cont++;
-        totalClientes.innerText = cont;
-        ocuparVagaDisponivel(vaga);
-        limparCadastro();
-        atualizarClientesStorage();
-    });
-}
-
-function finalizarCliente() {
-    conteiner_Clientes.addEventListener('click', (e) => {
-        if (e.target.id === 'iconeFinalizar') {
-            const confirmar = confirm('Deseja finalizar o cliente?');
-            if (!confirmar) return;
-
-            const cliente = e.target.closest('.cliente');
-            if (!cliente) return;
-
-            const vagaTexto = cliente.querySelector('.informacao-do-veiculo .entrada').textContent.trim();
-            cliente.remove();
-            cont--;
-            totalClientes.innerText = cont;
-            liberarVaga(vagaTexto);
-            atualizarClientesStorage();
+        } catch (error) {
+            console.error("Erro ao cadastrar cliente:", error);
+            mensagemErro.textContent = "Erro de rede. Tente novamente.";
         }
     });
-}
+    
+    function adicionarCardClienteNaTela(cliente) {
+        
+        const card = document.createElement('article');
+        card.className = 'cliente-card';
+        card.dataset.clienteId = cliente.id;
+        
+        const carroPrincipal = (cliente.carros && cliente.carros.length > 0) 
+                               ? cliente.carros[0] 
+                               : { placa: 'N/A', modelo: 'N/A' };
+        
+        card.innerHTML = `
+            <div class="card-header">
+                <span class="nome">${cliente.name}</span>
+                <span class="status ocupado">Estacionado</span> 
+            </div>
+            <div class="card-body">
+                <p><strong>CPF:</strong> ${cliente.cpf}</p>
+                <p><strong>Placa:</strong> ${carroPrincipal.placa}</p>
+                <p><strong>Modelo:</strong> ${carroPrincipal.modelo}</p>
+            </div>
+        `;
+        
+        containerDeClientes.prepend(card);
 
-function filtrarClientes() {
-    const inputBuscar = document.getElementById('input-buscar');
-
-    inputBuscar.addEventListener('input', () => {
-        const termo = inputBuscar.value.trim().toLowerCase();
-        const clientes = conteiner_Clientes.querySelectorAll('.cliente');
-
-        clientes.forEach(cliente => {
-            const nome = cliente.querySelector('.nomeCliente').textContent.trim().toLowerCase();
-            const placa = cliente.querySelector('.placa').textContent.trim().toLowerCase();
-            const modelo = cliente.querySelector('.modelo').textContent.trim().toLowerCase();
-
-            const textoCompleto = `${nome} ${placa} ${modelo}`;
-            cliente.style.display = textoCompleto.includes(termo) ? '' : 'none';
+        card.addEventListener('click', () => {
+            mostrarPopupInfoCliente(cliente);
         });
-    });
-}
+    }
 
-function mudarDisplay(display) {
-    overlay.style.display = display;
-    container_cadastrar.style.display = display;
-}
+    function mostrarPopupInfoCliente(cliente) {
+        
+        alert(`Você clicou no Cliente:
+          ID: ${cliente.id}
+          Nome: ${cliente.name}
+          CPF: ${cliente.cpf}
+          Telefone: ${cliente.telephone}
+          Carros: ${cliente.carros.length}
+        `);
+    }
 
-function abrirConteiner() {
-    cadastrar_veiculo.addEventListener('click', () => {
-        mudarDisplay('block');
-        inserirVagasDisponiveisSelection();
-    });
-}
+    async function carregarPatioAtual() {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        
+        try {
+            const response = await fetch('http://localhost:8080/EstacionaMAX_war_exploded/app/pedidos', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            
+            if (response.ok) {
+                const pedidos = await response.json();
 
-function fecharConteiner() {
-    inconeFechar.addEventListener('click', () => mudarDisplay('none'));
-    form_cadastro.addEventListener('submit', () => mudarDisplay('none'));
-}
+                const pedidosAbertos = pedidos.pedidos;
 
-restaurarVagasStorage();
-restaurarClientesStorage();
-inserirVagasDisponiveisSelection();
-finalizarCliente();
-pegarDadosForm();
-mudarDisplay('none');
-abrirConteiner();
-fecharConteiner();
-filtrarClientes();
-// ainda falta implementar o setor
+                document.getElementById("total").textContent = pedidosAbertos.length;
+
+                containerDeClientes.innerHTML = '';
+                
+                pedidosAbertos.forEach(pedido => {
+                    adicionarCardClienteNaTela(pedido.cliente); 
+                });
+            }
+        } catch (error) {
+            console.error("Erro ao carregar pátio:", error);
+        }
+    }
+    
+    carregarPatioAtual();
+
+});

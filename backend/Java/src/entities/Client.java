@@ -8,6 +8,7 @@ public class Client implements BaseEntity {
     private String name;
     private String email;
     private String cpf;
+    private Set<Vehicle> carrosId;
 
     public Client() {}
 
@@ -16,6 +17,14 @@ public class Client implements BaseEntity {
         this.name = name;
         this.cpf = cpf;
         this.email = email;
+    }
+
+    public Long getCarroPrincipalId() {
+        return carroPrincipalId;
+    }
+
+    public void setCarroPrincipalId(Long carroPrincipalId) {
+        this.carroPrincipalId = carroPrincipalId;
     }
 
     public Long getId() {

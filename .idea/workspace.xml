@@ -11,11 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4a2191a5-585f-4278-bd06-951a17f2a248" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Java/src/Controller/ManagerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Java/src/Controller/ManagerServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webapp/HTML/Funcionario/PerfilFuncionario.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/HTML/Funcionario/PerfilFuncionario.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/webapp/HTML/Gerente/CadastroDeVeiculos.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/HTML/Gerente/CadastroDeVeiculos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webapp/HTML/Gerente/PerfilFuncionario.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/HTML/Gerente/PerfilFuncionario.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/webapp/JavaScript/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/JavaScript/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/webapp/JavaScript/FuncionalidadeEstacionamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/webapp/JavaScript/FuncionalidadeEstacionamento.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +273,7 @@
       <workItem from="1762629634501" duration="2000" />
       <workItem from="1762629877874" duration="35955000" />
       <workItem from="1762671075079" duration="293000" />
-      <workItem from="1762711368910" duration="38045000" />
+      <workItem from="1762711368910" duration="43213000" />
     </task>
     <servers />
   </component>
