@@ -1,4 +1,4 @@
-package Controller;
+package util;
 
 public class LoginResponse {
     private String token;

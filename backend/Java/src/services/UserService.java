@@ -108,8 +108,16 @@ public class UserService {
         return userRepository.findFuncionarioById(id);
     }
 
+    public List<User> buscarTodosOsGerentes() {
+        return userRepository.findAllManagers();
+    }
+
     public List<User> buscarTodosOsFuncionarios() {
         return userRepository.findAllEmployees();
+    }
+
+    public List<User> buscarTodosOsUsuarios() {
+        return userRepository.findAll();
     }
 
     public void definirHorario(User user) {

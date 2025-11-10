@@ -60,6 +60,10 @@ public class VehicleService {
         vehicleRepository.deleteById(id);
     }
 
+    public Optional<Vehicle> buscarVeiculoById(Long id) {
+        return vehicleRepository.findById(id);
+    }
+
     public Optional<Vehicle> buscarVeiculoPorPlaca(String placa) {
         return vehicleRepository.findByPlaca(placa);
     }

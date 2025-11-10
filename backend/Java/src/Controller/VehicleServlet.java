@@ -10,28 +10,28 @@ import java.util.List;
 import java.util.Map;
 
 import entities.Employee;
-import entities.Order;
 import entities.User;
+import entities.Vehicle;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import services.OrderService;
+import services.VehicleService;
 
 import Exception.BusinessException;
 
-@WebServlet("/app/pedidos")
-public class OrderServlet extends HttpServlet {
+@WebServlet("/app/veiculos")
+public class VehicleServlet extends HttpServlet {
 
-    private OrderService pedidoService;
+    private VehicleService vehicleService;
     private Gson gson;
 
     @Override
     public void init() throws ServletException {
         ServletContext context = getServletContext();
-        this.pedidoService = OrderService.getInstance(context);
+        this.vehicleService = VehicleService.getInstance(context);
 
         LocalDateTimeAdapter adapter = new LocalDateTimeAdapter();
         this.gson = new GsonBuilder()
@@ -50,10 +50,10 @@ public class OrderServlet extends HttpServlet {
         }
 
         try {
-            List<Order> pedidos = pedidoService.findAllPedidosEmAberto();
-            sendJsonResponse(response, HttpServletResponse.SC_OK, pedidos);
+            List<Vehicle> veiculos = vehicleService.listarTodosVeiculos();
+            sendJsonResponse(response, HttpServletResponse.SC_OK, veiculos);
         } catch (Exception e) {
-            sendJsonError(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar pedidos: " + e.getMessage());
+            sendJsonError(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao buscar veículos: " + e.getMessage());
         }
     }
 
@@ -62,56 +62,53 @@ public class OrderServlet extends HttpServlet {
             throws ServletException, IOException {
 
         if (!isFuncionario(request)) {
-            sendJsonError(response, HttpServletResponse.SC_FORBIDDEN, "Acesso negado: apenas funcionários podem registrar E/S.");
+            sendJsonError(response, HttpServletResponse.SC_FORBIDDEN, "Acesso negado: apenas funcionários podem modificar veículos.");
             return;
         }
 
         String action = request.getParameter("action");
-        if (action == null) {
-            sendJsonError(response, HttpServletResponse.SC_BAD_REQUEST, "Parâmetro 'action' (entrada, saida) é obrigatório.");
+        if (action == null || !action.equals("atualizar")) {
+            sendJsonError(response, HttpServletResponse.SC_BAD_REQUEST, "Parâmetro 'action=atualizar' é obrigatório.");
             return;
         }
 
         try {
-            switch (action) {
-                case "entrada":
-                    registrarEntrada(request, response);
-                    break;
-                case "saida":
-                    registrarSaida(request, response);
-                    break;
-                default:
-                    sendJsonError(response, HttpServletResponse.SC_BAD_REQUEST, "Ação inválida.");
-                    break;
-            }
+            atualizarVeiculo(request, response);
         } catch (BusinessException e) {
-            sendJsonError(response, HttpServletResponse.SC_CONFLICT, e.getMessage());
+            sendJsonError(response, HttpServletResponse.SC_NOT_FOUND, e.getMessage());
+        } catch (NumberFormatException e) {
+            sendJsonError(response, HttpServletResponse.SC_BAD_REQUEST, "ID inválido.");
         } catch (Exception e) {
             sendJsonError(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro interno: " + e.getMessage());
         }
     }
 
-    private void registrarEntrada(HttpServletRequest request, HttpServletResponse response)
+    private void atualizarVeiculo(HttpServletRequest request, HttpServletResponse response)
             throws IOException, BusinessException, NumberFormatException {
 
-        Long clienteId = Long.parseLong(request.getParameter("clienteId"));
+        Long id = Long.parseLong(request.getParameter("id"));
+
+        Vehicle veiculo = vehicleService.buscarVeiculoById(id)
+                .orElseThrow(() -> new BusinessException("Veículo com ID " + id + " não encontrado."));
+
+        String cor = request.getParameter("cor");
+        if (cor != null && !cor.isEmpty()) {
+            veiculo.setColor(cor);
+        }
+
+        String modelo = request.getParameter("modelo");
+        if (modelo != null && !modelo.isEmpty()) {
+            veiculo.setModel(modelo);
+        }
+
         String placa = request.getParameter("placa");
-        Employee funcionarioLogado = (Employee) request.getAttribute("usuarioLogado");
+        if (placa != null && !placa.isEmpty()) {
+            veiculo.setPlate(placa);
+        }
 
-        Order novoPedido = pedidoService.registrarEntrada(clienteId, funcionarioLogado.getId(), placa);
+        Vehicle veiculoAtualizado = vehicleService.atualizarVeiculo(veiculo);
 
-        sendJsonResponse(response, HttpServletResponse.SC_CREATED, novoPedido);
-    }
-
-    private void registrarSaida(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, BusinessException, NumberFormatException {
-
-        Long pedidoId = Long.parseLong(request.getParameter("pedidoId"));
-        Order pedido = pedidoService.buscarPedidoById(pedidoId)
-                .orElseThrow(() -> new BusinessException("Não é possivel encontrar o pedido de id: " + pedidoId));
-        Order pedidoFechado = pedidoService.registrarSaida(pedidoId);
-
-        sendJsonResponse(response, HttpServletResponse.SC_OK, pedidoFechado);
+        sendJsonResponse(response, HttpServletResponse.SC_OK, veiculoAtualizado);
     }
 
     private boolean isAutenticado(HttpServletRequest request) {

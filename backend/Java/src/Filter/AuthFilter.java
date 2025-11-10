@@ -68,7 +68,7 @@ public class AuthFilter implements Filter {
             }
 
             if (role == Role.EMPLOYEE) {
-                if (path.startsWith("/app/funcionario") || path.startsWith("/app/pedidos")) {
+                if (path.startsWith("/app/funcionario") || path.startsWith("/app/pedidos") || path.startsWith("app/cliente")) {
                     filterChain.doFilter(request, response);
                     return;
                 } else {

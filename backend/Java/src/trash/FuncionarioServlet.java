@@ -1,4 +1,4 @@
-package Controller;
+package trash;
 
 import Adapter.LocalDateTimeAdapter;
 import com.google.gson.Gson;
@@ -6,7 +6,6 @@ import com.google.gson.GsonBuilder;
 import entities.Employee;
 import entities.Manager;
 import entities.User;
-import enums.Role;
 import enums.Shift;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;

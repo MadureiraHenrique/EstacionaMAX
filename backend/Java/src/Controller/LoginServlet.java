@@ -6,7 +6,6 @@ import entities.Manager;
 import entities.User;
 import enums.Role;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,8 +15,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import services.UserService;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -25,6 +22,8 @@ import java.util.Map;
 
 import Exception.AuthException;
 import util.JwtUtil;
+import util.LoginResponse;
+import util.UsuarioInfo;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {

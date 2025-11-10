@@ -63,7 +63,7 @@ public class ClientServlet extends HttpServlet {
 
         String action = req.getParameter("action");
         if (action == null) {
-            sendJsonError(resp, HttpServletResponse.SC_BAD_REQUEST, "Parametro invalido");
+            sendJsonError(resp, HttpServletResponse.SC_BAD_REQUEST, "O parametro action é obrigatorio");
             return;
         }
 
@@ -131,7 +131,7 @@ public class ClientServlet extends HttpServlet {
 
     public boolean isFuncionario(HttpServletRequest req) {
         User usuario = (User) req.getAttribute("usuarioLogado");
-        return usuario != null && usuario instanceof Employee;
+        return usuario instanceof Employee;
     }
 
     public void sendJsonError(HttpServletResponse resp, int status, String message) throws IOException {

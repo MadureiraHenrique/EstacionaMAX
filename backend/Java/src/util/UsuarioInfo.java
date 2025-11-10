@@ -1,4 +1,4 @@
-package Controller;
+package util;
 
 import entities.Manager;
 import entities.User;
