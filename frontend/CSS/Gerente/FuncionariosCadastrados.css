@@ -302,7 +302,7 @@ ul li.ativo {
     gap: 5px;
 }
 
-#excluirFuncionario {
+.excluirFuncionario {
     position: absolute;
     right: 0;
     top: 0;
@@ -395,7 +395,7 @@ ul li.ativo {
     transform: translatey(400px);}
   to {
     opacity: 1;
-    transform: translatey(175px);
+    transform: translatey(160px);
   }
 }
 
