@@ -55,6 +55,16 @@ public class ManagerServlet extends HttpServlet {
             List<User> gerentes = usuarioService.buscarTodosOsGerentes();
             List<User> funcionarios = usuarioService.buscarTodosOsFuncionarios();
 
+            String idStr = request.getParameter("id");
+            if (idStr != null) {
+                Long id = Long.parseLong(idStr);
+
+                User usuario = usuarioService.buscarUsuarioById(id)
+                        .orElseThrow(() -> new BusinessException("O usuario de id: " + id + " não existe."));
+                sendJsonResponse(response, HttpServletResponse.SC_OK, usuario);
+                return;
+            }
+
             Map<String, Object> resposta = new HashMap<>();
             resposta.put("gerentes", gerentes);
             resposta.put("funcionarios", funcionarios);

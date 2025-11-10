@@ -2,11 +2,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("formularioLogin");
     const mensagemErro = document.getElementById("mensagem-erro");
 
+    
+    const iconeMostrarSenha = document.getElementById('mostrar-senha');
+    const iconeEsconderSenha = document.getElementById('esconder-senha');
+
+    const inputSenha = document.querySelector('[name="senha"]');
+
+    iconeEsconderSenha.style.display = 'none';
+
+    iconeMostrarSenha.addEventListener('click', () => {
+
+        inputSenha.type = 'text';
+        iconeEsconderSenha.style.display = 'inline';
+        iconeMostrarSenha.style.display = 'none';
+        
+    });
+
+    iconeEsconderSenha.addEventListener('click', () => {
+        inputSenha.type = 'password';
+            iconeEsconderSenha.style.display = 'none';
+            iconeMostrarSenha.style.display = 'inline';
+    });
+
+
+    
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault
-
         mensagemErro.textContent = "";
-
+        
         const formData = new FormData(loginForm);
 
         const body = new URLSearchParams(formData);
@@ -34,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             } else {
                 const errorData = await response.json();
-
                 mensagemErro.textContent = errorData.erro || "Ocorreu um erro no login.";
             }
         } catch (error) {
@@ -44,26 +66,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     })
 })
-
-
-const iconeMostrarSenha = document.getElementById('mostrar-senha');
-const iconeEsconderSenha = document.getElementById('esconder-senha');
-
-const inputSenha = document.querySelector('[name="senha"]');
-
-iconeEsconderSenha.style.display = 'none';
-
-iconeMostrarSenha.addEventListener('click', () => {
-
-    inputSenha.type = 'text';
-    iconeEsconderSenha.style.display = 'inline';
-    iconeMostrarSenha.style.display = 'none';
-    
-});
-
-iconeEsconderSenha.addEventListener('click', () => {
-    inputSenha.type = 'password';
-        iconeEsconderSenha.style.display = 'none';
-        iconeMostrarSenha.style.display = 'inline';
-});
-
