@@ -1,32 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root {
-    /* Paleta principal */
+    /* Cores */
     --cor-fundo-body: #292E34;
     --cor-cabecalho: #f6f7fa;
-    --cor-menu-lateral: #323742;
-    --cor-busca-bg: #6e7174;
-    --cor-busca-placeholder: #e0dede;
-    --cor-lupa: #E9BB25;
     --cor-botao-primario: #FDCC5C;
     --cor-hover: #349ff75d;
-    --cor-funcionario-bg: rgba(255, 255, 255, 0.884);
-    --cor-funcionario-hover: rgba(46, 96, 126, 0.432);
-    --cor-funcionario-borda: #000000;
+    --cor-texto-claro: #FFFFFF;
+    --cor-texto-escuro: #000000;
 
     /* Tipografia */
     --fonte-principal: 'Nunito', sans-serif;
-    --tamanho-fonte-base: 16px;
-    --texto-escuro: #000000;
-    --texto-claro: #FFFFFF;
 
-    /* Estrutura e sombras */
-    --sombra-padrao: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --raio-borda-padrao: 8px;
-    --raio-card-padrao: 20px;
+    /* Bordas e sombras */
+    --sombra-padrao: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --raio-card: 20px;
 }
 
-/* Reset geral */
+/* Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -38,9 +29,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: var(--fonte-principal);
-    line-height: 1.5;
     background-color: var(--cor-fundo-body);
-    margin: 0;
 }
 
 /* ==========================
@@ -54,7 +43,6 @@ body {
     height: 80px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     padding: 0 20px;
     background-color: var(--cor-cabecalho);
     box-shadow: var(--sombra-padrao);
@@ -79,12 +67,11 @@ main#conteiner-principal {
 #BlocoInicial {
     position: relative;
     height: calc(100vh - 80px);
-    margin-top: 80px;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     text-align: left;
     overflow: hidden;
+    margin-top: 80px;
     padding-left: 70px;
 }
 
@@ -93,7 +80,7 @@ main#conteiner-principal {
     top: 0;
     left: 0;
     width: 100%;
-    height: 130%;
+    height: 100%;
     object-fit: cover;
     z-index: 0;
 }
@@ -101,24 +88,27 @@ main#conteiner-principal {
 #conteudo-Inicial {
     position: relative;
     z-index: 1;
-    color: white;
+    color: var(--cor-texto-claro);
+    max-width: 600px;
 }
 
 #titulo-blocoIncial {
     font-size: 50px;
-    font-weight: bold;
+    font-weight: 800;
     margin-bottom: 15px;
+    line-height: 1.2;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
 #titulo-blocoIncial span {
-    color: #fcc513;
+    color: var(--cor-botao-primario);
 }
 
 #subtitulo-blocoInicial {
     font-size: 24px;
     font-weight: 400;
     text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    margin-bottom: 20px;
 }
 
 #link-irLogin {
@@ -126,32 +116,37 @@ main#conteiner-principal {
     text-decoration: none;
     text-align: center;
     padding: 10px 20px;
-    margin-top: 30px;
     width: 140px;
-    background-color: rgb(255, 255, 255);
-    border:  3.5px solid #eec439;
+    background-color: #fff;
+    border: 3.5px solid #eec439;
     border-radius: 30px;
     color: rgb(4, 22, 61);
     font-weight: 800;
+    transition: all 0.3s;
+}
+
+#link-irLogin:hover {
+    background-color: #eec439;
+    color: #fff;
 }
 
 /* --------------------------
    Bloco Secundário
 --------------------------- */
 #BlocoSecundario {
-    height: 550px;
+    padding: 80px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    background-color: var(--cor-fundo-body);
 }
 
 #titulo-secundario {
-    text-align: left;
-    color: white;
     font-size: 36px;
-    margin-bottom: 40px;
-    margin-left: 60px;
+    font-weight: 700;
+    color: var(--cor-texto-claro);
+    margin-bottom: 50px;
+    text-align: center;
 }
 
 #conteudo-secundario {
@@ -164,24 +159,19 @@ main#conteiner-principal {
 .conteudo-impresa { 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: #e2dede;
-    border-radius: 20px;
-    width: 400px;
-    padding: 10px;
-    padding-bottom: 15px;
+    background-color: #e2e2e2;
+    border-radius: var(--raio-card);
+    width: 350px;
+    padding: 20px;
     text-align: center;
     box-shadow: var(--sombra-padrao);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .conteudo-impresa:hover {
     transform: translateY(-5px);
-}
-
-.conteudo-impresa p {
-    color: #343435;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 .titulos {
@@ -189,9 +179,15 @@ main#conteiner-principal {
     margin: 15px 0 10px 0;
 }
 
+.conteudo-impresa p {
+    color: #343435;
+    font-size: 14px;
+}
+
 #icones {
     font-size: 40px;
     color: #050B28;
+    margin-bottom: 15px;
 }
 
 /* ==========================
@@ -205,8 +201,8 @@ footer {
     background-color: #050B28;
     width: 100%;
     height: 120px;
-    line-height: 2.0;
     margin-top: auto;
+    padding: 10px;
 }
 
 footer h1 {
@@ -215,9 +211,49 @@ footer h1 {
 }
 
 footer h2 {
-    margin-top: 15px;
-    text-align: center;
     font-size: 12px;
     color: rgb(190, 189, 188);
+    text-align: center;
+    margin-top: 5px;
 }
 
+/* ==========================
+   Responsividade
+========================== */
+@media (max-width: 1024px) {
+    #titulo-blocoIncial {
+        font-size: 42px;
+    }
+    #subtitulo-blocoInicial {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    #titulo-blocoIncial {
+        font-size: 36px;
+    }
+    #subtitulo-blocoInicial {
+        font-size: 18px;
+    }
+    .conteudo-impresa {
+        width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    #titulo-blocoIncial {
+        font-size: 28px;
+    }
+    #subtitulo-blocoInicial {
+        font-size: 16px;
+    }
+    #link-irLogin {
+        width: 120px;
+        padding: 8px 15px;
+    }
+    .conteudo-impresa {
+        width: 200px;
+        padding: 15px;
+    }
+}
