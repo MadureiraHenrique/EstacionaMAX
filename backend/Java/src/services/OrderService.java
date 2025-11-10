@@ -43,7 +43,7 @@ public class OrderService {
         return instance;
     }
 
-    public Order registrarEntrada(Long clienteId, Long funcionarioId, String placa) throws BusinessException {
+    public Order registrarEntrada(Long clienteId, Long funcionarioId, String placa, Integer vaga) throws BusinessException {
         Vehicle veiculo = vehicleRepository.findByPlaca(placa).orElseThrow(() -> new BusinessException("O veiculo de placa: " + placa + " não existe"));
 
         Employee funcionario = (Employee) userRepository.findById(funcionarioId).filter(user -> user instanceof Employee)
@@ -62,7 +62,7 @@ public class OrderService {
 
         Order order = new Order();
         order.setEntryTime(LocalDateTime.now());
-        order.setParkingSpace(1);
+        order.setParkingSpace(vaga);
         order.setClient(client);
         order.setEmployee(funcionario);
         order.setVehicle(veiculo);

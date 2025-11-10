@@ -100,8 +100,9 @@ public class OrderServlet extends HttpServlet {
         Long clienteId = Long.parseLong(request.getParameter("clienteId"));
         String placa = request.getParameter("placa");
         Employee funcionarioLogado = (Employee) request.getAttribute("usuarioLogado");
+        Integer vaga = Integer.parseInt(request.getParameter("vaga"));
 
-        Order novoPedido = pedidoService.registrarEntrada(clienteId, funcionarioLogado.getId(), placa);
+        Order novoPedido = pedidoService.registrarEntrada(clienteId, funcionarioLogado.getId(), placa, vaga);
 
         sendJsonResponse(response, HttpServletResponse.SC_CREATED, novoPedido);
     }

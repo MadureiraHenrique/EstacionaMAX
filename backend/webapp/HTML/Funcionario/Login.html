@@ -16,7 +16,8 @@
         <div id="conteiner-login">
             <img id="logoLogin" src="../../HTML/Image/Logo/Marca.png" alt="Logo EstacionaMax">
 
-            <form id="formularioLogin" action="login" target="_self">
+            <form id="formularioLogin" action="http://localhost:8080/EstacionaMAX_war_exploded/login" target="_self", method="POST">
+                <div id="mensagem-erro" class="error"></div>
                 <div class="campo">
                     <input type="email" name="email" placeholder="Email">
                     <i class="bi bi-envelope-at" id="iconeEmail"></i>
