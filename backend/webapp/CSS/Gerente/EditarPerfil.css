@@ -1,0 +1,130 @@
+#container-edicao {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 130px;
+  gap: 80px;
+  padding: 20px;
+}
+
+#dados-do-perfil-edicao {
+  background-color: var(--cor-perfil-bg);
+  border-radius: var(--raio-card);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 260px;
+  height: fit-content;
+}
+
+#dados-do-perfil-edicao figure {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#usuario-icone-preview {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid var(--cor-icones);
+  object-fit: cover;
+}
+
+.label-upload-foto {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: var(--cor-destaque);
+  color: var(--fundo-body);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  border: 2px solid var(--cor-perfil-bg);
+  transition: transform 0.2s;
+}
+
+.label-upload-foto:hover {
+  transform: scale(1.1);
+}
+
+#input-foto {
+  display: none;
+}
+
+#info-perfil-edicao {
+  text-align: center;
+  color: var(--texto-escuro);
+  line-height: 1.5;
+}
+
+#form-edicao-container {
+  background-color: var(--cor-perfil-bg);
+  border-radius: var(--raio-card);
+  padding: 30px 40px;
+  min-width: 550px;
+  max-width: 90%;
+}
+
+.input-edit-group {
+  position: relative;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border-radius: var(--raio-borda);
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+}
+
+.input-edit-group label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+}
+
+.input-edit-group input,
+.input-edit-group select {
+  width: calc(100% - 30px);
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  font-family: var(--fonte-principal);
+  font-weight: 600;
+  color: var(--texto-escuro);
+}
+
+.input-edit-group select {
+  width: 100%;
+  appearance: none;
+}
+
+.input-edit-group i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cor-icones);
+}
+
+#btn-salvar-edicao {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: var(--raio-borda);
+  background-color: var(--cor-links);
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: opacity 0.2s;
+}
+
+#btn-salvar-edicao:hover {
+  opacity: 0.9;
+}

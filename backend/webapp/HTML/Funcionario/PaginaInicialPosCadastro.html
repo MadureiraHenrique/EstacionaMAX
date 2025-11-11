@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../Image/Logo/IconeAba.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="../../CSS/Funcionario/PaginaInicialPosCadastro.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <title>Página Inicial</title>
+  </head>
+
+  <body>
+    <header id="cabecalho-inicial">
+      <a href="../HomePage.html"
+        ><img
+          src="../Image/Logo/Marca.png"
+          alt="Marca da empresa EstacionaMax"
+          id="icone-estacionamax"
+      /></a>
+
+      <a href="../HomePage.html"
+        ><img
+          src="../Image/Cabecalho/Sair.png"
+          alt="Icone sair"
+          id="icone-sair"
+      /></a>
+    </header>
+
+    <nav class="menu-lateral" id="menu-lateral-funcionario"></nav>
+
+    <main id="conteiner-principal">
+      <h1 id="titulo-sessao">Pagina Inicial</h1>
+
+      <section id="informacoes-gerais">
+        <div id="informacao-vagas">
+          <p>
+            <b><span id="vagas-livres">0</span> Vagas Livres</b> /<br />
+            <span id="vagas-ocupadas">0</span> Ocupadas
+          </p>
+          <progress id="barra-progresso" value="0" max="100"></progress>
+        </div>
+        <div id="informacao-de-entrada-e-saida">
+          <p>
+            <b>Entradas recentes:</b> <span id="entradas-recentes">0</span>
+            <br />
+            <b>Saídas:</b> <span id="saidas-recentes">0</span>
+          </p>
+        </div>
+      </section>
+
+      <nav
+        id="navegacao-rapida-dashboard"
+        aria-label="Navegação rápida do dashboard"
+      >
+        <ul>
+          <li>
+            <a
+              href="../../HTML/Funcionario/CadastroDeVeiculos.html"
+              id="cadastrar-carro"
+              class="funcionalidades"
+              aria-label="Cadastrar um novo veiculo"
+            >
+              <img src="../Image/Icones/Carro.png" alt="Ícone de veiculo" />
+              Cadastrar Veiculo
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+
+    <script src="../../JavaScript/PaginaInicialPosCadastro.js"></script>
+    <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "managers": {
+    "1": {
+      "id": 1,
+      "name": "Gerente",
+      "cpf": "123.456.789-11",
+      "telephone": "123456789",
+      "email": "gerente@gmail.com",
+      "password": "gerente1234",
+      "entryTime": "2025-11-08T06:00:00",
+      "departureTime": "2025-11-08T14:00:00",
+      "shift": "MORNING"
+    },
+    "3": {
+      "id": 3,
+      "name": "gerente2",
+      "cpf": "123.456.789-15",
+      "telephone": "123456789",
+      "email": "gerente2@gmail.com",
+      "password": "gerente2senha",
+      "entryTime": "2025-11-09T06:00:00",
+      "departureTime": "2025-11-09T14:00:00",
+      "shift": "MORNING"
+    }
+  },
+  "employees": {
+    "2": {
+      "manager": {
+        "id": 1,
+        "name": "Gerente",
+        "cpf": "123.456.789-11",
+        "telephone": "123456789",
+        "email": "gerente@gmail.com",
+        "password": "gerente1234",
+        "entryTime": "2025-11-08T06:00:00",
+        "departureTime": "2025-11-08T14:00:00",
+        "shift": "MORNING"
+      },
+      "id": 2,
+      "name": "funcionario",
+      "cpf": "123.456.789-11",
+      "telephone": "12341234567",
+      "email": "funcionario1@gmail.com",
+      "password": "senha",
+      "entryTime": "2025-11-09T06:00:00",
+      "departureTime": "2025-11-09T14:00:00",
+      "shift": "MORNING"
+    },
+    "4": {
+      "manager": {
+        "id": 1,
+        "name": "Gerente",
+        "cpf": "123.456.789-11",
+        "telephone": "123456789",
+        "email": "gerente@gmail.com",
+        "password": "gerente1234",
+        "entryTime": "2025-11-08T06:00:00",
+        "departureTime": "2025-11-08T14:00:00",
+        "shift": "MORNING"
+      },
+      "id": 4,
+      "name": "funcionario2",
+      "cpf": "123.456.789-20",
+      "telephone": "123456789",
+      "email": "funcionario2@gmail.com",
+      "password": "funcionario2senha",
+      "entryTime": "2025-11-09T06:00:00",
+      "departureTime": "2025-11-09T14:00:00",
+      "shift": "MORNING"
+    }
+  }
+}
