@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </li>
 
           <li class="item-menu">
-            <a href="#"
+            <a href="../Gerente/FuncionariosCadastrados.html"
               ><span class="icon"><i class="bi bi-person-plus-fill"></i></span
               ><span class="txt-link">Cadastrar</span></a
             >
