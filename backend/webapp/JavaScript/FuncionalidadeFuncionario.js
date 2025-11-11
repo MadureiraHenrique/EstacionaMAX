@@ -1,142 +1,160 @@
-const botaoCadastro = document.getElementById('cadastro');
-const cadastrar_Cliente = document.getElementById('form-cadastro');
-const overlay = document.getElementById('overlay');
-const iconeFecharCadastro = document.getElementById('iconeFechar');
-const botaoEnviarForm = document.getElementById('btn-enviar');
-const nav = document.getElementById('bloco-de-navegacao');
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Seleção de Elementos ---
+  const botaoCadastro = document.getElementById("cadastro");
+  const overlay = document.getElementById("overlay");
+  const containerCadastrar = document.getElementById("container-cadastrar");
+  const formCadastro = document.getElementById("form-cadastro");
+  const iconeFecharCadastro = document.getElementById("iconeFechar");
+  const navFuncionarios = document.getElementById("bloco-de-navegacao");
+  const inputPesquisar = document.getElementById("input-buscar");
 
-mudarDisplay('none');
+  // --- Funções de Storage ---
+  const STORAGE_KEY = "funcionarios";
 
-function salvarFuncionariosStorage(funcionarios) {
-    localStorage.setItem('funcionarios', JSON.stringify(funcionarios));
-}
+  function carregarFuncionariosStorage() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  }
 
-function carregarFuncionariosStorage() {
-    return JSON.parse(localStorage.getItem('funcionarios')) || [];
-}
+  function salvarFuncionariosStorage(funcionarios) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(funcionarios));
+  }
 
-function atualizarFuncionariosCadastrados() {
-    const funcionarios = [];
-    const blocos = nav.querySelectorAll('.bloco-do-funcionario');
-
-    blocos.forEach(bloco => {
-        const strongText = bloco.querySelector('figcaption p strong').textContent.split('\n');
-        const nome = strongText[0].trim();
-        const sobrenome = strongText[1] ? strongText[1].trim() : '';
-
-        const id = bloco.querySelector('figcaption p:nth-child(2)').textContent.replace('ID: ', '').trim();
-        const cargo = bloco.querySelector('figcaption p:nth-child(3)').textContent.replace('Cargo: [', '').replace(']', '').trim();
-
-        funcionarios.push({ nome, sobrenome, id, cargo });
-    });
-
-    salvarFuncionariosStorage(funcionarios);
-}
-
-function criarConteinerFuncionario(nomeFuncionario, sobrenome, id, atualizarStorage = true) {
-    const artigo = document.createElement('article');
-    artigo.classList.add('bloco-do-funcionario');
-
-    const cargoFixo = 'cargo'; 
-
-    artigo.innerHTML = `
-      <i class="bi bi-trash3 excluirFuncionario"></i>
-      <a href="PerfilFuncionario.html">
-        <figure>
-          <img src="../Image/Perfil/Usuario.png" alt="Foto do funcionário" />
-          <figcaption class="informacao-do-funcionario">
-            <p><strong>${nomeFuncionario}<br>${sobrenome}</strong></p>
-            <p><strong>ID:</strong> ${id ? id : 'xxxx'}</p>
-            <p><strong>Cargo:</strong> [${cargoFixo}]</p> 
-          </figcaption>
-        </figure>
-      </a>
-    `;
-
-    nav.appendChild(artigo);
-    
-    if (atualizarStorage) {
-        atualizarFuncionariosCadastrados();
-    }
-    
-    mudarDisplay('none');
-    cadastrar_Cliente.reset();
-}
-
-function pegarDadosForm() {
-    cadastrar_Cliente.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const dados = new FormData(cadastrar_Cliente);
-
-        const nomeFuncionario = dados.get('nomeFuncionario');
-        const sobrenome = dados.get('sobrenomeFuncionario');
-        const cpf = dados.get('cpf');
-        const telefone = dados.get('telefone');
-        const email = dados.get('email');
-        const id = null;
-
-        criarConteinerFuncionario(nomeFuncionario, sobrenome, id);
-    });
-}
-
-function abrirConteinerCadastrar() {
-    botaoCadastro.addEventListener('click', (event) => {
-        event.preventDefault();
-        mudarDisplay('block');
-    });
-}
-
-function fecharConteinerCadastrar() {
-    iconeFecharCadastro.addEventListener('click', () => mudarDisplay('none'));
-}
-
-function mudarDisplay(display) {
+  // --- Funções do Pop-up ---
+  function mudarDisplay(display) {
     overlay.style.display = display;
-    cadastrar_Cliente.style.display = display;
-}
+    containerCadastrar.style.display = display;
+  }
 
-function excluirFuncionario() {
-    document.addEventListener('click', (e) => {
-        const alvoExclusao = e.target.closest('.excluirFuncionario, .excluir-funcionario');
-        if (!alvoExclusao) return;
+  function abrirConteinerCadastrar(event) {
+    event.preventDefault();
+    formCadastro.reset();
+    mudarDisplay("flex");
+  }
 
-        if (!confirm('Deseja excluir esse funcionário?')) return;
+  function fecharConteinerCadastrar() {
+    mudarDisplay("none");
+  }
 
-        const bloco = alvoExclusao.closest('.bloco-do-funcionario');
-        if (bloco) {
-            bloco.remove();
-            atualizarFuncionariosCadastrados();
-        }
-    });
-}
-
-function filtrarFuncionarios() {
-    const inputPesquisar = document.getElementById('input-buscar');
-
-    inputPesquisar.addEventListener('input', () => {
-        const termo = inputPesquisar.value.trim().toLowerCase();
-        const funcionarios = nav.querySelectorAll('.bloco-do-funcionario');
-
-        funcionarios.forEach(funcionario => {
-            const nome = funcionario.querySelector('figcaption p strong').textContent.trim().toLowerCase();
-            const id = funcionario.querySelector('figcaption p:nth-child(2)').textContent.trim().toLowerCase();
-
-            const textoCompleto = `${nome} ${id}`;
-            funcionario.style.display = textoCompleto.includes(termo) ? '' : 'none';
-        });
-    });
-}
-
-function restaurarFuncionariosStorage() {
+  // --- Funções de Renderização e CRUD ---
+  function renderizarFuncionarios() {
     const funcionarios = carregarFuncionariosStorage();
-    funcionarios.forEach(func => {
-        criarConteinerFuncionario(func.nome, func.sobrenome, func.id, false); 
-    });
-}
+    navFuncionarios.innerHTML = "";
 
-restaurarFuncionariosStorage();
-filtrarFuncionarios();
-pegarDadosForm();
-abrirConteinerCadastrar();
-fecharConteinerCadastrar();
-excluirFuncionario();
+    if (funcionarios.length === 0) {
+      navFuncionarios.innerHTML =
+        "<p style='color: white; text-align: center;'>Nenhum funcionário cadastrado.</p>";
+      return;
+    }
+
+    funcionarios.forEach((func) => {
+      const artigo = document.createElement("article");
+      artigo.classList.add("bloco-do-funcionario");
+
+      artigo.dataset.nome = `${func.nome} ${func.sobrenome}`.toLowerCase();
+      artigo.dataset.id = func.id;
+
+      artigo.innerHTML = `
+        <i class="bi bi-trash3 excluirFuncionario" data-id="${func.id}"></i>
+        <a href="Perfil.html" class="link-perfil" data-id="${func.id}">
+          <figure>
+            <img src="../Image/Perfil/Usuario.png" alt="Foto do funcionário" />
+            <figcaption class="informacao-do-funcionario">
+              <p><strong>${func.nome} ${func.sobrenome}</strong></p>
+              <p><strong>ID:</strong> ${func.id}</p>
+              <p><strong>Cargo:</strong> [Funcionário]</p>
+            </figcaption>
+          </figure>
+        </a>
+      `;
+      navFuncionarios.appendChild(artigo);
+    });
+  }
+
+  function pegarDadosForm(event) {
+    event.preventDefault();
+    const dados = new FormData(formCadastro);
+    const funcionarios = carregarFuncionariosStorage();
+
+    const novoFuncionario = {
+      id: Date.now(),
+      nome: dados.get("nomeFuncionario"),
+      sobrenome: dados.get("sobrenomeFuncionario"),
+      cpf: dados.get("cpf"),
+      telefone: dados.get("telefone"),
+      email: dados.get("email"),
+      cargo: "Funcionário",
+      turno: "Manhã",
+      dataInicio: new Date().toLocaleDateString("pt-BR"),
+      status: "Ativo",
+    };
+
+    if (
+      !novoFuncionario.nome ||
+      !novoFuncionario.cpf ||
+      !novoFuncionario.email
+    ) {
+      alert("Nome, CPF e Email são obrigatórios.");
+      return;
+    }
+
+    funcionarios.push(novoFuncionario);
+    salvarFuncionariosStorage(funcionarios);
+
+    fecharConteinerCadastrar();
+    renderizarFuncionarios();
+  }
+
+  function filtrarFuncionarios() {
+    const termo = inputPesquisar.value.trim().toLowerCase();
+    const funcionarios = navFuncionarios.querySelectorAll(
+      ".bloco-do-funcionario"
+    );
+
+    funcionarios.forEach((funcionario) => {
+      const nome = funcionario.dataset.nome;
+      const id = funcionario.dataset.id;
+
+      if (nome.includes(termo) || id.includes(termo)) {
+        funcionario.style.display = "";
+      } else {
+        funcionario.style.display = "none";
+      }
+    });
+  }
+
+  function gerenciarCliquesNav(e) {
+    if (e.target.classList.contains("excluirFuncionario")) {
+      const idParaExcluir = e.target.dataset.id;
+      if (
+        !confirm(`Deseja realmente excluir o funcionário ID: ${idParaExcluir}?`)
+      ) {
+        return;
+      }
+
+      const funcionarios = carregarFuncionariosStorage();
+      const funcionariosAtualizados = funcionarios.filter(
+        (f) => f.id != idParaExcluir
+      );
+
+      salvarFuncionariosStorage(funcionariosAtualizados);
+      renderizarFuncionarios();
+    }
+
+    const linkPerfil = e.target.closest(".link-perfil");
+    if (linkPerfil) {
+      const idParaVer = linkPerfil.dataset.id;
+      localStorage.setItem("funcionarioSelecionadoId", idParaVer);
+    }
+  }
+
+  mudarDisplay("none");
+
+  botaoCadastro.addEventListener("click", abrirConteinerCadastrar);
+  iconeFecharCadastro.addEventListener("click", fecharConteinerCadastrar);
+  formCadastro.addEventListener("submit", pegarDadosForm);
+
+  inputPesquisar.addEventListener("input", filtrarFuncionarios);
+  navFuncionarios.addEventListener("click", gerenciarCliquesNav);
+
+  renderizarFuncionarios();
+});
