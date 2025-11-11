@@ -203,15 +203,54 @@ ul li.ativo {
 }
 
 /* ==========================
-   Perfil / Funcionário
+   Input de busca (RE-ADICIONADO)
+========================== */
+#caixa-de-pesquisa {
+  justify-content: center;
+  align-items: center;
+  margin-top: 130px; /* Espaço do header (80px) + espaço extra */
+  margin-bottom: 40px; /* Espaço antes dos cards */
+  display: flex;
+}
+
+#input-buscar {
+  background-color: var(--cor-busca-bg);
+  border-radius: var(--raio-borda);
+  color: var(--texto-claro);
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  outline: none;
+  width: 250px;
+  border: none;
+}
+
+#input-buscar:focus {
+  color: rgb(224, 223, 223);
+  font-weight: 600;
+}
+
+#icone-lupa {
+  transform: translateX(-30px);
+  color: var(--cor-lupa);
+  pointer-events: none;
+}
+
+#input-buscar::placeholder {
+  color: var(--cor-busca-placeholder);
+}
+
+/* ==========================
+   Perfil / Funcionário (CORRIGIDO)
 ========================== */
 #conteiner-do-funcionario {
   justify-content: center;
   flex-wrap: wrap;
-  transform: translateY(240px);
+  /* margin-top: 7%; -- REMOVIDO PARA USAR O MARGIN DA BUSCA */
   display: flex;
   height: auto;
   gap: 80px;
+  padding-bottom: 50px; /* Espaço no final */
 }
 
 #dados-do-perfil {
@@ -222,10 +261,10 @@ ul li.ativo {
   margin-bottom: 50px;
   padding-top: 100px;
   position: relative;
-  margin-top: -30px;
+  /* margin-top: -30px; -- REMOVIDO */
   min-width: 260px;
   display: flex;
-  height: 50%;
+  height: fit-content; /* Ajusta altura */
 }
 
 #usuario-icone {
@@ -248,7 +287,6 @@ ul li.ativo {
   align-items: center;
   display: flex;
   gap: 8px;
-
   margin-top: 15px;
 }
 
@@ -273,8 +311,8 @@ ul li.ativo {
   border-radius: 15px;
   position: relative;
   min-width: 550px;
-  height: 55%;
-  top: -65px;
+  height: fit-content; /* Ajusta altura */
+  /* top: -65px; -- REMOVIDO */
 }
 
 #informacao-extra {
@@ -317,6 +355,8 @@ ul li.ativo {
   cursor: pointer;
   display: flex;
   padding: 20px;
+  font-size: 28px;
+  color: #d9534f;
 }
 
 @media screen and (max-width: 768px) {
@@ -382,7 +422,7 @@ ul li.ativo {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.75);
-  z-index: 10001; /* Acima de tudo */
+  z-index: 10001;
   justify-content: center;
   align-items: center;
 }
@@ -432,12 +472,7 @@ ul li.ativo {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s;
   min-width: 130px;
-}
-
-.popup-botoes button:hover {
-  transform: scale(1.05);
 }
 
 #btn-cancelar-excluir {
@@ -448,9 +483,4 @@ ul li.ativo {
 #btn-confirmar-excluir {
   background-color: #5cb85c;
   color: white;
-}
-
-#excluir-funcionario i {
-  font-size: 28px;
-  color: #d9534f;
 }
