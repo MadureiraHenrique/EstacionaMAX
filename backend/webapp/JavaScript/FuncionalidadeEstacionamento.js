@@ -30,7 +30,6 @@ function salvarClientesStorage(clientes) {
 }
 
 function carregarClientesStorage() {
-  // USA A CHAVE DINÂMICA
   return JSON.parse(localStorage.getItem(getClienteKey())) || [];
 }
 
@@ -198,17 +197,69 @@ function restaurarClientesStorage() {
 
 function limparCadastro() {
   form_cadastro.reset();
+  const inputs = form_cadastro.querySelectorAll(".input-cadastro");
+  inputs.forEach((input) => input.classList.remove("input-erro"));
 }
 
 function pegarDadosForm() {
   form_cadastro.addEventListener("submit", (event) => {
     event.preventDefault();
-    const dados = new FormData(form_cadastro);
 
-    const nome = dados.get("nomeCliente");
-    const placa = dados.get("placa");
-    const modelo = dados.get("modelo");
-    const vaga = dados.get("vagaEscolhida");
+    const inputNome = document.getElementById("nomeCliente");
+    const inputCpf = document.getElementById("cpf");
+    const inputTelefone = document.getElementById("telefone");
+    const inputPlaca = document.getElementById("placa");
+    const inputModelo = document.getElementById("modelo");
+    const inputVaga = document.getElementById("vagaEscolhida");
+
+    const nome = inputNome.value.trim();
+    const cpf = inputCpf.value.trim();
+    const telefone = inputTelefone.value.trim();
+    const placa = inputPlaca.value.trim();
+    const modelo = inputModelo.value.trim();
+    const vaga = inputVaga.value;
+
+    const regexSoNumeros = /^\d+$/;
+    const regexCPF = /^\d{11}$/;
+    const regexNome = /^[a-zA-Z\s]+$/;
+
+    const inputs = form_cadastro.querySelectorAll(".input-cadastro");
+    inputs.forEach((input) => input.classList.remove("input-erro"));
+
+    if (!regexNome.test(nome) || nome.length < 3) {
+      alert("Erro: O nome do cliente é inválido.");
+      inputNome.classList.add("input-erro");
+      inputNome.focus();
+      return;
+    }
+
+    if (!regexCPF.test(cpf)) {
+      alert("Erro: O CPF deve conter exatamente 11 dígitos numéricos.");
+      inputCpf.classList.add("input-erro");
+      inputCpf.focus();
+      return;
+    }
+
+    if (!regexSoNumeros.test(telefone) || telefone.length < 8) {
+      alert("Erro: O telefone deve conter apenas números (mínimo 8 dígitos).");
+      inputTelefone.classList.add("input-erro");
+      inputTelefone.focus();
+      return;
+    }
+
+    if (placa === "") {
+      alert("Erro: O campo Placa é obrigatório.");
+      inputPlaca.classList.add("input-erro");
+      inputPlaca.focus();
+      return;
+    }
+
+    if (modelo === "") {
+      alert("Erro: O campo Modelo é obrigatório.");
+      inputModelo.classList.add("input-erro");
+      inputModelo.focus();
+      return;
+    }
 
     criarCliente(nome, placa, modelo, vaga);
     cont++;
@@ -216,6 +267,8 @@ function pegarDadosForm() {
     ocuparVagaDisponivel(vaga);
     limparCadastro();
     atualizarClientesStorage();
+
+    mudarDisplay("none");
   });
 }
 
@@ -256,12 +309,8 @@ function filtrarClientes() {
         .querySelector(".placa")
         .textContent.trim()
         .toLowerCase();
-      const cpf = cliente
-        .querySelector(".nomeCliente")
-        .textContent.trim()
-        .toLowerCase();
 
-      const textoCompleto = `${nome} ${placa} ${cpf}`;
+      const textoCompleto = `${nome} ${placa}`;
       cliente.style.display = textoCompleto.includes(termo) ? "" : "none";
     });
   });
@@ -274,6 +323,7 @@ function mudarDisplay(display) {
 
 function abrirConteiner() {
   cadastrar_veiculo.addEventListener("click", () => {
+    limparCadastro();
     mudarDisplay("block");
     inserirVagasDisponiveisSelection();
   });
@@ -281,18 +331,13 @@ function abrirConteiner() {
 
 function fecharConteiner() {
   inconeFechar.addEventListener("click", () => mudarDisplay("none"));
-  form_cadastro.addEventListener("submit", () => mudarDisplay("none"));
 }
 
 function recarregarPaginaParaSetor() {
   conteiner_Clientes.innerHTML = "";
-
   restaurarVagasStorage();
-
   restaurarClientesStorage();
-
   inserirVagasDisponiveisSelection();
-
   document.getElementById("input-buscar").value = "";
   filtrarClientes();
 }

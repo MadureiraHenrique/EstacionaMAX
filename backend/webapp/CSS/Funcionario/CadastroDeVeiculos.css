@@ -489,6 +489,10 @@ ul li.ativo {
   background-color: #e6c545ee;
 }
 
+.input-cadastro.input-erro {
+  border: 2px solid #d9534f;
+  background-color: #f2dede;
+}
 
 /*
 ==========================
