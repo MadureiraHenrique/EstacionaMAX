@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (iconeSair) {
     iconeSair.addEventListener("click", function () {
       if (confirm("Deseja realmente sair?")) {
-        location.href = "../../HomePage.html";
+        location.href = "../HomePage.html";
       }
     });
   }
