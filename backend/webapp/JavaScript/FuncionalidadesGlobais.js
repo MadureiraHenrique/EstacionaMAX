@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
           </li>
 
           <li class="item-menu">
-            <a href="#"
+            <a href="TelaGrafico.html"
               ><span class="icon"><i class="bi bi-bar-chart"></i></span
               ><span class="txt-link">Gráfico</span></a
             >
