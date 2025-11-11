@@ -45,7 +45,7 @@ function criarConteinerFuncionario(nomeFuncionario, sobrenome, id, atualizarStor
         <figure>
           <img src="../Image/Perfil/Usuario.png" alt="Foto do funcionário" />
           <figcaption class="informacao-do-funcionario">
-            <p><strong>${nomeFuncionario} ${sobrenome}</strong></p>
+            <p><strong>${nomeFuncionario}<br>${sobrenome}</strong></p>
             <p><strong>ID:</strong> ${id ? id : 'xxxx'}</p>
             <p><strong>Cargo:</strong> [${cargoFixo}]</p> 
           </figcaption>
@@ -73,7 +73,7 @@ function pegarDadosForm() {
         const cpf = dados.get('cpf');
         const telefone = dados.get('telefone');
         const email = dados.get('email');
-        const id = null; // ID virá do back-end
+        const id = null;
 
         criarConteinerFuncionario(nomeFuncionario, sobrenome, id);
     });
