@@ -22,7 +22,7 @@
           alt="Marca da empresa EstacionaMax"
           id="icone-estacionamax"
       /></a>
-      
+
       <a href="../HomePage.html"
         ><img
           src="../Image/Cabecalho/Sair.png"
@@ -31,71 +31,25 @@
       /></a>
     </header>
 
-    <nav class="menu-lateral">
-      <div class="btn-expandir">
-        <i class="bi bi-list" id="btn-exp"></i>
-
-        <div id="informacao-do-usuario">
-          <img
-            src="../Image/Perfil/Usuario.png"
-            alt="Foto do usuário"
-            id="foto-do-usuario"
-          />
-          <div id="dados-usuario">
-            <p id="nome-User"><strong>Pedro Lima</strong></p>
-            <p id="cargo-User">Gerente</p>
-          </div>
-        </div>
-
-        <ul>
-          <li class="item-menu">
-            <a href="../Gerente/PaginaInicialPosCadastro.html"
-              ><span class="icon"><i class="bi bi-columns-gap"></i></span
-              ><span class="txt-link">Inicio</span></a
-            >
-          </li>
-          
-          <li class="item-menu">
-            <a href="../Gerente/Perfil.html"
-              ><span class="icon"><i class="bi bi-clipboard"></i></span
-              ><span class="txt-link">Gerenciamento</span></a
-            >
-          </li>
-
-          <li class="item-menu">
-            <a href="TelaGrafico.html"
-              ><span class="icon"><i class="bi bi-bar-chart"></i></span
-              ><span class="txt-link">Gráfico</span></a
-            >
-          </li>
-
-          <li class="item-menu">
-            <a href="../Gerente/CadastroDeVeiculos.html"
-              ><span class="icon"><i class="bi bi-eye"></i></span
-              ><span class="txt-link">Vizualizar Setor</span></a
-            >
-          </li>
-
-          <li class="item-menu">
-            <a href="#"
-              ><span class="icon"><i class="bi bi-person-plus-fill"></i></span
-              ><span class="txt-link">Cadastrar</span></a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <nav class="menu-lateral" id="menu-lateral-gerente"></nav>
 
     <main id="conteiner-principal">
       <h1 id="titulo-sessao">Pagina Inicial</h1>
 
       <section id="informacoes-gerais">
         <div id="informacao-vagas">
-          <p><b>20 Vagas Livres</b> /<br />120 Ocupadas</p>
-          <progress value="40" max="100"></progress>
+          <p>
+            <b><span id="vagas-livres">0</span> Vagas Livres</b> /<br />
+            <span id="vagas-ocupadas">0</span> Ocupadas
+          </p>
+          <progress id="barra-progresso" value="0" max="100"></progress>
         </div>
         <div id="informacao-de-entrada-e-saida">
-          <p><b>Entradas recentes:</b> 20 <br /><b>Saídas:</b> 8</p>
+          <p>
+            <b>Entradas recentes:</b> <span id="entradas-recentes">0</span>
+            <br />
+            <b>Saídas:</b> <span id="saidas-recentes">0</span>
+          </p>
         </div>
       </section>
 
@@ -104,14 +58,24 @@
         aria-label="Navegação rápida do dashboard"
       >
         <ul>
-          <li id="cadastrar-carro"
-              class="funcionalidades"
-              aria-label="Cadastrar um novo carro">
-              <a href="CadastroDeVeiculos.html" " style="text-decoration: none; color: inherit; cursor: pointer;">
-              <img src="../Image/Icones/Carro.png" alt="Ícone de carro" style="margin: auto;"/>
+          <li
+            id="cadastrar-carro"
+            class="funcionalidades"
+            aria-label="Cadastrar um novo carro"
+          >
+            <a
+              href="CadastroDeVeiculos.html"
+              style="text-decoration: none; color: inherit; cursor: pointer"
+            >
+              <img
+                src="../Image/Icones/Carro.png"
+                alt="Ícone de carro"
+                style="margin: auto"
+              />
               Cadastrar carro
             </a>
           </li>
+
           <li>
             <a
               href="FuncionariosCadastrados.html"
@@ -155,6 +119,7 @@
       </nav>
     </main>
 
+    <script src="../../JavaScript/PaginaInicialPosCadastro.js"></script>
     <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>
   </body>
 </html>

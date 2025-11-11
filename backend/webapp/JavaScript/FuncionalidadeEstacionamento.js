@@ -117,18 +117,13 @@ function restaurarVagasStorage() {
   });
 }
 
-// ===== 1. FUNÇÃO MODIFICADA =====
-// Agora recebe 'cpf'
 function criarCliente(nome, placa, modelo, vaga, cpf) {
   const container_Cliente = document.createElement("article");
   container_Cliente.classList.add("cliente");
 
-  // ===== 2. DADOS DE BUSCA ADICIONADOS =====
-  // Armazena os dados de busca no próprio elemento
-  // (já em minúsculas para otimizar a busca)
   container_Cliente.dataset.nome = nome.toLowerCase();
   container_Cliente.dataset.placa = placa.toLowerCase();
-  container_Cliente.dataset.cpf = cpf; // CPF já são só números
+  container_Cliente.dataset.cpf = cpf;
 
   const iconeFinalizar = document.createElement("i");
   iconeFinalizar.classList.add("bi", "bi-check-circle");
@@ -176,22 +171,18 @@ function criarCliente(nome, placa, modelo, vaga, cpf) {
   conteiner_Clientes.appendChild(container_Cliente);
 }
 
-// ===== 3. FUNÇÃO MODIFICADA =====
-// Agora salva o CPF no localStorage
 function atualizarClientesStorage() {
   const clientes = [];
   const listaClientes = conteiner_Clientes.querySelectorAll(".cliente");
 
   listaClientes.forEach((cliente) => {
     clientes.push({
-      // Lê os dados visíveis
       nome: cliente.querySelector(".nomeCliente").textContent.trim(),
       placa: cliente.querySelector(".placa").textContent.trim(),
       modelo: cliente.querySelector(".modelo").textContent.trim(),
       vaga: cliente
         .querySelector(".informacao-do-veiculo .entrada")
         .textContent.trim(),
-      // Lê o dado "escondido" (cpf) do dataset
       cpf: cliente.dataset.cpf,
     });
   });
@@ -199,13 +190,11 @@ function atualizarClientesStorage() {
   salvarClientesStorage(clientes);
 }
 
-// ===== 4. FUNÇÃO MODIFICADA =====
-// Agora lê o CPF do localStorage e passa para 'criarCliente'
 function restaurarClientesStorage() {
   const clientesSalvos = carregarClientesStorage();
   cont = 0;
-  clientesSalvos.forEach(
-    (cli) => criarCliente(cli.nome, cli.placa, cli.modelo, cli.vaga, cli.cpf) // Passa o 'cli.cpf'
+  clientesSalvos.forEach((cli) =>
+    criarCliente(cli.nome, cli.placa, cli.modelo, cli.vaga, cli.cpf)
   );
   cont = clientesSalvos.length;
   totalClientes.innerText = cont;
@@ -217,8 +206,6 @@ function limparCadastro() {
   inputs.forEach((input) => input.classList.remove("input-erro"));
 }
 
-// ===== 5. FUNÇÃO MODIFICADA =====
-// Agora passa o 'cpf' para 'criarCliente'
 function pegarDadosForm() {
   form_cadastro.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -279,13 +266,16 @@ function pegarDadosForm() {
       return;
     }
 
-    // Passa o CPF para a função de criar o card
     criarCliente(nome, placa, modelo, vaga, cpf);
     cont++;
     totalClientes.innerText = cont;
     ocuparVagaDisponivel(vaga);
     limparCadastro();
     atualizarClientesStorage();
+
+    let entradas = parseInt(localStorage.getItem("entradas_recentes") || "0");
+    localStorage.setItem("entradas_recentes", entradas + 1);
+    // =================================
 
     mudarDisplay("none");
   });
@@ -306,14 +296,17 @@ function finalizarCliente() {
       cliente.remove();
       cont--;
       totalClientes.innerText = cont;
+
+      let saidas = parseInt(localStorage.getItem("saidas_recentes") || "0");
+      localStorage.setItem("saidas_recentes", saidas + 1);
+      // =================================
+
       liberarVaga(vagaTexto);
       atualizarClientesStorage();
     }
   });
 }
 
-// ===== 6. FUNÇÃO MODIFICADA (O FILTRO) =====
-// Esta é a função que faz a busca funcionar
 function filtrarClientes() {
   const inputBuscar = document.getElementById("input-buscar");
 
@@ -322,20 +315,18 @@ function filtrarClientes() {
     const clientes = conteiner_Clientes.querySelectorAll(".cliente");
 
     clientes.forEach((cliente) => {
-      // Lê os dados direto do dataset (que já estão em minúsculas)
       const nome = cliente.dataset.nome;
       const placa = cliente.dataset.placa;
       const cpf = cliente.dataset.cpf;
 
-      // Verifica se o termo de busca está em QUALQUER um dos campos
       const achouNome = nome.includes(termo);
       const achouPlaca = placa.includes(termo);
       const achouCpf = cpf.includes(termo);
 
       if (achouNome || achouPlaca || achouCpf) {
-        cliente.style.display = ""; // Mostra o card
+        cliente.style.display = "";
       } else {
-        cliente.style.display = "none"; // Esconde o card
+        cliente.style.display = "none";
       }
     });
   });
@@ -364,10 +355,9 @@ function recarregarPaginaParaSetor() {
   restaurarClientesStorage();
   inserirVagasDisponiveisSelection();
   document.getElementById("input-buscar").value = "";
-  filtrarClientes(); // Chama para garantir que o filtro seja "resetado"
+  filtrarClientes();
 }
 
-// --- INICIALIZAÇÃO DO SCRIPT ---
 setorSelect.addEventListener("change", recarregarPaginaParaSetor);
 
 finalizarCliente();
@@ -375,6 +365,6 @@ pegarDadosForm();
 mudarDisplay("none");
 abrirConteiner();
 fecharConteiner();
-filtrarClientes(); // <-- Liga o filtro
+filtrarClientes();
 
 recarregarPaginaParaSetor();

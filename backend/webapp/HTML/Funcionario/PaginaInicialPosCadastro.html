@@ -39,11 +39,18 @@
 
       <section id="informacoes-gerais">
         <div id="informacao-vagas">
-          <p><b>20 Vagas Livres</b> /<br />120 Ocupadas</p>
-          <progress value="40" max="100"></progress>
+          <p>
+            <b><span id="vagas-livres">0</span> Vagas Livres</b> /<br />
+            <span id="vagas-ocupadas">0</span> Ocupadas
+          </p>
+          <progress id="barra-progresso" value="0" max="100"></progress>
         </div>
         <div id="informacao-de-entrada-e-saida">
-          <p><b>Entradas recentes:</b> 20 <br /><b>Saídas:</b>8</p>
+          <p>
+            <b>Entradas recentes:</b> <span id="entradas-recentes">0</span>
+            <br />
+            <b>Saídas:</b> <span id="saidas-recentes">0</span>
+          </p>
         </div>
       </section>
 
