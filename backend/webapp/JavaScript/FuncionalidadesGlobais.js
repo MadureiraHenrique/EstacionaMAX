@@ -50,6 +50,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 ><span class="txt-link">Meu Perfil</span></a
               >
             </li>
+
+          <li class="item-menu">
+            <a href="../Funcionario/CadastroDeVeiculos.html"
+              ><span class="icon"><i class="bi bi-eye"></i></span
+              ><span class="txt-link">Vizualizar Setor</span></a
+            >
+          </li>
+
           </ul>
       </div>
     `;
