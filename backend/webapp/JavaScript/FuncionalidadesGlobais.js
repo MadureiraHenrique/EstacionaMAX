@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  let nomeFuncionario = "Joselino Morais";
+  let cargoFuncionario = "Funcionario";
+
+  let nomeGerente = "Pedro Lima";
+  let cargoGerente = "Gerente";
+
   let caminhoAtual = window.location.pathname;
 
   const caminhoFuncionario = "/HTML/Funcionario/";
@@ -25,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
               id="foto-do-usuario"
             />
             <div id="dados-usuario">
-              <p id="nome-User"><strong>Funcionário</strong></p>
-              <p id="cargo-User">Colaborador</p>
+              <p id="nome-User"><strong>${nomeFuncionario}</strong></p>
+              <p id="cargo-User">${cargoFuncionario}</p>
             </div>
           </div>
 
@@ -60,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
             />
 
             <div id="dados-usuario">
-              <p id="nome-User"><strong>Pedro Lima</strong></p>
-              <p id="cargo-User">Gerente</p>
+              <p id="nome-User"><strong>${nomeGerente}</strong></p>
+              <p id="cargo-User">${cargoGerente}</p>
             </div>
           </div>
 

@@ -1,30 +1,27 @@
-// Ta por ordem de chegada, chefe :Y
+document.addEventListener("DOMContentLoaded", function () {
+  // Ta por ordem de chegada, chefe :Y
 
-let nome = "Josevaldo Morais";
-let id = 50;
+  let nome = "Josevaldo Morais";
+  let id = 50;
 
-const divInfo3 = document.getElementById("nome-id");
+  const divInfo3 = document.getElementById("nome-id");
 
-let htmlParaInserir1 = `
+  let htmlParaInserir1 = `
           <p id="nome-funcionario">
             <strong>Nome: </strong>${nome}
           </p>
           <p id="id-funcionario"><strong>ID: </strong>${id}</p>
 `;
 
-divInfo3.innerHTML = htmlParaInserir1;
+  divInfo3.innerHTML = htmlParaInserir1;
 
+  let telefone = "71 9 1234-4321";
+  let email = "josevaldomorais123@gmail.com";
+  let local = "BA - Salvador";
 
+  const divInfo2 = document.getElementById("informacao-perfil-endereco");
 
-
-
-let telefone = "71 9 1234-4321";
-let email = "josevaldomorais123@gmail.com";
-let local = "BA - Salvador";
-
-const divInfo2 = document.getElementById("informacao-perfil-endereco");
-
-let htmlParaInserir2 = `
+  let htmlParaInserir2 = `
     <li>
         <img
             src="../Image/Perfil/Telefone.png"
@@ -46,41 +43,29 @@ let htmlParaInserir2 = `
     </li>
 `;
 
-divInfo2.innerHTML = htmlParaInserir2;
+  divInfo2.innerHTML = htmlParaInserir2;
 
+  let cargo = "Funcionário";
+  let turno = "Manhã";
+  let dataInicio = "01/10/2025";
+  let statusAtual = "Ativo";
 
+  const divInfo1 = document.getElementById("informacao-extra");
 
-
-
-let cargo = "Funcionário";
-let turno = "Manhã";
-let dataInicio = "01/10/2025";
-let statusAtual = "Ativo";
-
-const divInfo1 = document.getElementById("informacao-extra");
-
-let htmlParaInserir3 = `
+  let htmlParaInserir3 = `
   <p><strong>Cargo:</strong> ${cargo}</p>
   <p><strong>Turno:</strong> ${turno}</p>
   <p><strong>Data de emissão:</strong> ${dataInicio}</p>
   <p><strong>Status:</strong> ${statusAtual}</p>
 `;
 
-divInfo1.innerHTML = htmlParaInserir3;
+  divInfo1.innerHTML = htmlParaInserir3;
 
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
   const btnAbrirPopup = document.querySelector("#excluir-funcionario i");
   const popup = document.getElementById("excluir-funcionario-container");
   const btnFecharPopup = document.getElementById("popup-fechar");
   const btnCancelarExcluir = document.getElementById("btn-cancelar-excluir");
-  const btnConfirmarExcluir = document.getElementById(
-    "btn-confirmar-excluir"
-  );
+  const btnConfirmarExcluir = document.getElementById("btn-confirmar-excluir");
 
   const fecharPopup = () => {
     if (popup) {

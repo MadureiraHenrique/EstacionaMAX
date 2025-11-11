@@ -21,7 +21,7 @@ body {
 }
 
 main {
-    background-image: url(../../HTML/Image/login/fundo.jpg);
+    background-image: url(../../HTML/Image/Fundos/Login/fundo.jpg);
     display: flex;
     justify-content: center;
     align-items: center;

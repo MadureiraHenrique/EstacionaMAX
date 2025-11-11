@@ -282,10 +282,9 @@ ul li.ativo {
   background-color: var(--cor-info-extra-bg);
   border-radius: 10px;
   text-align: center;
-  margin-top: 15px;
+  margin: 20px 33px;
   display: flex;
   padding: 50px;
-  margin: auto;
   width: 90%;
 }
 
