@@ -63,6 +63,45 @@
           </nav>
         </aside>
       </section>
+        <div id="relatorio-popup-container" class="popup-container">
+            <div class="popup-card">
+                <i class="bi bi-x" id="relatorio-fechar"></i>
+                <h2>📊 Relatório de Entradas/Saídas (Últimos 7 dias)</h2>
+                <div id="relatorio-conteudo">
+                    <p><strong>Entradas:</strong> 150 veículos</p>
+                    <p><strong>Saídas:</strong> 145 veículos</p>
+                    <p><strong>Total de Horas Trabalhadas (Func.):</strong> 56 horas</p>
+                    <hr class="relatorio-divisor">
+                    <p class="relatorio-nota">*Este é um relatório simulado. Dados atualizados em tempo real.</p>
+                </div>
+                <div class="popup-botoes relatorio-botoes">
+                    <button id="btn-gerar-completo" class="btn-acao-primaria">Gerar Relatório Completo</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="historico-popup-container" class="popup-container">
+            <div class="popup-card">
+                <i class="bi bi-x" id="historico-fechar"></i>
+                <h2>⏱️ Histórico de Movimentações (Últimas 5)</h2>
+                <div id="historico-conteudo" class="historico-conteudo-wrapper">
+                    <ul class="historico-lista">
+                        <li class="historico-item">
+                            <p><strong>Placa:</strong> ABC-1234 | <strong>Entrada:</strong> 17/11 08:00 | <strong>Status:</strong> Finalizada</p>
+                        </li>
+                        <li class="historico-item">
+                            <p><strong>Placa:</strong> XYZ-9876 | <strong>Entrada:</strong> 17/11 12:30 | <strong>Status:</strong> Estacionado</p>
+                        </li>
+                        <li class="historico-item sem-borda">
+                            <p><strong>Placa:</strong> DEF-5678 | <strong>Entrada:</strong> 16/11 20:15 | <strong>Status:</strong> Finalizada</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="popup-botoes historico-botoes">
+                    <button id="btn-ver-historico-completo" class="btn-acao-primaria">Ver Histórico Completo</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="../../JavaScript/FuncionalidadesGlobais.js"></script>

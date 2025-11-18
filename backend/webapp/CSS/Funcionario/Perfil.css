@@ -298,7 +298,7 @@ ul li.ativo {
 #informacao-funcionalidades button {
   transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
   background-color: var(--cor-funcionalidade-btn);
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: bolder;
   font-size: 15px;
   cursor: pointer;
@@ -453,4 +453,58 @@ ul li.ativo {
 #excluir-funcionario i {
   font-size: 28px;
   color: #d9534f;
+}
+
+.relatorio-divisor {
+    margin: 15px 0;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.relatorio-nota {
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+.relatorio-botoes {
+    margin-top: 30px !important;
+}
+
+/* --- 2. Pop-up de Histórico --- */
+
+.historico-conteudo-wrapper {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.historico-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.historico-item {
+    margin-bottom: 10px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.historico-item.sem-borda {
+    border-bottom: none;
+}
+
+.historico-botoes {
+    margin-top: 30px !important;
+}
+
+.btn-acao-primaria {
+    background-color: var(--cor-funcionalidade-btn) !important;
+}
+
+.bi-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--texto-claro);
+    line-height: 1;
 }

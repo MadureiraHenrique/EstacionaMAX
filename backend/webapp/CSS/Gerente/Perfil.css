@@ -208,8 +208,8 @@ ul li.ativo {
 #caixa-de-pesquisa {
   justify-content: center;
   align-items: center;
-  margin-top: 130px; /* Espaço do header (80px) + espaço extra */
-  margin-bottom: 40px; /* Espaço antes dos cards */
+  margin-top: 130px;
+  margin-bottom: 40px;
   display: flex;
 }
 
@@ -241,16 +241,15 @@ ul li.ativo {
 }
 
 /* ==========================
-   Perfil / Funcionário (CORRIGIDO)
+   Perfil / Funcionário
 ========================== */
 #conteiner-do-funcionario {
   justify-content: center;
   flex-wrap: wrap;
-  /* margin-top: 7%; -- REMOVIDO PARA USAR O MARGIN DA BUSCA */
   display: flex;
   height: auto;
   gap: 80px;
-  padding-bottom: 50px; /* Espaço no final */
+  padding-bottom: 50px;
 }
 
 #dados-do-perfil {
@@ -261,10 +260,9 @@ ul li.ativo {
   margin-bottom: 50px;
   padding-top: 100px;
   position: relative;
-  /* margin-top: -30px; -- REMOVIDO */
   min-width: 260px;
   display: flex;
-  height: fit-content; /* Ajusta altura */
+  height: fit-content;
 }
 
 #usuario-icone {
@@ -311,8 +309,8 @@ ul li.ativo {
   border-radius: 15px;
   position: relative;
   min-width: 550px;
-  height: fit-content; /* Ajusta altura */
-  /* top: -65px; -- REMOVIDO */
+  height: fit-content;
+
 }
 
 #informacao-extra {
@@ -336,11 +334,11 @@ ul li.ativo {
 #informacao-funcionalidades button {
   transition: background-color 0.3s ease-in-out, width 0.3s ease-in-out;
   background-color: var(--cor-funcionalidade-btn);
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: bolder;
   font-size: 15px;
   cursor: pointer;
-  padding: 10px;
+  padding: 13px;
   border: none;
   width: 50%;
 }
@@ -350,13 +348,16 @@ ul li.ativo {
 }
 
 #excluir-funcionario i {
+    position: absolute;
+    bottom: 0;
+    right: -41px;
   justify-content: end;
   margin-right: 40px;
   cursor: pointer;
   display: flex;
   padding: 20px;
   font-size: 28px;
-  color: #d9534f;
+  color: #000000;
 }
 
 @media screen and (max-width: 768px) {
@@ -481,6 +482,89 @@ ul li.ativo {
 }
 
 #btn-confirmar-excluir {
-  background-color: #5cb85c;
-  color: white;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.btn-acao-primaria {
+    background-color: var(--cor-funcionalidade-btn) !important;
+}
+
+.btn-acao-sucesso {
+    background-color: #5cb85c !important;
+}
+
+/* --- 1. Pop-up de Relatório --- */
+
+.relatorio-divisor {
+    margin: 15px 0;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.relatorio-nota {
+    font-size: 14px;
+    color: #a0a0a0;
+}
+
+.relatorio-botoes {
+    margin-top: 30px !important;
+}
+
+/* --- 2. Pop-up de Histórico --- */
+
+.historico-conteudo-wrapper {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.historico-lista {
+    list-style: none;
+    padding: 0;
+}
+
+.historico-item {
+    margin-bottom: 10px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.historico-item.sem-borda {
+    border-bottom: none;
+}
+
+.historico-botoes {
+    margin-top: 30px !important;
+}
+
+/* --- 3. Pop-up de Observações --- */
+
+.observacao-texto-atual {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.observacao-campo-texto {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+    resize: vertical;
+    background-color: #f6f7fa;
+    color: var(--texto-escuro);
+    font-family: var(--fonte-principal);
+}
+
+.observacoes-botoes {
+    margin-top: 20px !important;
+}
+.bi-x {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    color: var(--texto-claro);
+    line-height: 1;
 }
